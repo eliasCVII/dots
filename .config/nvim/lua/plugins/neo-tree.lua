@@ -8,8 +8,9 @@ return {
 	},
 	config = function()
 		require("neo-tree").setup({
+			popup_border_style = "rounded",
 			window = {
-				position = "left",
+				position = "float",
 				width = 40,
 				mapping_options = {
 					noremap = true,

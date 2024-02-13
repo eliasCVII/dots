@@ -20,22 +20,7 @@ local get_visual = function(args, parent)
 end
 
 return {
-	s(
-		{ trig = "env", snippetType = "autosnippet" },
-		fmta(
-			[[
-        \begin{<>}
-            <>
-        \end{<>}
-      ]],
-			{
-				i(1),
-				i(2),
-				rep(1), -- this node repeats insert node i(1)
-			}
-		)
-	),
-
+	-- Text in math mode
 	s(
 		{ trig = "tii", dscr = "Expands 'tii' into LaTeX's textit{} command.", snippetType = "autosnippet" },
 		fmta("\\textit{<>}", {
@@ -50,6 +35,7 @@ return {
 		})
 	),
 
+	-- Frac
 	s(
 		{ trig = "([^%a])ff", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
 		fmta([[<>\frac{<>}{<>}]], {
@@ -61,6 +47,7 @@ return {
 		})
 	),
 
+	-- Bold input in math mode
 	s(
 		{ trig = "([^%a]).,", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
 		fmta([[<>\mathbf{<>}]], {
@@ -68,29 +55,6 @@ return {
 				return snip.captures[1]
 			end),
 			i(1),
-		})
-	),
-
-	s(
-		{ trig = "([^%a])rf", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
-		fmta([[<>\excref[<>]{<>}]], {
-			f(function(_, snip)
-				return snip.captures[1]
-			end),
-			i(1),
-			i(2),
-		})
-	),
-
-	s(
-		{ trig = "hrf", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
-		fmta([[\exhyperref[<>]{<>}{<>}]], {
-			-- f(function(_, snip)
-			-- 	return snip.captures[1]
-			-- end),
-			i(1),
-			i(2),
-			i(3),
 		})
 	),
 }
