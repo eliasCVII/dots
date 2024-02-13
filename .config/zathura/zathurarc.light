@@ -1,0 +1,93 @@
+# Stuff " -----------------------------------------------------------------------------
+" Zathura settings
+" More Settings
+set window-title-basename "true"
+set sandbox none
+
+" Colors
+
+set default-fg              "#000"
+set default-bg              "#CBC8C7"
+
+set statusbar-bg            "#DADADA"
+set statusbar-fg            "#0F0F0F"
+
+set inputbar-bg             "#DADADA"
+set inputbar-fg             "#0F0F0F"
+
+set notification-error-bg   "#AA0000"
+set notification-error-fg   "#DADADA"
+
+set notification-warning-bg "#EC5252"
+set notification-warning-fg "#141A1F"
+
+set highlight-color         "#53697F"
+set highlight-active-color  "#EC5252"
+
+set completion-highlight-fg "#688499"
+set completion-highlight-bg "#DADADA"
+
+set completion-bg           "#DADADA"
+set completion-fg           "#0F0F0F"
+
+set notification-bg         "#688499"
+set notification-fg         "#DADADA"
+
+set recolor                 "true"
+
+set recolor-lightcolor      "#DADADA"
+set recolor-darkcolor       "#000"
+
+set recolor-reverse-video   "true"
+set recolor-keephue         "true"
+
+" Index Colors
+
+set index-bg                "#DADADA"
+set index-fg                "#000"
+set index-active-bg         "#0F0F0F"
+set index-active-fg         "#DADADA"
+
+" Clipboard
+set selection-clipboard clipboard
+
+" Search
+set incremental-search true
+set search-hadjust true
+
+" Autoadjust
+set adjust-open width
+
+" Typography
+set font "Ubuntu 10"
+
+set window-title-basename true
+
+" -----------------------------------------------------------------------------
+" Zathura mappings
+" -----------------------------------------------------------------------------
+
+" Invert Colors
+
+map i recolor
+
+" Zoom in/out
+map z zoom in
+map Z zoom out
+
+" Toggle mode
+map D toggle_page_mode
+
+" Scroll
+map u scroll half-up
+map d scroll half-down
+
+" Fullscreen
+map [normal]     <F11> toggle_fullscreen
+map [fullscreen] <F11> toggle_fullscreen
+
+" Reload
+map [normal]     <C-r> reload
+map [fullscreen] <C-r> reload
+
+" vim: ft=vim 

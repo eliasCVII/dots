@@ -1,0 +1,155 @@
+# Global settings
+# set drawbox
+set cleaner ~/.config/lf/cleaner
+set previewer ~/.config/lf/preview
+set ratios 1:2:3
+set ignorecase true
+set icons
+
+cmd recol ${{
+    w=$(tput cols)
+    if [ $w -le 80 ]; then
+        lf -remote "send $id set ratios 1:2"
+    elif [ $w -le 160 ]; then
+        lf -remote "send $id set ratios 1:2:3"
+    else
+        lf -remote "send $id set ratios 1:2:3:5"
+    fi
+}}
+
+map i recol
+
+cmd on-cd &{{
+    # '&' commands run silently in background (which is what we want here),
+    # but are not connected to stdout.
+    # To make sure our escape sequence still reaches stdout we pipe it to /dev/tty
+    printf "\033]0; $(pwd | sed "s|$HOME|~|")\007" > /dev/tty
+}}
+on-cd
+
+# Custom Functions
+
+# Ripgrep
+cmd fzf_search ${{
+    res="$( \
+        RG_PREFIX="rg --column --line-number --no-heading --color=always \
+            --smart-case "
+        FZF_DEFAULT_COMMAND="$RG_PREFIX ''" \
+            fzf --bind "change:reload:$RG_PREFIX {q} || true" \
+            --ansi --layout=reverse --header 'Search in files' \
+            | cut -d':' -f1
+    )"
+    [ ! -z "$res" ] && lf -remote "send $id select \"$res\""
+}}
+map gf :fzf_search
+
+# Dir name
+cmd mkdir ${{
+  printf "Directory Name: "
+  read ans
+  mkdir $ans
+}}
+
+# # Replace open command with robust selection of openers
+# cmd open ${{
+# 	case $(file --dereference --mime-type $f -b) in
+# 		inode/x-empty) $EDITOR $fx ;;
+# 		text/*) $EDITOR $fx;;
+# 		video/*) nohup mpv $fx > /dev/null & ;;
+# 		audio/*) nohup mpv $fx > /dev/null & ;;
+# 		audio/midi) timidity $fx ;;
+# 		*) for f in $fx; do $OPENER $f > /dev/null 2> /dev/null & done;;
+# 	esac
+# }}
+
+cmd mkfile ${{
+  printf "File Name: "
+  read ans
+  $EDITOR $ans
+}}
+
+# Play media
+cmd pdf ${{
+        zathura "$f"
+}}
+
+# Archive bindings
+cmd unarchive ${{
+  case "$f" in
+      *.zip) unzip "$f" ;;
+      *.tar.gz) tar -xzvf "$f" ;;
+      *.tar.bz2) tar -xjvf "$f" ;;
+      *.tar) tar -xvf "$f" ;;
+      *) echo "Unsupported format" ;;
+  esac
+}}
+
+cmd wallpaper ${{
+    wal --saturate 0.4 -i "$f"
+}}
+
+# flip images
+cmd flip ${{
+    imgp -o 90 "$f"
+}}
+
+# Execute exe
+cmd execute ${{
+	wine "$f"
+}}
+
+# cmd addtab ${{
+#     lfid=$(xdo id)
+
+#     newlf() {
+#         $TERMINAL -e lf &
+#         sleep 0.1
+#         newlfid=$(xdotool getwindowfocus)
+#         }
+# if [ "$(nodeclass "$lfid")" !="tabbed" ]; then
+#     tabbed &
+#     sleep 0.1
+#     tabbedid
+
+
+
+
+#     }}
+
+# Bindings
+# Remove some defaults
+map m
+map o :open
+map n
+map "'"
+map '"'
+map d
+map c pdf
+
+map au unarchive
+map ae execute
+
+# Basic Functions
+map . set hidden!
+map t set sortby time
+map DD delete
+map p paste
+map x cut
+map y copy
+map <enter> open
+map R reload
+map mf mkfile
+map md mkdir
+map af flip "$f"
+map C clear
+
+# Movement
+map gd cd ~/Documents
+map gD cd ~/Downloads
+map gp cd ~/Pictures
+map gc cd ~/.config
+map gr cd ~/repo
+map gv cd /run/media/elias/500GB/ELIAS/Vault
+map gs cd /run/media/elias/500GB/Study
+map gS cd /run/media/elias/sus
+map sw wallpaper

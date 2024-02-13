@@ -1,0 +1,95 @@
+# Stuff " -----------------------------------------------------------------------------
+" Zathura settings
+" More Settings
+set window-title-basename "true"
+set sandbox none
+
+" Colors
+
+set default-fg              "#e6edf3"
+set default-bg              "#050505"
+
+set statusbar-bg            "#050505"
+set statusbar-fg            "#e6edf3"
+
+set inputbar-bg             "#000"
+set inputbar-fg             "#e6edf3"
+
+set notification-error-bg   "#AA0000"
+set notification-error-fg   "#e6edf3"
+
+set notification-warning-bg "#AA0000"
+set notification-warning-fg "#141A1F"
+
+set highlight-color         "#53697F"
+set highlight-active-color  "#EC5252"
+
+set completion-highlight-fg "#688499"
+set completion-highlight-bg "#000"
+
+set completion-bg           "#050505"
+set completion-fg           "#e6edf3"
+
+set notification-bg         "#688499"
+set notification-fg         "#e6edf3"
+
+set recolor                 "true"
+" set recolor-lightcolor      "#282828"
+" set recolor-darkcolor       "#ebdbb2"
+
+set recolor-lightcolor      "#050505"
+set recolor-darkcolor       "#e6edf3"
+
+set recolor-reverse-video   "true"
+set recolor-keephue         "true"
+
+" Index Colors
+
+set index-bg                "#050505"
+set index-fg                "#e6edf3"
+set index-active-fg         "#e6edf3"
+set index-active-bg         "#688499"
+
+" Clipboard
+set selection-clipboard clipboard
+
+" Search
+set incremental-search true
+set search-hadjust true
+
+" Autoadjust
+set adjust-open width
+
+" Typography
+set font "Ubuntu 10"
+
+set window-title-basename true
+
+" -----------------------------------------------------------------------------
+" Zathura mappings
+" -----------------------------------------------------------------------------
+
+" Invert Colors
+
+map i recolor
+
+" Zoom in/out
+map z zoom in
+map Z zoom out
+
+" Toggle mode
+map D toggle_page_mode
+
+" Scroll
+map u scroll half-up
+map d scroll half-down
+
+" Fullscreen
+map [normal]     <F11> toggle_fullscreen
+map [fullscreen] <F11> toggle_fullscreen
+
+" Reload
+map [normal]     <C-r> reload
+map [fullscreen] <C-r> reload
+
+" vim: ft=vim 
