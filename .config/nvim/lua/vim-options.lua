@@ -4,7 +4,7 @@ vim.opt.swapfile = false
 -- Relative line numbers
 vim.opt.nu = true
 vim.opt.rnu = true
-
+ 
 -- 2 space tab
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
@@ -16,7 +16,7 @@ vim.opt.shiftwidth = 2
 
 -- Enable smart indenting (see https://stackoverflow.com/questions/1204149/smart-wrap-in-vim)
 vim.opt.breakindent = true
-
+ 
 -- Enable incremental searching
 vim.opt.incsearch = true
 vim.opt.hlsearch = true

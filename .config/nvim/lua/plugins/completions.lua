@@ -9,7 +9,7 @@ return {
 			"hrsh7th/cmp-cmdline",
 			"L3MON4D3/LuaSnip",
 			"saadparwaiz1/cmp_luasnip",
-			"rafamadriz/friendly-snippets",
+			-- "rafamadriz/friendly-snippets",
 			"onsails/lspkind.nvim",
 			"windwp/nvim-ts-autotag",
 			"windwp/nvim-autopairs",
@@ -26,7 +26,7 @@ return {
 			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 			-- Load snippets
-			require("luasnip.loaders.from_vscode").lazy_load()
+			-- require("luasnip.loaders.from_vscode").lazy_load()
 			require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/snippet/" })
 
 			-- LuaSnip visual selection
@@ -99,7 +99,6 @@ return {
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" }, -- lsp
 					{ name = "buffer", max_item_count = 5 }, -- text within current buffer
-					{ name = "copilot" }, -- Copilot suggestions
 					{ name = "path", max_item_count = 3 }, -- file system paths
 					{ name = "luasnip", max_item_count = 3 }, -- snippets
 				}),

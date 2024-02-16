@@ -53,10 +53,10 @@ function EditNote()
 		if choice ~= nil then
 			local name = RemovePath(choice)
 			local path = dir .. "notes/slipbox/"
-			print("you what bro")
-			vim.defer_fn(function()
-				print("i... I dont know")
-			end, 500)
+			-- print("you what bro")
+			-- vim.defer_fn(function()
+			--   print("i... I dont know")
+			-- end, 500)
 			OpenFile(name, path)
 		end
 		return choice

@@ -1,7 +1,3 @@
--- local function time()
--- 	return "󰔟 " .. os.date("%H:%M")
--- end
-
 return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -10,15 +6,16 @@ return {
 		require("lualine").setup({
 			options = {
 				theme = "auto",
-				component_separators = { left = "", right = "" },
-				section_separators = { left = "", right = "" },
+				-- "", "", "" ""
+				component_separators = { left = "", right = "" },
+				section_separators = { left = "", right = "" },
 			},
 			sections = {
 				lualine_a = { "mode" },
-				lualine_b = { "branch", "diff", "diagnostics" },
+				lualine_b = { "diagnostics" },
 				lualine_c = { "filename" },
 				lualine_x = { { "datetime", style = "󰔟 %H:%M" }, "filetype" }, -- remove encoding, fileformat
-				lualine_y = { "progress" },
+				lualine_y = { "timew" },
 				lualine_z = { "location" },
 			},
 			inactive_sections = {

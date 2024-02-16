@@ -8,7 +8,7 @@ export PATH=$PATH:~/.local/bin
 ZSH_THEME="robbyrussell"
 
 # plugins
-plugins=(git zsh-autosuggestions zsh-autocomplete)
+plugins=(git zsh-autosuggestions)
 
 # Bindings for autosuggestions
 bindkey '^ ' autosuggest-accept # set ctrl-space to accept suggestion
@@ -26,8 +26,6 @@ alias v="nvim"
 alias l="exa --icons"
 alias c="clear"
 alias neo="neofetch"
-alias refresh="~/dots/scripts/refresh.sh"
-alias activate=". ~/repo/TeXNotes/hi/bin/activate"
 
 [ -f "/home/elias/.zsh-env" ] && source /home/elias/.zsh-env
 

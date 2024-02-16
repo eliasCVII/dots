@@ -59,10 +59,19 @@ return {
 		})
 	),
 
-	-- Wrap visual selection into any environment
+	-- Wrap visual selection into some environment
+	-- Section
 	s(
 		{ trig = "sec", dscr = "Expands 'sec' into LaTeX's section{} command." },
 		fmta("\\section{<>}", {
+			d(1, get_visual),
+		})
+	),
+
+	-- emph
+	s(
+		{ trig = "em([^%a])", dscr = "Expands 'em' into LaTeX's emph{} command." },
+		fmta("\\emph{<>}", {
 			d(1, get_visual),
 		})
 	),

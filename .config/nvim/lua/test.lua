@@ -1,9 +1,9 @@
 function Uppercase(str)
-  return string.gsub(" "..str, "%W%l", string.upper):sub(2):gsub("[_ ]","")
+	return string.gsub(" " .. str, "%W%l", string.upper):sub(2):gsub("[_ ]", "")
 end
 
 function Lowercase(str)
-  return string.gsub(" "..str, "%w%l", string.lower):sub(2):gsub("[ ]","_")
+	return string.gsub(" " .. str, "%w%l", string.lower):sub(2):gsub("[ ]", "_")
 end
 
 -- vim.ui.input(
@@ -32,5 +32,5 @@ local dir = "/home/elias/texnotes"
 local cwd = vim.loop.cwd()
 
 if cwd ~= dir then
-  print("not where we should be")
+	print("not where we should be")
 end
