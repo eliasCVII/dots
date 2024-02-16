@@ -34,7 +34,7 @@ vim.keymap.set("n", "<leader>td", "<Cmd>Timew delete<CR>")
 
 -- Doom like keybinds
 vim.keymap.set("n", "<leader>fs", "<Cmd>write<CR>")
-vim.keymap.set("i", "jj", "<Esc>")
+vim.keymap.set("i", "jk", "<Esc>")
 vim.keymap.set("n", "<leader>fr", "<Cmd>Telescope frecency<CR>")
 vim.keymap.set("n", "<leader>wv", "<Cmd>vsplit<CR>")
 vim.keymap.set("n", "<leader>ws", "<Cmd>split<CR>")
@@ -42,7 +42,7 @@ vim.keymap.set("n", "<leader>wq", "<Cmd>quit<CR>")
 vim.keymap.set("n", "<leader>fp", "<Cmd>Telescope find_files search_dirs={'~/.config/nvim'}<CR>") -- for "private config" files in ~/.config/nvim
 
 -- Neo-tree bindings
-vim.keymap.set("n", "<leader>e", "<Cmd>Neotree toggle<CR>", {})
+vim.keymap.set("n", "<leader>e", "<Cmd>lua MiniFiles.open()<CR>", {})
 vim.keymap.set("n", "<leader>bf", "<Cmd>Neotree buffers reveal float<CR>", {})
 
 -- Lsp binds
