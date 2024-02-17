@@ -1,7 +1,6 @@
 {
-  "coding":{"count":3},
-  "develop":{"count":1},
-  "nvim config":{"count":3},
-  "test":{"count":1},
+  "coding":{"count":2},
+  "develop":{"count":2},
+  "nvim config":{"count":2},
   "timew nvim":{"count":1}
 }

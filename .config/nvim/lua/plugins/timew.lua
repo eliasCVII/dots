@@ -2,7 +2,12 @@ return {
 	dir = "~/code/nvim-plugins/timew",
 	-- "eliasCVII/timew",
 	name = "timew",
-	config = function()
-		require("timew")
-	end,
+	dependencies = {
+		"MunifTanjim/nui.nvim",
+	},
+
+	opts = {
+		summary_sort = "day",
+		delete_sort = "day",
+	},
 }

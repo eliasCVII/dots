@@ -146,12 +146,9 @@ map af flip "$f"
 map C clear
 
 # Movement
-map gd cd ~/Documents
-map gD cd ~/Downloads
-map gp cd ~/Pictures
+map gd cd ~/downloads
+map gD cd ~/W10/
 map gc cd ~/.config
-map gr cd ~/repo
-map gv cd /run/media/elias/500GB/ELIAS/Vault
-map gs cd /run/media/elias/500GB/Study
-map gS cd /run/media/elias/sus
+map gV cd ~/W10/Videos
+map gT cd ~/texnotes
 map sw wallpaper

@@ -31,6 +31,7 @@ vim.keymap.set("n", "<leader>ts", "<Cmd>Timew stop<CR>")
 vim.keymap.set("n", "<leader>tc", "<Cmd>Timew continue<CR>")
 vim.keymap.set("n", "<leader>tC", "<Cmd>Timew cancel<CR>")
 vim.keymap.set("n", "<leader>td", "<Cmd>Timew delete<CR>")
+vim.keymap.set("n", "<leader>tS", "<Cmd>Timew summary<CR>")
 
 -- Doom like keybinds
 vim.keymap.set("n", "<leader>fs", "<Cmd>write<CR>")

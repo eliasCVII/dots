@@ -665,3 +665,79 @@ txn:
   type: interval
   before: 
   after: {"id":1,"start":"20240215T232355Z","end":"20240215T234709Z","tags":["nvim config"]}
+txn:
+  type: interval
+  before: 
+  after: {"id":0,"start":"20240217T034847Z","tags":["develop"]}
+txn:
+  type: interval
+  before: {"id":1,"start":"20240217T034847Z","tags":["develop"]}
+  after: 
+  type: interval
+  before: 
+  after: {"id":1,"start":"20240217T034847Z","end":"20240217T040934Z","tags":["develop"]}
+txn:
+  type: interval
+  before: 
+  after: {"id":0,"start":"20240217T181647Z","tags":["testing this shit"]}
+txn:
+  type: interval
+  before: {"id":1,"start":"20240217T181647Z","tags":["testing this shit"]}
+  after: 
+  type: interval
+  before: 
+  after: {"id":1,"start":"20240217T181647Z","end":"20240217T181658Z","tags":["testing this shit"]}
+txn:
+  type: interval
+  before: {"id":1,"start":"20240217T181647Z","end":"20240217T181658Z","tags":["testing this shit"]}
+  after: 
+txn:
+  type: interval
+  before: {"id":5,"start":"20240215T195549Z","end":"20240215T195646Z","tags":["nvim config"]}
+  after: 
+txn:
+  type: interval
+  before: {"id":5,"start":"20240215T171051Z","end":"20240215T171053Z","tags":["coding"]}
+  after: 
+txn:
+  type: interval
+  before: {"id":6,"start":"20240215T012430Z","end":"20240215T012435Z","tags":["test"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"id":0,"start":"20240217T183831Z","tags":["coding","nvim"]}
+txn:
+  type: interval
+  before: {"id":1,"start":"20240217T183831Z","tags":["coding","nvim"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"id":0,"start":"20240217T190820Z","tags":["coding"]}
+txn:
+  type: interval
+  before: {"id":1,"start":"20240217T190820Z","tags":["coding"]}
+  after: 
+  type: interval
+  before: 
+  after: {"id":1,"start":"20240217T190820Z","end":"20240217T190839Z","tags":["coding"]}
+txn:
+  type: interval
+  before: {"id":1,"start":"20240217T190820Z","end":"20240217T190839Z","tags":["coding"]}
+  after: 
+txn:
+  type: interval
+  before: 
+  after: {"id":0,"start":"20240217T192701Z","tags":["test"]}
+txn:
+  type: interval
+  before: {"id":1,"start":"20240217T192701Z","tags":["test"]}
+  after: 
+  type: interval
+  before: 
+  after: {"id":1,"start":"20240217T192701Z","end":"20240217T192704Z","tags":["test"]}
+txn:
+  type: interval
+  before: {"id":1,"start":"20240217T192701Z","end":"20240217T192704Z","tags":["test"]}
+  after: 
