@@ -1,4 +1,0 @@
-{"description":"foo","entry":"20240213T031456Z","modified":"20240213T031456Z","status":"pending","uuid":"d181aefd-2ac6-421c-8e80-ed0873f1bab4"}
-{"description":"foo","end":"20240213T031553Z","entry":"20240213T031456Z","modified":"20240213T031556Z","status":"deleted","uuid":"d181aefd-2ac6-421c-8e80-ed0873f1bab4"}
-{"description":"foo","entry":"20240213T032406Z","modified":"20240213T032406Z","status":"pending","uuid":"00a97c26-f0f7-4afd-95fc-09ea6a8957f1"}
-{"description":"foo","end":"20240213T032410Z","entry":"20240213T032406Z","modified":"20240213T032410Z","status":"deleted","uuid":"00a97c26-f0f7-4afd-95fc-09ea6a8957f1"}
