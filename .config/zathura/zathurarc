@@ -7,12 +7,12 @@ set sandbox none
 " Colors
 
 set default-fg              "#e6edf3"
-set default-bg              "#050505"
+set default-bg              "#161617"
 
-set statusbar-bg            "#050505"
+set statusbar-bg            "#161617"
 set statusbar-fg            "#e6edf3"
 
-set inputbar-bg             "#000"
+set inputbar-bg             "#161617"
 set inputbar-fg             "#e6edf3"
 
 set notification-error-bg   "#AA0000"
@@ -27,7 +27,7 @@ set highlight-active-color  "#EC5252"
 set completion-highlight-fg "#688499"
 set completion-highlight-bg "#000"
 
-set completion-bg           "#050505"
+set completion-bg           "#161617"
 set completion-fg           "#e6edf3"
 
 set notification-bg         "#688499"
@@ -37,7 +37,7 @@ set recolor                 "true"
 " set recolor-lightcolor      "#282828"
 " set recolor-darkcolor       "#ebdbb2"
 
-set recolor-lightcolor      "#050505"
+set recolor-lightcolor      "#161617"
 set recolor-darkcolor       "#e6edf3"
 
 set recolor-reverse-video   "true"
@@ -45,7 +45,7 @@ set recolor-keephue         "true"
 
 " Index Colors
 
-set index-bg                "#050505"
+set index-bg                "#161617"
 set index-fg                "#e6edf3"
 set index-active-fg         "#e6edf3"
 set index-active-bg         "#688499"
@@ -61,7 +61,7 @@ set search-hadjust true
 set adjust-open width
 
 " Typography
-set font "Ubuntu 10"
+set font "Hack Nerd Font 10"
 
 set window-title-basename true
 
@@ -92,4 +92,4 @@ map [fullscreen] <F11> toggle_fullscreen
 map [normal]     <C-r> reload
 map [fullscreen] <C-r> reload
 
-" vim: ft=vim 
+" vim: ft=vim

@@ -8,6 +8,14 @@ vim.keymap.set("n", "<c-j>", "<Cmd>wincmd j<CR>")
 vim.keymap.set("n", "<c-h>", "<Cmd>wincmd h<CR>")
 vim.keymap.set("n", "<c-l>", "<Cmd>wincmd l<CR>")
 
+-- Navigate through terminals
+vim.keymap.set("t", "<esc>", "[[<C-><C-n>]]")
+vim.keymap.set("t", "jk", [[<C-\><C-n>]])
+vim.keymap.set("t", "<c-k>", "<Cmd>wincmd k<CR>")
+vim.keymap.set("t", "<c-j>", "<Cmd>wincmd j<CR>")
+vim.keymap.set("t", "<c-h>", "<Cmd>wincmd h<CR>")
+vim.keymap.set("t", "<c-l>", "<Cmd>wincmd l<CR>")
+
 -- clear highlight
 vim.keymap.set("n", "<leader>h", "<Cmd>nohlsearch<CR>")
 
@@ -41,12 +49,13 @@ vim.keymap.set("n", "<leader>wv", "<Cmd>vsplit<CR>")
 vim.keymap.set("n", "<leader>ws", "<Cmd>split<CR>")
 vim.keymap.set("n", "<leader>wq", "<Cmd>quit<CR>")
 vim.keymap.set("n", "<leader>fp", "<Cmd>Telescope find_files search_dirs={'~/.config/nvim'}<CR>") -- for "private config" files in ~/.config/nvim
+vim.keymap.set("n", "<leader>ot", "<Cmd>ToggleTerm<CR>")
 
--- Neo-tree bindings
+-- File browsing bindings
 vim.keymap.set("n", "<leader>e", "<Cmd>lua MiniFiles.open()<CR>", {})
 vim.keymap.set("n", "<leader>bf", "<Cmd>Neotree buffers reveal float<CR>", {})
 
--- Lsp binds
+-- LSP binds
 vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
 vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})

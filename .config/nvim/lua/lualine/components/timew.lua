@@ -2,11 +2,34 @@
 
 local component = require("lualine.component"):extend()
 
-component.init = function(self, options)
-	component.super.init(self, options)
+local function get_status()
+	local output = vim.fn.system("timew")
+	local lines = {}
+
+	for line in output:gmatch("[^\r\n]+") do
+		table.insert(lines, line)
+	end
+
+	if #lines > 1 then
+		return true
+	else
+		return false
+	end
 end
 
-component.update_status = function(self)
+local active_spinner = {
+	"   ",
+	".  ",
+	".. ",
+	"...",
+}
+
+local inactive_spinner = {
+	"󰒲 ",
+	"󰚌 ",
+}
+
+local function get_tag()
 	local output = vim.fn.system("timew")
 	local tag, total_time
 	local lines = {}
@@ -20,16 +43,36 @@ component.update_status = function(self)
 		if tag:find('"') then
 			tag = lines[1]:match('"([^"]*)"')
 		else
-			tag = lines[1]:match("Tracking%s*(%S+)")
+			tag = lines[1]:match("Tracking%s*(%S+%s*%S+)")
 		end
 
 		total_time = lines[4]:match("%d+:%d+:%d+")
 		local hours, minutes, seconds = total_time:match("(%d+):(%d+):(%d+)")
 		local formatted_time = string.format("%02d:%02d", hours, minutes)
-		return " " .. tag .. " - " .. formatted_time
+		return " " .. tag .. " - " .. formatted_time
+	end
+end
+
+local spinner_count = 1
+local function get_spinner(spinners, tag)
+	local spinner = spinners[spinner_count]
+	spinner_count = spinner_count + 1
+	if spinner_count > #spinners then
+		spinner_count = 1
+	end
+	return spinner .. "" .. tag
+end
+
+component.init = function(self, options)
+	component.super.init(self, options)
+end
+
+component.update_status = function(self, options)
+	local tag = get_tag()
+	if get_status() then
+		return "" .. tag
 	else
-		local message = "~ 󰚌"
-		return message
+		return get_spinner(inactive_spinner, "")
 	end
 end
 

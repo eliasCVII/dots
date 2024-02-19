@@ -18,4 +18,4 @@ require("lazy").setup("plugins")
 -- Setup my own lua files and shit
 local utils = require("utils")
 utils.wrap()
-utils.texnote_setup()
+-- utils.texnote_setup()

@@ -6,17 +6,17 @@ set sandbox none
 
 " Colors
 
-set default-fg              "#000"
-set default-bg              "#CBC8C7"
+set default-fg              "#1b1919"
+set default-bg              "#b4bdc3"
 
-set statusbar-bg            "#DADADA"
+set statusbar-bg            "#b4bdc3"
 set statusbar-fg            "#0F0F0F"
 
-set inputbar-bg             "#DADADA"
+set inputbar-bg             "#b4bdc3"
 set inputbar-fg             "#0F0F0F"
 
 set notification-error-bg   "#AA0000"
-set notification-error-fg   "#DADADA"
+set notification-error-fg   "#b4bdc3"
 
 set notification-warning-bg "#EC5252"
 set notification-warning-fg "#141A1F"
@@ -25,17 +25,17 @@ set highlight-color         "#53697F"
 set highlight-active-color  "#EC5252"
 
 set completion-highlight-fg "#688499"
-set completion-highlight-bg "#DADADA"
+set completion-highlight-bg "#b4bdc3"
 
-set completion-bg           "#DADADA"
+set completion-bg           "#b4bdc3"
 set completion-fg           "#0F0F0F"
 
 set notification-bg         "#688499"
-set notification-fg         "#DADADA"
+set notification-fg         "#b4bdc3"
 
 set recolor                 "true"
 
-set recolor-lightcolor      "#DADADA"
+set recolor-lightcolor      "#b4bdc3"
 set recolor-darkcolor       "#000"
 
 set recolor-reverse-video   "true"
@@ -43,10 +43,10 @@ set recolor-keephue         "true"
 
 " Index Colors
 
-set index-bg                "#DADADA"
+set index-bg                "#b4bdc3"
 set index-fg                "#000"
 set index-active-bg         "#0F0F0F"
-set index-active-fg         "#DADADA"
+set index-active-fg         "#b4bdc3"
 
 " Clipboard
 set selection-clipboard clipboard
@@ -90,4 +90,4 @@ map [fullscreen] <F11> toggle_fullscreen
 map [normal]     <C-r> reload
 map [fullscreen] <C-r> reload
 
-" vim: ft=vim 
+" vim: ft=vim
