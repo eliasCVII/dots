@@ -9,10 +9,12 @@ return {
 			"hrsh7th/cmp-cmdline",
 			"L3MON4D3/LuaSnip",
 			"saadparwaiz1/cmp_luasnip",
-			-- "rafamadriz/friendly-snippets",
 			"onsails/lspkind.nvim",
 			"windwp/nvim-ts-autotag",
 			"windwp/nvim-autopairs",
+			"kdheepak/cmp-latex-symbols",
+			"micangl/cmp-vimtex",
+			-- "rafamadriz/friendly-snippets",
 		},
 		config = function()
 			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
@@ -101,6 +103,9 @@ return {
 					{ name = "buffer", max_item_count = 5 }, -- text within current buffer
 					{ name = "path", max_item_count = 3 }, -- file system paths
 					{ name = "luasnip", max_item_count = 3 }, -- snippets
+					{ name = "latex_symbols", option = { strategy = 0 } }, -- mixed
+					{ name = "vimtex" },
+					{ name = "orgmode" },
 				}),
 				-- Enable pictogram icons for lsp/autocompletion
 				formatting = {

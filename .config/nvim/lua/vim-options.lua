@@ -51,10 +51,10 @@ vim.opt.termguicolors = true
 vim.opt.signcolumn = "yes"
 
 -- Enable access to System Clipboard
-vim.opt.clipboard = "unnamed,unnamedplus"
+-- vim.opt.clipboard = "unnamed,unnamedplus"
 
 -- Enable cursor line highlight
-vim.opt.cursorline = true
+vim.opt.cursorline = false
 
 -- Set fold settings
 -- These options were reccommended by nvim-ufo

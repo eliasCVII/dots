@@ -13,9 +13,9 @@ vim.opt.rtp:prepend(lazypath)
 
 require("vim-options")
 require("keymaps")
+require("clipboard")
 require("lazy").setup("plugins")
 
 -- Setup my own lua files and shit
 local utils = require("utils")
 utils.wrap()
--- utils.texnote_setup()

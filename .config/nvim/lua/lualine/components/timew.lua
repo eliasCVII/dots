@@ -72,7 +72,7 @@ component.update_status = function(self, options)
 	if get_status() then
 		return "" .. tag
 	else
-		return get_spinner(inactive_spinner, "")
+		return "󰚌 "
 	end
 end
 

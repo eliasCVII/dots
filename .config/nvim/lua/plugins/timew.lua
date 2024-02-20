@@ -7,7 +7,7 @@ return {
 	},
 
 	opts = {
-		summary_sort = "week",
+		summary_sort = "month",
 		delete_sort = "week",
 	},
 }

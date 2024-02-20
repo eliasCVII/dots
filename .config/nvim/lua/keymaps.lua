@@ -26,12 +26,11 @@ vim.keymap.set("n", "<leader>m", "<Cmd>MaximizerToggle<CR>")
 vim.keymap.set("n", "<leader>nn", "<Cmd>Note new<CR>")
 vim.keymap.set("n", "<leader>nR", "<Cmd>Note render<CR>")
 vim.keymap.set("n", "<leader>nd", "<Cmd>Note delete<CR>")
-vim.keymap.set("n", "<leader>nv", "<Cmd>Note view<CR>")
 vim.keymap.set("n", "<leader>nV", "<Cmd>Viewer<CR>")
 vim.keymap.set("n", "<leader>ng", "<Cmd>Note graph<CR>")
-vim.keymap.set("n", "<leader>ne", "<Cmd>Note edit<CR>")
 vim.keymap.set("n", "<leader>nr", "<Cmd>Note rename<CR>")
 vim.keymap.set("n", "<leader>nf", "<Cmd>Note rename_ref<CR>")
+vim.keymap.set("n", "<leader>no", "<Cmd>Note open_menu<CR>")
 
 -- Timew bindings
 vim.keymap.set("n", "<leader>tn", "<Cmd>Timew start<CR>")
@@ -49,6 +48,7 @@ vim.keymap.set("n", "<leader>wv", "<Cmd>vsplit<CR>")
 vim.keymap.set("n", "<leader>ws", "<Cmd>split<CR>")
 vim.keymap.set("n", "<leader>wq", "<Cmd>quit<CR>")
 vim.keymap.set("n", "<leader>fp", "<Cmd>Telescope find_files search_dirs={'~/.config/nvim'}<CR>") -- for "private config" files in ~/.config/nvim
+vim.keymap.set("n", "<leader>fo", "<Cmd>Telescope find_files search_dirs={'~/org'}<CR>") -- for "private config" files in ~/.config/nvim
 vim.keymap.set("n", "<leader>ot", "<Cmd>ToggleTerm<CR>")
 
 -- File browsing bindings

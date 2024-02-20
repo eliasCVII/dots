@@ -21,7 +21,7 @@ vim.g.vimtex_quickfix_ignore_mode = 0
 vim.g.vimtex_compiler_progname = "nvr"
 
 -- PDF viewer settings
-vim.g.vimtex_view_general_viewer = "SumatraPDF"
+vim.g.vimtex_view_general_viewer = "zathura"
 vim.g.vimtex_view_general_options = "-reuse-instance -forward-search @tex @line @pdf"
 
 -- Disable conceal
