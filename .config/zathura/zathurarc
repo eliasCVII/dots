@@ -15,17 +15,17 @@ set statusbar-fg            "#e6edf3"
 set inputbar-bg             "#161617"
 set inputbar-fg             "#e6edf3"
 
-set notification-error-bg   "#AA0000"
-set notification-error-fg   "#e6edf3"
+set notification-error-bg   "#ea83a5"
+set notification-error-fg   "#161617"
 
-set notification-warning-bg "#AA0000"
+set notification-warning-bg "#ea83a5"
 set notification-warning-fg "#141A1F"
 
-set highlight-color         "#53697F"
-set highlight-active-color  "#EC5252"
+set highlight-color         "#e6edf3"
+set highlight-active-color  "#e6edf3"
 
-set completion-highlight-fg "#688499"
-set completion-highlight-bg "#000"
+set completion-highlight-fg "#e6edf3"
+set completion-highlight-bg "#161617"
 
 set completion-bg           "#161617"
 set completion-fg           "#e6edf3"
@@ -47,8 +47,8 @@ set recolor-keephue         "true"
 
 set index-bg                "#161617"
 set index-fg                "#e6edf3"
-set index-active-fg         "#e6edf3"
-set index-active-bg         "#688499"
+set index-active-fg         "#161617"
+set index-active-bg         "#ea83a5"
 
 " Clipboard
 set selection-clipboard clipboard

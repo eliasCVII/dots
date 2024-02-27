@@ -1,7 +1,9 @@
 -- Improve code workflow
 return {
 
-	{ -- highlight TODO:comments
+	{ -- highlight  TODO: comments and more...
+
+		event = "VeryLazy",
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = {
@@ -12,6 +14,7 @@ return {
 	},
 
 	{
+
 		"folke/trouble.nvim",
 		event = "VeryLazy",
 		dependencies = { "nvim-tree/nvim-web-devicons" },

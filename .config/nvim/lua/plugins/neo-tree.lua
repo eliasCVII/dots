@@ -1,5 +1,6 @@
 return {
 	"nvim-neo-tree/neo-tree.nvim",
+  event = "VeryLazy",
 	branch = "v3.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
@@ -11,7 +12,8 @@ return {
 			popup_border_style = "rounded",
 			window = {
 				position = "float",
-				width = 60,
+				width = 100,
+        height = 30,
 				mapping_options = {
 					noremap = true,
 					nowait = true,

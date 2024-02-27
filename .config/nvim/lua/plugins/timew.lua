@@ -1,13 +1,23 @@
 return {
-	dir = "~/code/nvim-plugins/timew",
-	-- "eliasCVII/timew",
-	name = "timew",
-	dependencies = {
-		"MunifTanjim/nui.nvim",
+	{
+		dir = "~/code/nvim-plugins/timew-lualine",
 	},
+	{
+		dir = "~/code/nvim-plugins/timew",
+		-- "eliasCVII/timew",
+		name = "timew",
+    event = "VeryLazy",
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+		},
 
-	opts = {
-		summary_sort = "month",
-		delete_sort = "week",
+		opts = {
+			summary_sort = "month",
+			delete_sort = "month",
+			size = {
+				width = 75,
+				height = 15,
+			},
+		},
 	},
 }

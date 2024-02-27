@@ -40,24 +40,23 @@ return {
 	-- Hyperref
 	s(
 		{ trig = "href", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
-		fmta([[\hyperref[<>:<>]{<>}]], {
+		fmta([[\hyperref[<>]{<>}]], {
 			i(1),
 			i(2),
-			i(3),
 		})
 	),
 
 	-- ref
-	s(
-		{ trig = "ref([^%a])", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
-		fmta([[\ref{<>:<>}]], {
-			-- f(function(_, snip)
-			-- 	return snip.captures[1]
-			-- end),
-			i(1),
-			i(2),
-		})
-	),
+	-- s(
+	-- 	{ trig = "ref([^%a])", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+	-- 	fmta([[\ref{<>:<>}]], {
+	-- 		-- f(function(_, snip)
+	-- 		-- 	return snip.captures[1]
+	-- 		-- end),
+	-- 		i(1),
+	-- 		i(2),
+	-- 	})
+	-- ),
 
 	-- Wrap visual selection into some environment
 	-- Section

@@ -1,13 +1,13 @@
 return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
-	lazy = false,
+	event = "VeryLazy",
 	config = function()
 		require("lualine").setup({
 			options = {
 				theme = "auto",
 				-- "", "", "" ""
-				component_separators = { left = "", right = "" },
+				component_separators = { left = "", right = "" },
 				section_separators = { left = "", right = "" },
 			},
 			refresh = {
@@ -16,12 +16,28 @@ return {
 				winbar = 1000,
 			},
 			sections = {
-				lualine_a = { "mode" },
+				lualine_a = {
+					"mode",
+				},
 				lualine_b = { "diagnostics" },
 				lualine_c = { "filename" },
 				lualine_x = { "fancy-clock", "filetype" }, -- removed: encoding, fileformat
-				lualine_y = { "timew" },
-				lualine_z = { "location" },
+				lualine_y = {
+					{
+						"timew",
+						spinners = false,
+						active = "",
+						inactive = "󰚌 ",
+						padding = { left = 1, right = 1 },
+					},
+				},
+				lualine_z = {
+					"location",
+					{
+						require("noice").api.status.command.get,
+						cond = require("noice").api.status.command.has,
+					},
+				},
 			},
 			inactive_sections = {
 				lualine_a = {},

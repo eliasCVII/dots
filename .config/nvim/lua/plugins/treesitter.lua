@@ -5,11 +5,12 @@ return {
 		config = function()
 			local config = require("nvim-treesitter.configs")
 			config.setup({
+        highlight = {enable = true},
+        ensure_installed = {},
+        ignore_install = {},
+        sync_install = true,
+        modules = {},
 				auto_install = true,
-				highlight = {
-					enable = true,
-					additional_vim_regex_highlighting = { "org" },
-				},
 				indent = { enable = true },
 			})
 		end,

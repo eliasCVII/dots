@@ -6,19 +6,20 @@ return {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-nvim-lua",
 			"hrsh7th/cmp-cmdline",
 			"L3MON4D3/LuaSnip",
 			"saadparwaiz1/cmp_luasnip",
 			"onsails/lspkind.nvim",
 			"windwp/nvim-ts-autotag",
 			"windwp/nvim-autopairs",
-			"kdheepak/cmp-latex-symbols",
 			"micangl/cmp-vimtex",
-			-- "rafamadriz/friendly-snippets",
 		},
 		config = function()
 			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 			local cmp = require("cmp")
+			local refs = "~/texnotes/notes/documents.tex"
+			local notes = "~/texnotes/notes/slipbox"
 			local luasnip = require("luasnip")
 			local lspkind = require("lspkind")
 
@@ -99,26 +100,35 @@ return {
 				}),
 				-- sources for autocompletion
 				sources = cmp.config.sources({
+					{ name = "nvim_lua", max_item_count = 10 },
 					{ name = "nvim_lsp" }, -- lsp
+					{ name = "luasnip", max_item_count = 3 }, -- snippets
 					{ name = "buffer", max_item_count = 5 }, -- text within current buffer
 					{ name = "path", max_item_count = 3 }, -- file system paths
-					{ name = "luasnip", max_item_count = 3 }, -- snippets
-					{ name = "latex_symbols", option = { strategy = 0 } }, -- mixed
 					{ name = "vimtex" },
-					{ name = "orgmode" },
+					{
+						name = "texnotes",
+						option = {
+							path = refs,
+							notes = notes,
+						},
+					},
 				}),
 				-- Enable pictogram icons for lsp/autocompletion
 				formatting = {
 					expandable_indicator = true,
 					format = lspkind.cmp_format({
-						mode = "symbol_text",
+						with_text = true,
+						mode = "symbol", -- "text_symbol"
 						maxwidth = 50,
 						ellipsis_char = "...",
-						symbol_map = {
-							Copilot = "",
-						},
+						show_labelDetails = true,
+						-- menu = {
+						-- 	texnotes = "[TeXNotes]",
+						-- },
 					}),
 				},
+
 				experimental = {
 					ghost_text = true,
 				},

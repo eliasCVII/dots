@@ -1,5 +1,6 @@
 return {
 	"echasnovski/mini.nvim",
+	event = "VeryLazy",
 	version = false,
 	config = function()
 		-- Better surroundings, in visual or normal mode
@@ -21,7 +22,7 @@ return {
 				-- Width of non-focused window
 				width_nofocus = 15,
 				-- Width of preview window
-				width_preview = 40,
+				width_preview = 55,
 			},
 			mappings = {
 				go_in = "l",
@@ -30,18 +31,33 @@ return {
 		})
 
 		-- Jump around like a monkey
-		require("mini.jump2d").setup({
-			mappings = {
-				start_jumping = "<CR>",
-			},
-		})
+		-- require("mini.jump2d").setup({
+		-- 	mappings = {
+		-- 		start_jumping = "<CR>",
+		-- 	},
+		-- })
 
 		-- Highlight stuff; hex colors #AA0000
 		local hipatterns = require("mini.hipatterns")
+
+		local words = { -- Change to filetype?
+			Part = "#ea83a5",
+			Chapter = "#ea83a5",
+		}
+
+		local word_color_group = function(_, match)
+			local hex = words[match]
+			if hex == nil then
+				return nil
+			end
+			return MiniHipatterns.compute_hex_color_group(hex, "bg")
+		end
+
 		hipatterns.setup({
 			highlighters = {
 				-- Highlight hex color strings (`#rrggbb`) using that color
 				hex_color = hipatterns.gen_highlighter.hex_color(),
+				word_color = { pattern = "%S+", group = word_color_group },
 			},
 		})
 
@@ -99,8 +115,44 @@ return {
 		require("mini.misc").setup()
 		require("mini.misc").setup_restore_cursor()
 
-		-- require("mini.starter").setup()
+		-- Great picker for anything
+		local win_config = function()
+			local height = 20
+			local width = 70
+			return {
+				config = {
+					anchor = "NW",
+					height = height,
+					width = width,
+					row = math.floor(0.5 * vim.o.lines - (height / 2)),
+					col = math.floor(0.5 * (vim.o.columns - width)),
+				},
+				prompt_prefix = " : ",
+			}
+		end
+		require("mini.pick").setup({
+      window = win_config()
+    })
+		local pick = require("mini.pick")
+		pick.registry.buffers = function(local_opts)
+			local wipeout_func = function()
+				vim.api.nvim_buf_delete(pick.get_picker_matches().current.bufnr, {})
+				pick.stop()
+				vim.cmd("Pick buffers")
+			end
+			pick.builtin.buffers(local_opts, { mappings = { wipeout = { char = "<C-d>", func = wipeout_func } } })
+		end
+
+		-- Bracket movement
+		require("mini.bracketed").setup() -- TODO: learn mappings
+
+		-- Visited files
+		require("mini.visits").setup() -- replace telescope frecency/ spc-fr?
+
+		-- Remove whitespace
+		require("mini.trailspace").setup()
+
+		-- Extra features
+		require("mini.extra").setup()
 	end,
 }
-
--- im trying stuff here alright? do you listen ? or not #aa0000, #dadada

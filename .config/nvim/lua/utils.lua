@@ -1,20 +1,59 @@
 local U = {}
 
-U.texnote_setup = function() -- run the whole texnotes setup
-	-- dont know why vim treats .tex files differently
-	vim.filetype.add({
-		extension = {
-			tex = "tex",
-		},
-	})
+U.menu_mappings = function(...)
+	local mappings = {
 
-	-- run on texnotes folder only?
-	local expand = vim.fn.expand
-	local dir = "~/notes/texnotes"
-	if vim.loop.cwd() == expand(dir) then
-		require("texnotes")
-		require("texnotes-watcher")
+		choose = "<CR>",
+		choose_in_split = "",
+		choose_in_vsplit = "",
+		choose_marked = "<C-o>",
+
+		delete_left = "",
+		delete_word = "<C-u>",
+
+		mark = "<C-x>",
+		mark_all = "",
+
+		move_up = "<C-k>",
+		move_down = "<C-j>",
+		move_start = "",
+
+		paste = "",
+
+		refine = "",
+		refine_marked = "",
+
+		scroll_up = "<C-f>",
+		scroll_down = "<C-b>",
+		scroll_left = "<C-h>",
+		scroll_right = "<C-l>",
+
+		toggle_info = "",
+		toggle_preview = "<Tab>",
+	}
+
+	for _, param in ipairs({ ... }) do
+		for key, value in pairs(param) do
+			mappings[key] = value
+		end
 	end
+
+	return mappings
+end
+
+U.win_config = function()
+	local height = 20
+	local width = 70
+	return {
+		config = {
+			anchor = "NW",
+			height = height,
+			width = width,
+			row = math.floor(0.5 * vim.o.lines - (height / 2)),
+			col = math.floor(0.5 * (vim.o.columns - width)),
+		},
+		prompt_prefix = " : ",
+	}
 end
 
 U.wrap = function() -- wrap on stuff that aint for coding
@@ -37,5 +76,29 @@ U.toggle_colorcolumn = function() -- toggle colorcolumn on and off
 		vim.opt.colorcolumn = {}
 	end
 end
+
+U.autoformat = function()
+	-- vim.api.nvim_create_autocmd("BufWritePost", {
+	-- 	group = vim.api.nvim_create_augroup("formatter", { clear = true }),
+	-- 	pattern = "*",
+	-- 	callback = function()
+	-- 		vim.lsp.buf.format()
+	-- 	end,
+	-- })
+end
+
+
+local my_menu = function()
+  local items  = {}
+	pick.start({
+		mappings = U.menu_mappings(),
+		source = {
+			items = items,
+	     name = "Buffers",
+		},
+		window = U.win_config(),
+	})
+end
+
 
 return U

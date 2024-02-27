@@ -11,11 +11,11 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("vim-options")
 require("keymaps")
-require("clipboard")
+require("vim-options")
 require("lazy").setup("plugins")
 
 -- Setup my own lua files and shit
 local utils = require("utils")
 utils.wrap()
+-- utils.autoformat()

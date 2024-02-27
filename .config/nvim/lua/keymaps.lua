@@ -1,5 +1,8 @@
 local utils = require("utils")
 
+-- setup leader
+vim.g.mapleader = " "
+
 -- Neovim navigation
 
 -- Navigate vim panes better
@@ -25,12 +28,12 @@ vim.keymap.set("n", "<leader>m", "<Cmd>MaximizerToggle<CR>")
 -- Notes bindings
 vim.keymap.set("n", "<leader>nn", "<Cmd>Note new<CR>")
 vim.keymap.set("n", "<leader>nR", "<Cmd>Note render<CR>")
-vim.keymap.set("n", "<leader>nd", "<Cmd>Note delete<CR>")
 vim.keymap.set("n", "<leader>nV", "<Cmd>Viewer<CR>")
 vim.keymap.set("n", "<leader>ng", "<Cmd>Note graph<CR>")
-vim.keymap.set("n", "<leader>nr", "<Cmd>Note rename<CR>")
-vim.keymap.set("n", "<leader>nf", "<Cmd>Note rename_ref<CR>")
-vim.keymap.set("n", "<leader>no", "<Cmd>Note open_menu<CR>")
+vim.keymap.set("n", "<leader>nf", "<Cmd>Note rename reference<CR>")
+vim.keymap.set("n", "<leader>no", "<Cmd>Note open menu<CR>")
+vim.keymap.set("n", "<leader>np", "<Cmd>Note new project<CR>")
+vim.keymap.set("n", "<leader>nm", "<Cmd>Note manage<CR>")
 
 -- Timew bindings
 vim.keymap.set("n", "<leader>tn", "<Cmd>Timew start<CR>")
@@ -43,12 +46,10 @@ vim.keymap.set("n", "<leader>tS", "<Cmd>Timew summary<CR>")
 -- Doom like keybinds
 vim.keymap.set("n", "<leader>fs", "<Cmd>write<CR>")
 vim.keymap.set("i", "jk", "<Esc>")
-vim.keymap.set("n", "<leader>fr", "<Cmd>Telescope frecency<CR>")
 vim.keymap.set("n", "<leader>wv", "<Cmd>vsplit<CR>")
 vim.keymap.set("n", "<leader>ws", "<Cmd>split<CR>")
 vim.keymap.set("n", "<leader>wq", "<Cmd>quit<CR>")
 vim.keymap.set("n", "<leader>fp", "<Cmd>Telescope find_files search_dirs={'~/.config/nvim'}<CR>") -- for "private config" files in ~/.config/nvim
-vim.keymap.set("n", "<leader>fo", "<Cmd>Telescope find_files search_dirs={'~/org'}<CR>") -- for "private config" files in ~/.config/nvim
 vim.keymap.set("n", "<leader>ot", "<Cmd>ToggleTerm<CR>")
 
 -- File browsing bindings
@@ -72,3 +73,19 @@ vim.keymap.set("n", "<leader><leader>x", "<Cmd>source%<CR>")
 vim.keymap.set("n", "<F1>", function()
 	utils.toggle_colorcolumn()
 end)
+
+-- Telescope
+vim.keymap.set(
+	"n",
+	"<leader>tp",
+	":lua require'telescope'.extensions.project.project{}<CR>",
+	{ noremap = true, silent = true }
+)
+
+vim.keymap.set("n", "<leader>th", "<Cmd>Telescope help_tags<CR>")
+
+vim.keymap.set("n", "<leader>u", "<Cmd>UndotreeToggle<CR>")
+
+-- mini.visits
+vim.keymap.set("n", "<leader>a", "<Cmd>lua MiniVisits.add_label()<CR>", {})
+vim.keymap.set("n", "<C-e>", "<Cmd>lua MiniVisits.select_label()<CR>", {})

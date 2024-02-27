@@ -1,7 +1,8 @@
 return {
-	dir = "~/code/nvim-plugins/texnotes",
+  dir = "~/code/nvim-plugins/texnotes",
+  event = "VeryLazy",
 	opts = {
 		path = "~/notes/texnotes",
-		render_on_write = true,
+		compile_on_write = true,
 	},
 }

@@ -11,9 +11,27 @@ return {
 	},
 
 	opts = {
+		views = {
+			cmdline_popup = {
+				border = {
+					style = "rounded",
+					padding = { 0, 1 },
+				},
+				filter_options = {},
+			},
+		},
 		cmdline = {
-			enabled = true, -- enables the Noice cmdline UI
-			view = "cmdline_popup", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
+			enabled = true,
+			view = "cmdline_popup",
+			format = {
+				cmdline = { pattern = "^:", icon = "", lang = "vim" },
+				search_down = { kind = "search", pattern = "^/", icon = " ", lang = "regex" },
+				search_up = { kind = "search", pattern = "^%?", icon = " ", lang = "regex" },
+				filter = { pattern = "^:%s*!", icon = "$", lang = "bash" },
+				lua = { pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" }, icon = "", lang = "lua" },
+				help = { pattern = "^:%s*he?l?p?%s+", icon = "󰋖" },
+				input = {}, -- Used by input()
+			},
 		},
 		presets = {
 			bottom_search = true,
@@ -21,9 +39,9 @@ return {
 		},
 		hover = {
 			enabled = true,
-			silent = true, -- set to true to not show a message if hover is not available
-			view = nil, -- when nil, use defaults from documentation
-			opts = {}, -- merged with defaults from documentation
+			silent = true,
+			view = nil,
+			opts = {},
 		},
 		lsp = {
 			-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
