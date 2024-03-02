@@ -10,9 +10,9 @@ vim.opt.expandtab = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
-vim.opt.smartindent = true
 
 -- Enable smart indenting (see https://stackoverflow.com/questions/1204149/smart-wrap-in-vim)
+vim.opt.smartindent = true
 vim.opt.breakindent = true
 
 -- Enable incremental searching
@@ -34,7 +34,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 -- Decrease updatetime to 200ms
-vim.opt.updatetime = 50
+-- vim.opt.updatetime = 100
 
 -- Set completeopt to have a better completion experience
 vim.opt.completeopt = { "menuone", "noselect" }
@@ -63,7 +63,19 @@ vim.opt.foldlevelstart = 99
 vim.opt.foldenable = true
 
 -- Always keep 8 lines above/below cursor unless at start/end of file
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 5
 
 -- Place a column line
 vim.opt.colorcolumn = "80"
+
+vim.opt.list = true
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+
+-- Highlight on yank
+vim.api.nvim_create_autocmd("TextYankPost", {
+  desc = "Highlight when yanking (copying) text",
+  group = vim.api.nvim_create_augroup("yank", { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})

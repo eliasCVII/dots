@@ -28,7 +28,7 @@ vim.keymap.set("n", "<leader>m", "<Cmd>MaximizerToggle<CR>")
 -- Notes bindings
 vim.keymap.set("n", "<leader>nn", "<Cmd>Note new<CR>")
 vim.keymap.set("n", "<leader>nR", "<Cmd>Note render<CR>")
-vim.keymap.set("n", "<leader>nV", "<Cmd>Viewer<CR>")
+vim.keymap.set("n", "<leader>nV", "<Cmd>Note viewer<CR>")
 vim.keymap.set("n", "<leader>ng", "<Cmd>Note graph<CR>")
 vim.keymap.set("n", "<leader>nf", "<Cmd>Note rename reference<CR>")
 vim.keymap.set("n", "<leader>no", "<Cmd>Note open menu<CR>")
@@ -57,11 +57,17 @@ vim.keymap.set("n", "<leader>e", "<Cmd>lua MiniFiles.open()<CR>", {})
 vim.keymap.set("n", "<leader>bf", "<Cmd>Neotree buffers reveal float<CR>", {})
 
 -- LSP binds
-vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
-vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
-vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
-vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+local map = function(keys, func, desc)
+  vim.keymap.set("n", keys, func, { desc = "LSP: " .. desc })
+end
+-- vim.keymap.set("n", "<leader>gf", utils.autoformat, {})
+map('<leader>gf', utils.autoformat, 'Format')
+map('<leader>rn', vim.lsp.buf.rename, 'Rename')
+map("<leader>ca", vim.lsp.buf.code_action, "Code Action")
+map("K", vim.lsp.buf.hover, "Hover documentation")
+map('<leader>gD', vim.lsp.buf.declaration, 'Goto Declaration')
+map('<leader>gd', vim.lsp.buf.definition, 'Goto Definition')
+map('<leader>gr', vim.lsp.buf.references, 'Goto Reference')
 
 -- Zen Mode
 vim.keymap.set("n", "<leader>tz", "<Cmd>ZenMode<CR>")
@@ -71,15 +77,15 @@ vim.keymap.set("n", "<leader><leader>x", "<Cmd>source%<CR>")
 
 -- Toggle colorcolumn on and off
 vim.keymap.set("n", "<F1>", function()
-	utils.toggle_colorcolumn()
+  utils.toggle_colorcolumn()
 end)
 
 -- Telescope
 vim.keymap.set(
-	"n",
-	"<leader>tp",
-	":lua require'telescope'.extensions.project.project{}<CR>",
-	{ noremap = true, silent = true }
+  "n",
+  "<leader>tp",
+  ":lua require'telescope'.extensions.project.project{}<CR>",
+  { noremap = true, silent = true }
 )
 
 vim.keymap.set("n", "<leader>th", "<Cmd>Telescope help_tags<CR>")

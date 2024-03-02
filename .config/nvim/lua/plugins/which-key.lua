@@ -6,8 +6,8 @@ return {
     vim.o.timeoutlen = 300
   end,
   opts = {
-  defaults = {
-    ["<localLeader>l"] = { name = "+vimtex" },
+    defaults = {
+      ["<localLeader>l"] = { name = "+vimtex" },
+    },
   },
-  }
 }

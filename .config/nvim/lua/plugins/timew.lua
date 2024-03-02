@@ -1,8 +1,5 @@
 return {
 	{
-		dir = "~/code/nvim-plugins/timew-lualine",
-	},
-	{
 		dir = "~/code/nvim-plugins/timew",
 		-- "eliasCVII/timew",
 		name = "timew",

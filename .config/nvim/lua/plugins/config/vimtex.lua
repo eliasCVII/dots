@@ -1,5 +1,5 @@
-    vim.g.vimtex_mappings_disable = { ["n"] = { "K" } } -- disable `K` as it conflicts with LSP hover
-    vim.g.vimtex_quickfix_method = vim.fn.executable("pplatex") == 1 and "pplatex" or "latexlog"
+vim.g.vimtex_mappings_disable = { ["n"] = { "K" } } -- disable `K` as it conflicts with LSP hover
+vim.g.vimtex_quickfix_method = vim.fn.executable("pplatex") == 1 and "pplatex" or "latexlog"
 
 vim.g.vimtex_compiler_method = "latexmk"
 vim.g.vimtex_compiler_latexmk = {
@@ -17,7 +17,7 @@ vim.g.vimtex_compiler_latexmk = {
 -- Disable imaps (using Ultisnips)
 vim.g.vimtex_imaps_enabled = 0
 -- Do not open pdfviwer on compile
-vim.g.vimtex_view_automatic = 0
+vim.g.vimtex_view_automatic = 1
 
 -- Disable quickfix auto open
 vim.g.vimtex_quickfix_ignore_mode = 0
@@ -120,3 +120,5 @@ vim.g.vimtex_fold_types = {
 		},
 	},
 }
+
+vim.g.vimtex_complete_enabled = 0
