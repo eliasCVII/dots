@@ -3,6 +3,7 @@
         "vim",
         "test",
         "bufnr",
-        "filename"
+        "filename",
+        "MiniTrailspace"
     ]
 }

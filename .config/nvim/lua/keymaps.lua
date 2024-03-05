@@ -51,10 +51,11 @@ vim.keymap.set("n", "<leader>ws", "<Cmd>split<CR>")
 vim.keymap.set("n", "<leader>wq", "<Cmd>quit<CR>")
 vim.keymap.set("n", "<leader>fp", "<Cmd>Telescope find_files search_dirs={'~/.config/nvim'}<CR>") -- for "private config" files in ~/.config/nvim
 vim.keymap.set("n", "<leader>ot", "<Cmd>ToggleTerm<CR>")
+vim.keymap.set("n", "<leader>bn", "<Cmd>lua MiniBracketed.buffer('forward')<CR>")
+vim.keymap.set("n", "<leader>bp", "<Cmd>lua MiniBracketed.buffer('backward')<CR>")
 
 -- File browsing bindings
 vim.keymap.set("n", "<leader>e", "<Cmd>lua MiniFiles.open()<CR>", {})
-vim.keymap.set("n", "<leader>bf", "<Cmd>Neotree buffers reveal float<CR>", {})
 
 -- LSP binds
 local map = function(keys, func, desc)
@@ -89,9 +90,13 @@ vim.keymap.set(
 )
 
 vim.keymap.set("n", "<leader>th", "<Cmd>Telescope help_tags<CR>")
-
 vim.keymap.set("n", "<leader>u", "<Cmd>UndotreeToggle<CR>")
 
 -- mini.visits
 vim.keymap.set("n", "<leader>a", "<Cmd>lua MiniVisits.add_label()<CR>", {})
 vim.keymap.set("n", "<C-e>", "<Cmd>lua MiniVisits.select_label()<CR>", {})
+
+vim.keymap.set("n", "<leader>Tn" , "<Cmd>tabnew<CR>")
+vim.keymap.set("n", "<leader>Tc" , "<Cmd>tabclose<CR>")
+vim.keymap.set("n", "<A-,>" , "<Cmd>tabnext<CR>")
+vim.keymap.set("n", "<A-.>" , "<Cmd>tabprevious<CR>")

@@ -1,3 +1,4 @@
+local utils = require("utils")
 vim.g.mapleader = " "
 vim.opt.swapfile = false
 
@@ -79,3 +80,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     vim.highlight.on_yank()
   end,
 })
+
+utils.tabline()
+
+vim.opt.conceallevel = 2

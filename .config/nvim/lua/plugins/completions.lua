@@ -13,7 +13,7 @@ return {
       "onsails/lspkind.nvim",
       "windwp/nvim-ts-autotag",
       "windwp/nvim-autopairs",
-      "micangl/cmp-vimtex",
+      { "micangl/cmp-vimtex", opts = {} }
     },
     config = function()
       local cmp_autopairs = require("nvim-autopairs.completion.cmp")
@@ -97,20 +97,23 @@ return {
           end, { "i", "s" }),
           ["<C-d>"] = cmp.mapping.scroll_docs(4),
           ["<C-u>"] = cmp.mapping.scroll_docs(-4),
-          ["<C-Space>"] = cmp.mapping.complete({}), -- show completion suggestions
-          ["<C-c>"] = cmp.mapping.abort(), -- close completion window
+          ["<C-Space>"] = cmp.mapping.complete({}),     -- show completion suggestions
+          ["<C-c>"] = cmp.mapping.abort(),              -- close completion window
           ["<CR>"] = cmp.mapping.confirm({ select = true }), -- select suggestion
         }),
+
         -- sources for autocompletion
         sources = cmp.config.sources({
           { name = "nvim_lsp", max_item_count = 10 },
-          { name = "nvim_lua", max_item_count = 5 }, -- lsp
-          { name = "luasnip", max_item_count = 3 }, -- snippets
-          { name = "path", max_item_count = 5 }, -- file system paths
-          { name = "buffer", max_item_count = 4 }, -- text within current buffer
+          { name = "nvim_lua", max_item_count = 5 },
+          { name = "codeium",  max_item_count = 5 },
+          { name = "luasnip",  max_item_count = 3 },
+          { name = "path",     max_item_count = 5 },
+          { name = "buffer",   max_item_count = 4 },
           { name = "vimtex" },
           { name = "texnotes", option = { path = refs, notes = notes } },
         }),
+
         -- Enable pictogram icons for lsp/autocompletion
         ---@diagnostic disable-next-line: missing-fields
         formatting = {
@@ -126,6 +129,7 @@ return {
               nvim_lsp = "[LSP]",
               nvim_lua = "[lua]",
               luasnip = "[snip]",
+              codeium = "",
               path = "[/]",
               buffer = "[buf]",
               vimtex = "[VimTeX]",

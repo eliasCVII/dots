@@ -9,7 +9,7 @@ return {
         disabled_filetypes = { "undotree" },
         -- "", "", "" ""
         component_separators = { left = ":", right = ":" },
-        section_separators = { left = "", right = "" },
+        section_separators = { left = "", right = " " },
       },
       refresh = {
         statusline = 1000,
@@ -21,7 +21,7 @@ return {
           "mode",
         },
         lualine_b = { "diagnostics" },
-        lualine_c = { "filename" },
+        lualine_c = {"filename"},
         lualine_x = { "fancy-clock", "filetype" },
         lualine_y = {
           -- {
