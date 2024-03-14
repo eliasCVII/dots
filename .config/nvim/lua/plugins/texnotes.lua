@@ -1,7 +1,8 @@
 return {
   dir = "~/code/nvim-plugins/texnotes",
-	opts = {
-		path = "~/notes/texnotes",
-		compile_on_write = true,
-	},
+  ft = { "tex", "bib", "cls" },
+  opts = {
+    path = "~/notes/texnotes",
+    compile_on_write = true,
+  },
 }

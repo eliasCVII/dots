@@ -84,12 +84,36 @@ U.toggle_colorcolumn = function() -- toggle colorcolumn on and off
   end
 end
 
+U.toggle_diagnostics = function()
+  local value = vim.diagnostic.is_disabled()
+  if not value then
+    vim.diagnostic.disable()
+  else
+    vim.diagnostic.enable()
+  end
+end
+
+U.toggle_numbers = function()
+  local value = vim.wo.nu
+  if value then
+    vim.opt.rnu = false
+    vim.opt.nu = false
+  else
+    vim.opt.rnu = true
+    vim.opt.nu = true
+  end
+end
 U.autoformat = function()
   vim.lsp.buf.format()
   MiniTrailspace.trim()
   vim.cmd("retab")
   vim.cmd("write")
   vim.cmd("normal! zz")
+end
+
+U.on_save = function()
+  MiniTrailspace.trim()
+  vim.cmd("write")
 end
 
 U.tabline = function()
@@ -101,7 +125,7 @@ U.tabline = function()
       local buf = vim.fn.tabpagebuflist(tab)[win]
       local bufname = vim.fn.bufname(buf)
 
-      tabline = tabline .. (tab == vim.fn.tabpagenr() and "󰈷 %#TabLineSel#" or "%#TabLine#")
+      tabline = tabline .. (tab == vim.fn.tabpagenr() and "%#TabLineSel#" or "%#TabLine#")
 
       local bufModified = vim.fn.getbufvar(buf, "&mod")
       local tabName = " "

@@ -9,7 +9,7 @@ return {
         disabled_filetypes = { "undotree" },
         -- "", "", "" ""
         component_separators = { left = ":", right = ":" },
-        section_separators = { left = "", right = " " },
+        section_separators = { left = "", right = "" },
       },
       refresh = {
         statusline = 1000,
@@ -35,10 +35,10 @@ return {
         lualine_z = {
           "progress",
           "location",
-          {
-            require("noice").api.status.command.get,
-            cond = require("noice").api.status.command.has,
-          },
+          -- {
+          --   require("noice").api.status.command.get,
+          --   cond = require("noice").api.status.command.has,
+          -- },
         },
       },
       inactive_sections = {

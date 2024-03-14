@@ -65,13 +65,6 @@ return {
         builtin.find_files()
       end, { desc = "Search files" })
 
-      vim.keymap.set("n", "<leader>bf", function()
-        builtin.buffers({
-          sort_lastused = true,
-        })
-      end, { desc = "Search files" })
-
-
       require("telescope").load_extension("ui-select")
       require("telescope").load_extension("project")
     end,

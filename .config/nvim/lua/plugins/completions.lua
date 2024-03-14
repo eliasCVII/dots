@@ -25,14 +25,13 @@ return {
 
       require("nvim-autopairs").setup({
         enable_check_bracket_line = true,
-        map_bs = false,
+        map_bs = true,
       })
 
       -- Integrate nvim-autopairs with cmp
       cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
       -- Load snippets
-      -- require("luasnip.loaders.from_vscode").lazy_load()
       require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/snippet/" })
 
       -- LuaSnip visual selection
@@ -106,7 +105,6 @@ return {
         sources = cmp.config.sources({
           { name = "nvim_lsp", max_item_count = 10 },
           { name = "nvim_lua", max_item_count = 5 },
-          { name = "codeium",  max_item_count = 5 },
           { name = "luasnip",  max_item_count = 3 },
           { name = "path",     max_item_count = 5 },
           { name = "buffer",   max_item_count = 4 },
@@ -137,7 +135,6 @@ return {
             },
           }),
         },
-
         experimental = {
           ghost_text = true,
         },

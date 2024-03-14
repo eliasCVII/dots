@@ -82,7 +82,7 @@ return {
     -- Comments on gcc, gc
     require("mini.comment").setup({
       options = {
-        ignore_blank_line = true,
+        ignore_blank_line = false,
       },
     })
 
@@ -133,15 +133,6 @@ return {
     require("mini.pick").setup({
       window = win_config(),
     })
-    local pick = require("mini.pick")
-    pick.registry.buffers = function(local_opts)
-      local wipeout_func = function()
-        vim.api.nvim_buf_delete(pick.get_picker_matches().current.bufnr, {})
-        pick.stop()
-        vim.cmd("Pick buffers")
-      end
-      pick.builtin.buffers(local_opts, { mappings = { wipeout = { char = "<C-d>", func = wipeout_func } } })
-    end
 
     -- Bracket movement
     require("mini.bracketed").setup() -- TODO: learn mappings

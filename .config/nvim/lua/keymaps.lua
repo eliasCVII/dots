@@ -44,15 +44,17 @@ vim.keymap.set("n", "<leader>td", "<Cmd>Timew delete<CR>")
 vim.keymap.set("n", "<leader>tS", "<Cmd>Timew summary<CR>")
 
 -- Doom like keybinds
-vim.keymap.set("n", "<leader>fs", "<Cmd>write<CR>")
+vim.keymap.set("n", "<leader>fs", utils.on_save)
 vim.keymap.set("i", "jk", "<Esc>")
 vim.keymap.set("n", "<leader>wv", "<Cmd>vsplit<CR>")
 vim.keymap.set("n", "<leader>ws", "<Cmd>split<CR>")
 vim.keymap.set("n", "<leader>wq", "<Cmd>quit<CR>")
 vim.keymap.set("n", "<leader>fp", "<Cmd>Telescope find_files search_dirs={'~/.config/nvim'}<CR>") -- for "private config" files in ~/.config/nvim
-vim.keymap.set("n", "<leader>ot", "<Cmd>ToggleTerm<CR>")
-vim.keymap.set("n", "<leader>bn", "<Cmd>lua MiniBracketed.buffer('forward')<CR>")
-vim.keymap.set("n", "<leader>bp", "<Cmd>lua MiniBracketed.buffer('backward')<CR>")
+vim.keymap.set("n", "<leader>ot", "<Cmd>ToggleTerm direction=float<CR>")
+vim.keymap.set("n", "<leader>oT", "<Cmd>ToggleTerm direction=horizontal<CR>")
+vim.keymap.set("n", "<leader>bn", "<Cmd>bnext<CR>")
+vim.keymap.set("n", "<leader>bp", "<Cmd>bprev<CR>")
+vim.keymap.set("n", "<leader>bf", "<Cmd>FzfLua buffers<CR>")
 
 -- File browsing bindings
 vim.keymap.set("n", "<leader>e", "<Cmd>lua MiniFiles.open()<CR>", {})
@@ -80,6 +82,16 @@ vim.keymap.set("n", "<leader><leader>x", "<Cmd>source%<CR>")
 vim.keymap.set("n", "<F1>", function()
   utils.toggle_colorcolumn()
 end)
+
+vim.keymap.set("n", "<F2>", function()
+  utils.toggle_diagnostics()
+end)
+
+vim.keymap.set("n", "<leader>tl", function()
+  utils.toggle_numbers()
+end)
+
+vim.keymap.set("n", "<leader>D", vim.diagnostic.open_float)
 
 -- Telescope
 vim.keymap.set(

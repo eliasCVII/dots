@@ -44,7 +44,7 @@ return {
 
   -- Bold input in math mode
   s(
-    { trig = "([^%a])x.", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+    { trig = "([^%a]):", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
     fmta([[<>\mathbf{<>}]], {
       f(function(_, snip)
         return snip.captures[1]

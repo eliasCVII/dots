@@ -15,12 +15,12 @@ return {
     },
     config = function()
       require("mason-lspconfig").setup({
-        -- ensure_installed = { "lua_ls", "pyright" },
-        -- handlers = {
-        --   function(server_name) -- default handler (optional)
-        --     require("lspconfig")[server_name].setup({})
-        --   end,
-        -- },
+        ensure_installed = { "lua_ls", "pyright" },
+        handlers = {
+          function(server_name) -- default handler (optional)
+            require("lspconfig")[server_name].setup({})
+          end,
+        },
       })
     end,
   },
@@ -29,39 +29,32 @@ return {
     "neovim/nvim-lspconfig",
     lazy = false,
     dependencies = {
-      { "j-hui/fidget.nvim", opts = {} },
-      -- { "folke/neoconf.nvim", cmd = "Neoconf", config = false },
-    },
-    -- setup = {},
-    diagnostics = {
-      underline = true,
-      update_in_insert = false,
-      virtual_text = {
-        spacing = 4,
-        source = "if_many",
-        prefix = "●",
+      {
+        "j-hui/fidget.nvim",
+        opts = {
+          progress = {
+            suppress_on_insert = true,
+            ignore_empty_message = true,
+            ignore_done_already = true,
+          },
+        },
       },
     },
     config = function()
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
-      local lspconfig = require("lspconfig")
-
-      lspconfig.bashls.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.clangd.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.lua_ls.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.pyright.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.texlab.setup({
-        capabilities = capabilities,
-      })
-
+      -- local capabilities = require("cmp_nvim_lsp").default_capabilities()
+      -- local lspconfig = require("lspconfig")
+      -- lspconfig.hls.setup({
+      --   filetypes = { "haskell", "lhaskell", "cabal" },
+      --   capabilities = capabilities,
+      --   settings = {
+      --     haskell = {
+      --       cabalFormattingProvider = "cabalfmt",
+      --       formattingProvider = "ormolu",
+      --     },
+      --   },
+      --   update_in_insert = false,
+      --   single_file_support = true,
+      -- })
     end,
   },
 }
