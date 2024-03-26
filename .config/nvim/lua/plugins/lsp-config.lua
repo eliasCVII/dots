@@ -41,8 +41,8 @@ return {
       },
     },
     config = function()
-      -- local capabilities = require("cmp_nvim_lsp").default_capabilities()
-      -- local lspconfig = require("lspconfig")
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+      local lspconfig = require("lspconfig")
       -- lspconfig.hls.setup({
       --   filetypes = { "haskell", "lhaskell", "cabal" },
       --   capabilities = capabilities,
@@ -55,6 +55,9 @@ return {
       --   update_in_insert = false,
       --   single_file_support = true,
       -- })
+      lspconfig.racket_langserver.setup({
+        capabilities = capabilities
+      })
     end,
   },
 }

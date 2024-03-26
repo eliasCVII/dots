@@ -109,6 +109,7 @@ return {
           { name = "path",     max_item_count = 5 },
           { name = "buffer",   max_item_count = 4 },
           { name = "vimtex" },
+          { name = "conjure" },
           { name = "texnotes", option = { path = refs, notes = notes } },
         }),
 

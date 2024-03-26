@@ -55,6 +55,7 @@ vim.keymap.set("n", "<leader>oT", "<Cmd>ToggleTerm direction=horizontal<CR>")
 vim.keymap.set("n", "<leader>bn", "<Cmd>bnext<CR>")
 vim.keymap.set("n", "<leader>bp", "<Cmd>bprev<CR>")
 vim.keymap.set("n", "<leader>bf", "<Cmd>FzfLua buffers<CR>")
+vim.keymap.set("n", "<leader>bt", "<Cmd>FzfLua tabs<CR>")
 
 -- File browsing bindings
 vim.keymap.set("n", "<leader>e", "<Cmd>lua MiniFiles.open()<CR>", {})

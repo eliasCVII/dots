@@ -43,15 +43,15 @@ return {
   ),
 
   -- Bold input in math mode
-  s(
-    { trig = "([^%a]):", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
-    fmta([[<>\mathbf{<>}]], {
-      f(function(_, snip)
-        return snip.captures[1]
-      end),
-      i(1),
-    })
-  ),
+  -- s(
+  --   { trig = "([^%a]):", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+  --   fmta([[<>\mathbf{<>}]], {
+  --     f(function(_, snip)
+  --       return snip.captures[1]
+  --     end),
+  --     i(1),
+  --   })
+  -- ),
 
   -- EQUATION
   s(
@@ -139,6 +139,16 @@ return {
   s(
     { trig = "([^%l])mk", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
     fmta("<>$<>$", {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+      d(1, get_visual),
+    })
+  ),
+
+  s(
+    { trig = "([^%l])dm", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+    fmta("<>\\[<>\\]", {
       f(function(_, snip)
         return snip.captures[1]
       end),
