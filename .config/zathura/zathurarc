@@ -2,7 +2,7 @@
 " Zathura settings
 " More Settings
 set window-title-basename "true"
-set sandbox none
+set database sqlite
 
 " Colors
 

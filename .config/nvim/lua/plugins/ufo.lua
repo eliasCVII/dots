@@ -9,7 +9,7 @@ return {
       --- @diagnostic disable: unused-local
       require("ufo").setup({
         provider_selector = function(_bufnr, _filetype, _buftype)
-          return { "treesitter", "indent" }
+          return ""
         end,
       })
     end,

@@ -25,7 +25,6 @@ return {
               "~/texnotes",
               "~/dots/",
               "~/code/nvim-plugins",
-              "~/org",
             },
             hidden_files = true,
             theme = "dropdown",

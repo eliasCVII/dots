@@ -18,14 +18,16 @@ return {
     workspaces = {
       {
         name = "personal",
-        path = "~/vaults/notes",
+        path = "~/elias/Notas",
       },
     },
+    notes_subdir = "scratch",
     daily_notes = {
       folder = "dailies",
       date_format = "%Y-%m-%d",
       alias_format = "%B %-d, %Y",
       template = nil,
     },
+    new_notes_location = "notes_subdir",
   },
 }

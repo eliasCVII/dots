@@ -29,7 +29,7 @@ alias neo="neofetch"
 
 [ -f "/home/elias/.zsh-env" ] && source /home/elias/.zsh-env
 
-setxkbmap -layout us
+# setxkbmap -layout us
 
 eval "$(direnv hook zsh)"
 

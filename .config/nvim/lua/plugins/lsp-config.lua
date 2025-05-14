@@ -15,7 +15,7 @@ return {
     },
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "pyright" },
+        ensure_installed = { "lua_ls", "pyright", "glsl_analyzer" },
         handlers = {
           function(server_name) -- default handler (optional)
             require("lspconfig")[server_name].setup({})
@@ -43,21 +43,6 @@ return {
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
       local lspconfig = require("lspconfig")
-      -- lspconfig.hls.setup({
-      --   filetypes = { "haskell", "lhaskell", "cabal" },
-      --   capabilities = capabilities,
-      --   settings = {
-      --     haskell = {
-      --       cabalFormattingProvider = "cabalfmt",
-      --       formattingProvider = "ormolu",
-      --     },
-      --   },
-      --   update_in_insert = false,
-      --   single_file_support = true,
-      -- })
-      lspconfig.racket_langserver.setup({
-        capabilities = capabilities
-      })
     end,
   },
 }

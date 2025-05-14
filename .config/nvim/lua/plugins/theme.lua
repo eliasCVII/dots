@@ -12,7 +12,7 @@ return { -- finally a beautiful theme
     priority = 1000,
     config = function()
       vim.o.background = "dark"
-      vim.cmd.colorscheme("zenwritten")
+      vim.cmd.colorscheme("mellow")
     end,
   },
 }

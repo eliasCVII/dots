@@ -5,5 +5,8 @@
         "bufnr",
         "filename",
         "MiniTrailspace"
+    ],
+    "diagnostics.disable": [
+        "unused-local"
     ]
 }

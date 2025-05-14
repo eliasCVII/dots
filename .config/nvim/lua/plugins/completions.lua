@@ -110,6 +110,7 @@ return {
           { name = "buffer",   max_item_count = 4 },
           { name = "vimtex" },
           { name = "conjure" },
+          { name = "orgmode" },
           { name = "texnotes", option = { path = refs, notes = notes } },
         }),
 

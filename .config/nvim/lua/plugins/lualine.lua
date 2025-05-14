@@ -22,7 +22,7 @@ return {
         },
         lualine_b = { "diagnostics" },
         lualine_c = {"filename"},
-        lualine_x = { "fancy-clock", "filetype" },
+        lualine_x = { "clock", "filetype" },
         lualine_y = {
           -- {
           --   "timew",
@@ -42,7 +42,7 @@ return {
         },
       },
       inactive_sections = {
-        lualine_a = { "fancy-clock" },
+        lualine_a = { "clock" },
         lualine_b = {},
         lualine_c = { "filename" },
         lualine_x = { "location" },

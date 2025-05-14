@@ -22,9 +22,6 @@ vim.keymap.set("t", "<c-l>", "<Cmd>wincmd l<CR>")
 -- clear highlight
 vim.keymap.set("n", "<leader>h", "<Cmd>nohlsearch<CR>")
 
--- Maximizer
-vim.keymap.set("n", "<leader>m", "<Cmd>MaximizerToggle<CR>")
-
 -- Notes bindings
 vim.keymap.set("n", "<leader>nn", "<Cmd>Note new<CR>")
 vim.keymap.set("n", "<leader>nR", "<Cmd>Note render<CR>")
@@ -65,13 +62,13 @@ local map = function(keys, func, desc)
   vim.keymap.set("n", keys, func, { desc = "LSP: " .. desc })
 end
 -- vim.keymap.set("n", "<leader>gf", utils.autoformat, {})
-map('<leader>gf', utils.autoformat, 'Format')
-map('<leader>rn', vim.lsp.buf.rename, 'Rename')
+map("<leader>gf", utils.autoformat, "Format")
+map("<leader>rn", vim.lsp.buf.rename, "Rename")
 map("<leader>ca", vim.lsp.buf.code_action, "Code Action")
 map("K", vim.lsp.buf.hover, "Hover documentation")
-map('<leader>gD', vim.lsp.buf.declaration, 'Goto Declaration')
-map('<leader>gd', vim.lsp.buf.definition, 'Goto Definition')
-map('<leader>gr', vim.lsp.buf.references, 'Goto Reference')
+map("<leader>gD", vim.lsp.buf.declaration, "Goto Declaration")
+map("<leader>gd", vim.lsp.buf.definition, "Goto Definition")
+map("<leader>gr", vim.lsp.buf.references, "Goto Reference")
 
 -- Zen Mode
 vim.keymap.set("n", "<leader>tz", "<Cmd>ZenMode<CR>")
@@ -103,13 +100,14 @@ vim.keymap.set(
 )
 
 vim.keymap.set("n", "<leader>th", "<Cmd>Telescope help_tags<CR>")
+vim.keymap.set("n", "<leader>tg", "<Cmd>Telescope live_grep<CR>")
 vim.keymap.set("n", "<leader>u", "<Cmd>UndotreeToggle<CR>")
 
 -- mini.visits
 vim.keymap.set("n", "<leader>a", "<Cmd>lua MiniVisits.add_label()<CR>", {})
 vim.keymap.set("n", "<C-e>", "<Cmd>lua MiniVisits.select_label()<CR>", {})
 
-vim.keymap.set("n", "<leader>Tn" , "<Cmd>tabnew<CR>")
-vim.keymap.set("n", "<leader>Tc" , "<Cmd>tabclose<CR>")
-vim.keymap.set("n", "<A-,>" , "<Cmd>tabnext<CR>")
-vim.keymap.set("n", "<A-.>" , "<Cmd>tabprevious<CR>")
+vim.keymap.set("n", "<leader>Tn", "<Cmd>tabnew<CR>")
+vim.keymap.set("n", "<leader>Tc", "<Cmd>tabclose<CR>")
+vim.keymap.set("n", "<A-,>", "<Cmd>tabnext<CR>")
+vim.keymap.set("n", "<A-.>", "<Cmd>tabprevious<CR>")
