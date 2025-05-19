@@ -32,9 +32,9 @@ return {
 
     -- Jump around like a monkey
     -- require("mini.jump2d").setup({
-    -- 	mappings = {
-    -- 		start_jumping = "<CR>",
-    -- 	},
+    --   mappings = {
+    --     start_jumping = "<CR>",
+    --   },
     -- })
 
     -- Highlight stuff; hex colors #AA0000
@@ -90,7 +90,7 @@ return {
     require("mini.indentscope").setup({})
 
     -- Extend f, F, t, T
-    require("mini.jump").setup()
+    -- require("mini.jump").setup()
 
     -- Move selected blocks
     require("mini.move").setup({
@@ -145,6 +145,5 @@ return {
 
     -- Extra features
     require("mini.extra").setup()
-
   end,
 }

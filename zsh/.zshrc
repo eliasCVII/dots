@@ -2,7 +2,7 @@ eval "$(zoxide init zsh)"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-export PATH=$PATH:~/.local/bin
+export PATH=$PATH:~/.local/bin:~/elias/.cargo/bin
 
 # Theme
 ZSH_THEME="robbyrussell"
@@ -24,6 +24,7 @@ export EDITOR=nvim
 # Aliases
 alias v="nvim"
 alias l="eza --icons"
+alias ll='eza -l --icons'
 alias c="clear"
 alias neo="neofetch"
 
