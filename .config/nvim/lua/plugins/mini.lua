@@ -87,7 +87,7 @@ return {
     })
 
     -- Beautiful indent scopes
-    -- require("mini.indentscope").setup({})
+    require("mini.indentscope").setup({})
 
     require("mini.pairs").setup({})
 

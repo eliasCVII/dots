@@ -51,7 +51,7 @@ vim.keymap.set("n", "<leader>ot", "<Cmd>ToggleTerm direction=float<CR>")
 vim.keymap.set("n", "<leader>oT", "<Cmd>ToggleTerm direction=horizontal<CR>")
 vim.keymap.set("n", "<leader>bn", "<Cmd>bnext<CR>")
 vim.keymap.set("n", "<leader>bp", "<Cmd>bprev<CR>")
-vim.keymap.set("n", "<leader>bf", "<Cmd>FzfLua buffers<CR>")
+-- vim.keymap.set("n", "<leader>bf", "<Cmd>FzfLua buffers<CR>")
 vim.keymap.set("n", "<leader>bt", "<Cmd>FzfLua tabs<CR>")
 
 -- File browsing bindings
@@ -100,12 +100,11 @@ vim.keymap.set(
 )
 
 vim.keymap.set("n", "<leader>th", "<Cmd>Telescope help_tags<CR>")
-vim.keymap.set("n", "<leader>tg", "<Cmd>Telescope live_grep<CR>")
+-- vim.keymap.set("n", "<leader>tg", "<Cmd>lua Snacks.picker.grep()<CR>")
 vim.keymap.set("n", "<leader>u", "<Cmd>UndotreeToggle<CR>")
 
--- mini.visits
-vim.keymap.set("n", "<leader>a", "<Cmd>lua MiniVisits.add_label()<CR>", {})
-vim.keymap.set("n", "<C-e>", "<Cmd>lua MiniVisits.select_label()<CR>", {})
+vim.keymap.set("n", "<leader>p", "<Cmd>Precognition toggle<CR>")
+vim.keymap.set("n", "<leader>Th", "<Cmd>Hardtime toggle<CR>")
 
 vim.keymap.set("n", "<leader>Tn", "<Cmd>tabnew<CR>")
 vim.keymap.set("n", "<leader>Tc", "<Cmd>tabclose<CR>")

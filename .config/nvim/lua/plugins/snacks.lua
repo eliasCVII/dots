@@ -10,7 +10,7 @@ return {
     bigfile = { enabled = true },
     dashboard = { enabled = false },
     explorer = { enabled = false },
-    indent = { enabled = true },
+    indent = { enabled = false },
     input = { enabled = false },
     picker = { enabled = true },
     notifier = { enabled = false },
@@ -22,22 +22,32 @@ return {
   },
   keys = {
     -- LSP
-    {"gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition",},
-    {"gD", function() Snacks.picker.lsp_declarations() end, desc = "Goto Declaration",},
-    {"gr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References",},
-    {"gI", function() Snacks.picker.lsp_implementations() end, desc = "Goto Implementation",},
-    {"gy", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto T[y]pe Definition",},
+    { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition",},
+    { "gD", function() Snacks.picker.lsp_declarations() end, desc = "Goto Declaration",},
+    { "gr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References",},
+    { "gI", function() Snacks.picker.lsp_implementations() end, desc = "Goto Implementation",},
+    { "gy", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto T[y]pe Definition",},
 
     -- Search
-    {"<leader>cR", function() Snacks.rename.rename_file() end, desc = "Rename File",},
-    {"<leader>sw", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" },},
-    {"<leader>sd", function() Snacks.picker.diagnostics() end, desc = "Diagnostics",},
-    {"<leader>sD", function() Snacks.picker.diagnostics_buffer() end, desc = "Buffer Diagnostics",},
+    { "<leader>cR", function() Snacks.rename.rename_file() end, desc = "Rename File",},
+    { "<leader>sw", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" },},
+    { "<leader>sd", function() Snacks.picker.diagnostics() end, desc = "Diagnostics",},
+    { "<leader>sD", function() Snacks.picker.diagnostics_buffer() end, desc = "Buffer Diagnostics",},
     { "<leader>su", function() Snacks.picker.undo() end, desc = "Undo History" },
+    { "<leader>/", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
+    { "<leader>tg", function() Snacks.picker.grep() end, desc = "Grep" },
 
     -- Other
     { "<leader>sk", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
     { "<leader>ht", function() Snacks.picker.colorschemes() end, desc = "Colorschemes" },
+
+    -- Buffers
+    { "<leader>bf", function() Snacks.picker.buffers() end, desc = "Buffers" },
+
+    -- Words
+    { "]]",         function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" } },
+    { "[[",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" } },
+
   },
   init = function()
     vim.api.nvim_create_autocmd("User", {

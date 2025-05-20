@@ -43,21 +43,21 @@ return {
       local builtin = require("telescope.builtin")
       vim.keymap.set("n", "<leader>fr", builtin.oldfiles, {})
 
-      vim.keymap.set("n", "<leader>/", function()
-        -- You can pass additional configuration to telescope to change theme, layout, etc.
-        builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-          winblend = 10,
-          previewer = false,
-        }))
-      end, { desc = "[/] Fuzzily search in current buffer" })
+      -- vim.keymap.set("n", "<leader>/", function()
+      --   -- You can pass additional configuration to telescope to change theme, layout, etc.
+      --   builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+      --     winblend = 10,
+      --     previewer = false,
+      --   }))
+      -- end, { desc = "[/] Fuzzily search in current buffer" })
 
       -- Also possible to pass additional configuration options.
       --  See `:help telescope.builtin.live_grep()` for information about particular keys
-      vim.keymap.set("n", "<leader>tg", function()
-        builtin.live_grep({
-          prompt_title = "Live Grep in Files",
-        })
-      end, { desc = "Search [/] in Files" })
+      -- vim.keymap.set("n", "<leader>tg", function()
+      --   builtin.live_grep({
+      --     prompt_title = "Live Grep in Files",
+      --   })
+      -- end, { desc = "Search [/] in Files" })
 
       -- Shortcut for searching your neovim configuration files
       vim.keymap.set("n", "<leader>.", function()
