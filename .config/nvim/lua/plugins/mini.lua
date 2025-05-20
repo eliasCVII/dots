@@ -82,12 +82,14 @@ return {
     -- Comments on gcc, gc
     require("mini.comment").setup({
       options = {
-        ignore_blank_line = false,
+        ignore_blank_line = true,
       },
     })
 
     -- Beautiful indent scopes
-    require("mini.indentscope").setup({})
+    -- require("mini.indentscope").setup({})
+
+    require("mini.pairs").setup({})
 
     -- Extend f, F, t, T
     -- require("mini.jump").setup()
@@ -113,6 +115,7 @@ return {
     require("mini.splitjoin").setup()
 
     require("mini.misc").setup()
+
     require("mini.misc").setup_restore_cursor()
 
     -- Great picker for anything
@@ -138,7 +141,7 @@ return {
     require("mini.bracketed").setup() -- TODO: learn mappings
 
     -- Visited files
-    require("mini.visits").setup() -- replace telescope frecency/ spc-fr?
+    -- require("mini.visits").setup() -- replace telescope frecency/ spc-fr?
 
     -- Remove whitespace
     require("mini.trailspace").setup()

@@ -66,9 +66,9 @@ map("<leader>gf", utils.autoformat, "Format")
 map("<leader>rn", vim.lsp.buf.rename, "Rename")
 map("<leader>ca", vim.lsp.buf.code_action, "Code Action")
 map("K", vim.lsp.buf.hover, "Hover documentation")
-map("<leader>gD", vim.lsp.buf.declaration, "Goto Declaration")
-map("<leader>gd", vim.lsp.buf.definition, "Goto Definition")
-map("<leader>gr", vim.lsp.buf.references, "Goto Reference")
+-- map("<leader>gD", vim.lsp.buf.declaration, "Goto Declaration")
+-- map("<leader>gd", vim.lsp.buf.definition, "Goto Definition")
+-- map("<leader>gr", vim.lsp.buf.references, "Goto Reference")
 
 -- Zen Mode
 vim.keymap.set("n", "<leader>tz", "<Cmd>ZenMode<CR>")
@@ -81,15 +81,15 @@ vim.keymap.set("n", "<F1>", function()
   utils.toggle_colorcolumn()
 end)
 
-vim.keymap.set("n", "<F2>", function()
-  utils.toggle_diagnostics()
-end)
+-- vim.keymap.set("n", "<F2>", function()
+--   utils.toggle_diagnostics()
+-- end)
 
 vim.keymap.set("n", "<leader>tl", function()
   utils.toggle_numbers()
 end)
 
-vim.keymap.set("n", "<leader>D", vim.diagnostic.open_float)
+-- vim.keymap.set("n", "<leader>D", vim.diagnostic.open_float)
 
 -- Telescope
 vim.keymap.set(
