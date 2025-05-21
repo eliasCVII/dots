@@ -1,0 +1,414 @@
+(use-package! gcmh
+  :init
+  (setq gcmh-idle-delay 5
+        gcmh-high-cons-threshold (* 256 1024 1024))  ; 256MB during idle
+  :config
+  (gcmh-mode 1))
+
+(setq gc-cons-threshold 200000000) ; previous 33554432
+
+(setq doom-font (font-spec :family "Hack Nerd Font" :size 20 :weight 'semi-light)
+     doom-variable-pitch-font (font-spec :family "Hack Nerd Font" :size 21))
+
+(setq doom-theme 'doom-sourcerer)
+
+(setq display-line-numbers-type 'relative)
+
+(add-to-list 'auto-mode-alist '("\\.l\\'" . c-mode))
+
+(add-to-list 'default-frame-alist '(width . 100))
+(add-to-list 'default-frame-alist '(height . 40))
+
+(remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
+
+(add-hook! '+doom-dashboard-functions :append
+  (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Welcome back to Emacs!"))
+  (setq mode-line-format nil)
+  (hl-line-mode 0)
+  (read-only-mode +1))
+
+(setq-hook! '+doom-dashboard-mode-hook evil-normal-state-cursor (list nil))
+
+(defun my-weebery-is-always-greater ()
+  (let* ((banner '("______ _____ ____ ___ ___"
+  "`  _  V  _  V  _ \\|  V  ´"
+  "| | | | | | | | | |     |"
+  "| | | | | | | | | | . . |"
+  "| |/ / \\ \\| | |/ /\\ |V| |"
+  "|   /   \\__/ \\__/  \\| | |"
+  "|  /                ' | |"
+  "| /     E M A C S     \\ |"
+  "´´                     ``"))
+         (longest-line (apply #'max (mapcar #'length banner))))
+    (put-text-property
+     (point)
+     (dolist (line banner (point))
+       (insert (+doom-dashboard--center
+                +doom-dashboard--width
+                (concat line (make-string (max 0 (- longest-line (length line))) 32)))
+               "\n"))
+     'face 'doom-dashboard-banner)))
+(setq +doom-dashboard-ascii-banner-fn #'my-weebery-is-always-greater)
+
+(setq frame-title-format
+      '(""
+        (:eval
+         (if (s-contains-p org-roam-directory (or buffer-file-name ""))
+             (replace-regexp-in-string
+              ".*/[0-9]*-?" "☰ "
+              (subst-char-in-string ?_ ?  buffer-file-name))
+           "%b"))
+        (:eval
+         (let ((project-name (projectile-project-name)))
+           (unless (string= "-" project-name)
+             (format (if (buffer-modified-p)  " ◉ %s" " - %s") project-name))))))
+
+(after! doom-modeline
+  (setq doom-modeline-buffer-file-name-style 'file-name
+        doom-modeline-always-show-macro-register t
+        doom-modeline-enable-word-count nil
+        doom-modeline-buffer-encoding t
+        doom-modeline-major-mode-icon t
+        doom-modeline-bar-width 0
+        doom-modeline-height 25
+        doom-modeline-modal nil))
+
+(defadvice! doom-modeline--buffer-file-name-roam-aware-a (orig-fun)
+  :around #'doom-modeline-buffer-file-name ; takes no args
+  (if (string-match-p (regexp-quote org-roam-directory) (or buffer-file-name ""))
+      (replace-regexp-in-string
+       "\\(?:^\\|.*/\\)\\([0-9]\\{4\\}\\)\\([0-9]\\{2\\}\\)\\([0-9]\\{2\\}\\)[0-9]*-"
+       "(\\1-\\2-\\3) "
+       (subst-char-in-string ?_ ?  buffer-file-name))
+    (funcall orig-fun)))
+
+(defun doom-modeline-conditional-buffer-encoding ()
+  "We expect the encoding to be LF UTF-8, so only show the modeline when this is not the case"
+  (setq-local doom-modeline-buffer-encoding
+              (unless (and (memq (plist-get (coding-system-plist buffer-file-coding-system) :category)
+                                 '(coding-category-undecided coding-category-utf-8))
+                           (not (memq (coding-system-eol-type buffer-file-coding-system) '(1 2))))
+                t)))
+
+(add-hook 'after-change-major-mode-hook #'doom-modeline-conditional-buffer-encoding)
+
+(defadvice! +org-indent--reduced-text-prefixes ()
+  :after #'org-indent--compute-prefixes
+  (setq org-indent--text-line-prefixes
+        (make-vector org-indent--deepest-level nil))
+  (when (> org-indent-indentation-per-level 0)
+    (dotimes (n org-indent--deepest-level)
+      (aset org-indent--text-line-prefixes
+            n
+            (org-add-props
+                (concat (make-string (* n (1- org-indent-indentation-per-level))
+                                     ?\s)
+                        (if (> n 0)
+                             (char-to-string org-indent-boundary-char)
+                          "\u200b"))
+                nil 'face 'org-indent)))))
+
+;; If you use `org' and don't want your org files in the default location below,
+;; change `org-directory'. It must be set before org loads!
+
+;; Basics
+(setq
+ org-directory "~/Notas/gtd"
+ org-agenda-files '("~/Notas/gtd/gtd.org")
+ org-roam-directory "~/elias"
+ org-roam-dailies-directory "~/Notas/dailies"
+ org-use-property-inheritance t
+ org-startup-with-inline-images t
+ org-edit-src-content-indentation 0
+ org-startup-with-latex-preview t
+ org-highlight-latex-and-related '(native script))
+
+;; Agenda
+(setq org-agenda-deadline-leaders
+      '("" "" "%2d d. ago: ")
+      org-deadline-warning-days 0
+      org-agenda-span 14
+      org-agenda-start-day "-0d"
+      org-agenda-skip-function-global
+      '(org-agenda-skip-entry-if 'todo 'done)
+      org-log-done 'time)
+
+(add-hook 'org-src-mode-hook
+          (lambda ()
+            (when (string= major-mode "latex-mode")
+              (evil-tex-mode 1))))
+
+(unless (boundp 'org-latex-classes)
+  (setq org-latex-classes nil))
+
+(add-to-list 'org-latex-classes
+             '("custom-article"
+               "\\documentclass[11pt,a4paper]{article}
+\\usepackage[utf8]{inputenc}
+\\usepackage[T1]{fontenc}
+\\usepackage{fixltx2e}
+\\usepackage{graphicx}
+\\usepackage{longtable}
+\\usepackage{float}
+\\usepackage{wrapfig}
+\\usepackage{rotating}
+\\usepackage[normalem]{ulem}
+\\usepackage{amsmath}
+\\usepackage{textcomp}
+\\usepackage{marvosym}
+\\usepackage{wasysym}
+\\usepackage{amssymb}
+\\usepackage{hyperref}
+\\usepackage{mathpazo}
+\\usepackage{color}
+\\usepackage{enumerate}
+\\definecolor{bg}{rgb}{0.95,0.95,0.95}
+\\tolerance=1000
+      [NO-DEFAULT-PACKAGES]
+      [PACKAGES]
+      [EXTRA]
+\\linespread{1.1}
+\\hypersetup{pdfborder=0 0 0}"
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+               ("\\paragraph{%s}" . "\\paragraph*{%s}")))
+
+(add-to-list 'org-latex-classes
+             '("org-plain-latex"
+               "\\documentclass{article}
+           [NO-DEFAULT-PACKAGES]
+           [PACKAGES]
+           [EXTRA]"
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+               ("\\paragraph{%s}" . "\\paragraph*{%s}")
+               ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+(add-to-list 'org-latex-classes
+             '("unote"
+               "\\documentclass[]{unote}
+           [NO-DEFAULT-PACKAGES]
+           [PACKAGES]
+           [EXTRA]"
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+               ("\\paragraph{%s}" . "\\paragraph*{%s}")
+               ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+;; (setq org-latex-listings 't)
+
+(setq org-latex-pdf-process
+      '("latexmk -pdflatex='pdflatex -interaction nonstopmode' -pdf -bibtex -f %f"))
+
+;;(add-hook 'org-mode-hook 'org-fragtog-mode)
+(setq font-latex-fontify-script nil)
+
+;; (setq org-preview-latex-process-alist
+;;       '((imagemagick
+;;          :programs ("pdflatex" "magick")
+;;          :description "pdf > png"
+;;          :message "you need to install pdflatex and dvisvgm"
+;;          :image-input-type "pdf"
+;;          :image-output-type "png"
+;;          :latex-compiler
+;;          ("pdflatex -interaction nonstopmode -output-directory %o %f")
+;;          :image-converter
+;;          ("magick -density 120 %f -trim -antialias -quality 200 %O"))))
+
+;; (setq org-preview-latex-default-process 'dvisvgm)
+
+(setq org-format-latex-options
+      (list :foreground 'default
+            :background 'default
+            :html-foreground "Black"
+            :html-background "Transparent"
+            :html-scale 2.0
+            :matchers '("begin" "$1" "$" "$$" "\\(" "\\[")))
+
+(after! org (plist-put org-format-latex-options :scale 1.75))
+
+(setq org-latex-src-block-backend 'minted)
+
+(add-hook 'org-src-mode-hook
+          (lambda ()
+            (when (string= major-mode "latex-mode")
+              (evil-tex-mode 1))))
+
+(after! org
+  (dolist (pkg '("amsmath" "amssymb" "mathtools" "mathrsfs" "tikz" "pgfplots" "tikz-cd" "minted"))
+    (add-to-list 'org-latex-packages-alist `("" ,pkg t))))
+
+(use-package! org-latex-preview
+  :after org
+  :config
+  (plist-put org-latex-preview-appearance-options
+             :page-width 1.0)
+  (add-hook 'org-mode-hook 'org-latex-preview-auto-mode)
+  (setq org-latex-preview-auto-ignored-commands
+        '(next-line previous-line mwheel-scroll ultra-scroll
+          scroll-up-command scroll-down-command
+          evil-scroll-up evil-scroll-down evil-scroll-line-up evil-scroll-line-down)
+        org-latex-preview-numbered t
+        org-latex-preview-live t
+        org-latex-preview-live-debounce 0.25))
+
+(after! cdlatex
+  (setq cdlatex-math-modify-alist
+        '((?d "\\mathbb" nil t nil nil)
+          (?D "\\mathbbm" nil t nil nil))
+        cdlatex-env-alist
+        '(("cases" "\\begin{cases} ? \\end{cases}" nil)
+          ("matrix" "\\begin{matrix} ? \\end{matrix}" nil)
+          ("pmatrix (parenthesis)" "\\begin{pmatrix} ? \\end{pmatrix}" nil)
+          ("bmatrix [braces]" "\\begin{bmatrix} ? \\end{bmatrix}" nil))))
+
+(use-package! laas
+  :hook (org-mode . laas-mode)
+  :config
+  (setq laas-enable-auto-space nil)
+  ;; ;; For some reason (texmathp) returns t everywhere in org buffer
+  ;; ;; which is not every useful, so here's a fix
+  ;; (add-hook 'org-cdlatex-mode-hook
+  ;;           (lambda () (advice-remove 'texmathp 'org--math-always-on)))
+  ;;More snippets
+  (aas-set-snippets 'laas-mode
+    ;; Condition: Not in math environment and not in a middle of a word
+    :cond (lambda nil (and (not (laas-org-mathp)) (memq (char-before) '(10 40 32))))
+    "mk"     (lambda () (interactive) (yas-expand-snippet "\\\\( $0 \\\\)"))
+    ;; "mk"    (lambda () (interactive) (yas-expand-snippet "\$$1\$$0"))
+    "mmk"    (lambda () (interactive) (yas-expand-snippet "\\[ $0 \\]"))
+    "citet"  (lambda () (interactive) (yas-expand-snippet "\[cite/t:@$0\]"))
+    ";>"     "\\( \\rightarrow \\)"
+    ;; Condition: Math environment
+    :cond #'laas-org-mathp
+    "qed"    "\\blacksquare"
+    ",,"     "\\,,"
+    ".,"     "\\,."
+    ".."     "\\dots"
+    ";0"     "\\emptyset"
+    ";."     "\\cdot"
+    ",."     nil                     ;disable the annoying \vec{} modifier
+    "||"     nil
+    "lr||"   (lambda () (interactive) (yas-expand-snippet "\\lVert $0 \\rVert"))
+    "pdv"    (lambda () (interactive) (yas-expand-snippet "\\frac{\\partial $1}{\\partial $2}"))
+    "dd"    (lambda () (interactive) (yas-expand-snippet "~\\mathrm{d}"))
+    ;; Condition: Math environment, modify last object on the left
+    :cond #'laas-object-on-left-condition
+    "hat"    (lambda () (interactive) (laas-wrap-previous-object "hat"))
+    "ubar"   (lambda () (interactive) (laas-wrap-previous-object "underbar"))
+    "bar"    (lambda () (interactive) (laas-wrap-previous-object "bar"))
+    "uline"   (lambda () (interactive) (laas-wrap-previous-object "underline"))
+    "oline"   (lambda () (interactive) (laas-wrap-previous-object "overline"))
+    ;; "dot"    (lambda () (interactive) (laas-wrap-previous-object "dot"))
+    "tilde"  (lambda () (interactive) (laas-wrap-previous-object "tilde"))
+    "TXT"    (lambda () (interactive) (laas-wrap-previous-object "text"))
+    "ON"     (lambda () (interactive) (laas-wrap-previous-object "operatorname"))
+    "BON"    (lambda () (interactive) (laas-wrap-previous-object
+                                  '("\\operatorname{\\mathbf{" . "}}")))
+    "tt"     "_{t}"
+    "tp1"    "_{t+1}"
+    "tm1"    "_{t-1}"
+    "**"     "^{\\ast}"))
+
+(defun elias/org-toggle-minted ()
+  "Toggle whether or not Org should use minted for LaTeX."
+  (interactive)
+  (if (get 'elias-org-minted-on-or-off 'state)
+      (progn
+        (setq org-latex-packages-alist (delete '("" "minted" nil) org-latex-packages-alist))
+        (setq org-latex-src-block-backend 'verbatim)
+        (put 'elias-org-minted-on-or-off 'state nil)
+        (message "Minted is off")
+        )
+    (progn
+      (add-to-list 'org-latex-packages-alist '("" "minted" nil))
+      (setq org-latex-src-block-backend 'minted)
+      (put 'elias-org-minted-on-or-off 'state t)
+      (message "Minted is on; use pdflatex -shell-escape -interaction=nonstopmode"))))
+
+(use-package! org-super-agenda
+  :hook (org-agenda-mode . org-super-agenda-mode)
+)
+
+(setq org-agenda-skip-scheduled-if-done t
+      org-agenda-skip-deadline-if-done t
+      org-agenda-include-deadlines t
+      org-agenda-include-diary t
+      org-agenda-block-separator nil
+      org-agenda-compact-blocks t
+      org-agenda-start-with-log-mode t
+      org-agenda-start-day nil)
+(setq org-agenda-custom-commands
+      '(("d" "Get Things DONE"
+         ((agenda "" ((org-agenda-span 1)
+                      (org-super-agenda-groups
+                       '((:name "Today"
+                                :time-grid t
+                                :date nil
+                                :todo "TODAY"
+                                :scheduled nil
+                                :order 1)))))))))
+
+(after! org
+  (setq org-todo-keywords
+        (quote ((sequence "TODO(t)" "NEXT(n)" "STUDY(s)" "|" "DONE(d)")
+                (sequence "WAITING(w@/!)" "|" "SOMEDAY(o)" "CANCELLED(c@/!)"))))
+
+  ;; trigger task states
+  (setq org-todo-state-tags-triggers
+        (quote (("CANCELLED" ("CANCELLED" . t))
+                ("WAITING" ("WAITING" . t))
+                (done ("WAITING"))
+                ("TODO" ("WAITING") ("CANCELLED"))
+                ("NEXT" ("WAITING") ("CANCELLED"))
+                ("DONE" ("WAITING") ("CANCELLED"))))))
+
+(after! yasnippet
+  (defun my-yas-try-expanding-auto-snippets ()
+    (when yas-minor-mode
+      let ((yas-buffer-local condition '' (require-snippet-condition.auto)))
+      (yas-expand)))
+(add-hook 'post-command-hook #'my-yas-try-expanding-auto-snippets))
+
+(after! cc-mode
+  (setq c-basic-offset 2))
+
+(use-package! olivetti
+  :custom
+  (olivetti-body-width 85)
+)
+
+(map! :leader
+      :desc "centered"
+      "T c" #'olivetti-mode)
+
+(after! dirvish
+  (setq! dirvish-quick-access-entries
+         `(("h" "~/" "Home")
+           ("c" "~/code/" "Code")
+           ("u" "~/elias/Uni" "Uni")
+           ))) 
+(map! :leader
+      :prefix "o"
+      :desc "Dirvish Quick Access"
+      "q" #'dirvish-quick-access)
+
+(use-package! eglot-booster
+  :after eglot
+  :config (eglot-booster-mode))
+
+(use-package! spacious-padding
+  :ensure t
+  :config
+  (setq spacious-padding-widths
+        '( :internal-border-width 15
+           :header-line-width 4
+           :mode-line-width 4
+           :tab-width 4
+           :right-divider-width 30
+           :scroll-bar-width 8
+           :fringe-width 0))
+  (spacious-padding-mode 1))

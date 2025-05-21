@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: mathbf
+# key: x.,
+# condition: t
+# --
+
+\mathbf{$1}$0

@@ -1,0 +1,16 @@
+\contentsline {section}{\numberline {1}Speed}{2}{}%
+\contentsline {section}{\numberline {2}UI}{3}{}%
+\contentsline {section}{\numberline {3}Org}{3}{}%
+\contentsline {subsection}{\numberline {3.1}General settings}{3}{}%
+\contentsline {subsection}{\numberline {3.2}Latex}{3}{}%
+\contentsline {subsubsection}{\numberline {3.2.1}Classes}{3}{}%
+\contentsline {subsubsection}{\numberline {3.2.2}Config}{5}{}%
+\contentsline {subsubsection}{\numberline {3.2.3}CDLATEx}{6}{}%
+\contentsline {subsubsection}{\numberline {3.2.4}Laas autocompletion}{6}{}%
+\contentsline {subsection}{\numberline {3.3}Functions}{7}{}%
+\contentsline {subsection}{\numberline {3.4}Agenda}{7}{}%
+\contentsline {subsection}{\numberline {3.5}GTD}{8}{}%
+\contentsline {subsection}{\numberline {3.6}Latex Preview}{8}{}%
+\contentsline {section}{\numberline {4}Snippets}{10}{}%
+\contentsline {section}{\numberline {5}Olivetti}{10}{}%
+\contentsline {section}{\numberline {6}checlatex}{10}{}%

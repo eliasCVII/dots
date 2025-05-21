@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: cmon
+# key: dm
+# condition: 'auto
+# --
+
+\[
+$0
+\]

@@ -22,16 +22,6 @@ vim.keymap.set("t", "<c-l>", "<Cmd>wincmd l<CR>")
 -- clear highlight
 vim.keymap.set("n", "<leader>h", "<Cmd>nohlsearch<CR>")
 
--- Notes bindings
-vim.keymap.set("n", "<leader>nn", "<Cmd>Note new<CR>")
-vim.keymap.set("n", "<leader>nR", "<Cmd>Note render<CR>")
-vim.keymap.set("n", "<leader>nV", "<Cmd>Note viewer<CR>")
-vim.keymap.set("n", "<leader>ng", "<Cmd>Note graph<CR>")
-vim.keymap.set("n", "<leader>nf", "<Cmd>Note rename reference<CR>")
-vim.keymap.set("n", "<leader>no", "<Cmd>Note open menu<CR>")
-vim.keymap.set("n", "<leader>np", "<Cmd>Note new project<CR>")
-vim.keymap.set("n", "<leader>nm", "<Cmd>Note manage<CR>")
-
 -- Timew bindings
 vim.keymap.set("n", "<leader>tn", "<Cmd>Timew start<CR>")
 vim.keymap.set("n", "<leader>ts", "<Cmd>Timew stop<CR>")

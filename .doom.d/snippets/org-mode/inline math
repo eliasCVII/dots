@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: inline math
+# key: mk
+# condition: 'auto
+
+# --
+
+$$0$
