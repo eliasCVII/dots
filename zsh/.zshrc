@@ -42,3 +42,11 @@ if [ -e /home/elias/.nix-profile/etc/profile.d/nix.sh ]; then . /home/elias/.nix
 
 # opam configuration
 [[ ! -r /home/elias/.opam/opam-init/init.zsh ]] || source /home/elias/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
