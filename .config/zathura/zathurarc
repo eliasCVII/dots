@@ -7,7 +7,7 @@ set database sqlite
 " Colors
 
 set default-fg              "#e6edf3"
-set default-bg              "#161617"
+set default-bg              "#100f0d"
 
 set statusbar-bg            "#161617"
 set statusbar-fg            "#e6edf3"
@@ -37,7 +37,7 @@ set recolor                 "true"
 " set recolor-lightcolor      "#282828"
 " set recolor-darkcolor       "#ebdbb2"
 
-set recolor-lightcolor      "#161617"
+set recolor-lightcolor      "#100f0d"
 set recolor-darkcolor       "#e6edf3"
 
 set recolor-reverse-video   "true"

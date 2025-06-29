@@ -1,0 +1,149 @@
+=== SYSTEM ENVIRONMENT DOCUMENTATION ===
+Date: sáb 28 jun 2025 21:13:19 -04
+
+=== HARDWARE ===
+Architecture:                            x86_64
+CPU op-mode(s):                          32-bit, 64-bit
+Address sizes:                           39 bits physical, 48 bits virtual
+Byte Order:                              Little Endian
+CPU(s):                                  4
+On-line CPU(s) list:                     0-3
+Vendor ID:                               GenuineIntel
+Model name:                              Intel(R) Core(TM) i7-5500U CPU @ 2.40GHz
+CPU family:                              6
+Model:                                   61
+Thread(s) per core:                      2
+Core(s) per socket:                      2
+Socket(s):                               1
+Stepping:                                4
+CPU(s) scaling MHz:                      98%
+CPU max MHz:                             3000,0000
+CPU min MHz:                             500,0000
+BogoMIPS:                                4788,45
+Flags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb pti ssbd ibrs ibpb stibp fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap intel_pt xsaveopt dtherm ida arat pln pts md_clear flush_l1d
+L1d cache:                               64 KiB (2 instances)
+L1i cache:                               64 KiB (2 instances)
+L2 cache:                                512 KiB (2 instances)
+L3 cache:                                4 MiB (1 instance)
+NUMA node(s):                            1
+NUMA node0 CPU(s):                       0-3
+Vulnerability Gather data sampling:      Not affected
+Vulnerability Ghostwrite:                Not affected
+Vulnerability Indirect target selection: Not affected
+Vulnerability Itlb multihit:             KVM: Mitigation: VMX unsupported
+Vulnerability L1tf:                      Mitigation; PTE Inversion
+Vulnerability Mds:                       Mitigation; Clear CPU buffers; SMT vulnerable
+Vulnerability Meltdown:                  Mitigation; PTI
+Vulnerability Mmio stale data:           Unknown: No mitigations
+Vulnerability Reg file data sampling:    Not affected
+Vulnerability Retbleed:                  Not affected
+Vulnerability Spec rstack overflow:      Not affected
+Vulnerability Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl
+Vulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:                Mitigation; Retpolines; IBPB conditional; IBRS_FW; STIBP conditional; RSB filling; PBRSB-eIBRS Not affected; BHI Not affected
+Vulnerability Srbds:                     Mitigation; Microcode
+Vulnerability Tsx async abort:           Not affected
+
+NAME    MAJ:MIN RM    SIZE RO TYPE MOUNTPOINTS
+sda       8:0    0  894,3G  0 disk 
+├─sda1    8:1    0    100M  0 part /boot/efi
+├─sda2    8:2    0     16M  0 part 
+├─sda3    8:3    0  657,8G  0 part 
+├─sda4    8:4    0    642M  0 part 
+└─sda5    8:5    0  235,8G  0 part /
+sdb       8:16   1  115,2G  0 disk 
+├─sdb1    8:17   1  109,2G  0 part 
+├─sdb2    8:18   1     32M  0 part 
+├─sdb3    8:19   1      1K  0 part 
+├─sdb5    8:21   1      1G  0 part /mnt/fs_tests/mount_points/ntfs_1k
+├─sdb6    8:22   1      1G  0 part /mnt/fs_tests/mount_points/ntfs_2k
+├─sdb7    8:23   1      1G  0 part /mnt/fs_tests/mount_points/ntfs_4k
+├─sdb8    8:24   1      1G  0 part /mnt/fs_tests/mount_points/ext4_1k
+├─sdb9    8:25   1      1G  0 part /mnt/fs_tests/mount_points/ext4_2k
+└─sdb10   8:26   1 1018,5M  0 part /mnt/fs_tests/mount_points/ext4_4k
+
+=== KERNEL & OS ===
+Linux arch 6.15.4-arch2-1 #1 SMP PREEMPT_DYNAMIC Fri, 27 Jun 2025 16:35:07 +0000 x86_64 GNU/Linux
+NAME="EndeavourOS"
+PRETTY_NAME="EndeavourOS"
+ID="endeavouros"
+ID_LIKE="arch"
+BUILD_ID=rolling
+ANSI_COLOR="38;2;23;147;209"
+HOME_URL="https://endeavouros.com"
+DOCUMENTATION_URL="https://discovery.endeavouros.com"
+SUPPORT_URL="https://forum.endeavouros.com"
+BUG_REPORT_URL="https://forum.endeavouros.com/c/general-system/endeavouros-installation"
+PRIVACY_POLICY_URL="https://endeavouros.com/privacy-policy-2"
+LOGO="endeavouros"
+
+=== FILESYSTEM SUPPORT ===
+nodev	sysfs
+nodev	tmpfs
+nodev	bdev
+nodev	proc
+nodev	cgroup
+nodev	cgroup2
+nodev	devtmpfs
+nodev	binfmt_misc
+nodev	configfs
+nodev	debugfs
+nodev	tracefs
+nodev	securityfs
+nodev	sockfs
+nodev	bpf
+nodev	pipefs
+nodev	ramfs
+nodev	hugetlbfs
+nodev	devpts
+	ext3
+	ext2
+	ext4
+nodev	autofs
+	fuseblk
+nodev	fuse
+nodev	fusectl
+nodev	virtiofs
+nodev	efivarfs
+nodev	mqueue
+nodev	binder
+	btrfs
+nodev	pstore
+	vfat
+nodev	overlay
+
+=== MEMORY ===
+               total        used        free      shared  buff/cache   available
+Mem:            15Gi       2,2Gi        13Gi       457Mi       975Mi        13Gi
+Swap:             0B          0B          0B
+
+=== USB DEVICE INFO ===
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 001 Device 002: ID 8087:8001 Intel Corp. Integrated Hub
+Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 002 Device 002: ID 174f:14b1 Syntek Lenovo EasyCamera
+Bus 002 Device 003: ID 0bda:b728 Realtek Semiconductor Corp. RTL8723B Bluetooth
+Bus 003 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 003 Device 002: ID 0951:1666 Kingston Technology DataTraveler 100 G3/G4/SE9 G2/50 Kyson
+
+/dev/sdb:
+
+ATA device, with non-removable media
+Standards:
+	Likely used: 1
+Configuration:
+	Logical		max	current
+	cylinders	0	0
+	heads		0	0
+	sectors/track	0	0
+	--
+	Logical/Physical Sector size:           512 bytes
+	device size with M = 1024*1024:           0 MBytes
+	device size with M = 1000*1000:           0 MBytes 
+	cache/buffer size  = unknown
+Capabilities:
+	IORDY not likely
+	Cannot perform double-word IO
+	R/W multiple sector transfer: not supported
+	DMA: not supported
+	PIO: pio0 
