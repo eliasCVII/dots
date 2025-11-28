@@ -22,9 +22,7 @@ return {
           },
           project = {
             base_dirs = {
-              "~/texnotes",
-              "~/dots/",
-              "~/code/nvim-plugins",
+              "~/code",
             },
             hidden_files = true,
             theme = "dropdown",
@@ -60,9 +58,9 @@ return {
       -- end, { desc = "Search [/] in Files" })
 
       -- Shortcut for searching your neovim configuration files
-      vim.keymap.set("n", "<leader>.", function()
-        builtin.find_files()
-      end, { desc = "Search files" })
+      -- vim.keymap.set("n", "<leader>.", function()
+      --   builtin.find_files()
+      -- end, { desc = "Search files" })
 
       require("telescope").load_extension("ui-select")
       require("telescope").load_extension("project")

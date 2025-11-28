@@ -1,13 +1,15 @@
 return { -- finally a beautiful theme
-  {"Verf/deepwhite.nvim"},
-  {"mcchrish/zenbones.nvim", dependencies = "rktjmp/lush.nvim",},
+  {"ellisonleao/gruvbox.nvim"},
+  {"thiago-negri/vim-dark"},
+  {"webhooked/kanso.nvim"},
+  {"mcchrish/zenbones.nvim", dependencies = "rktjmp/lush.nvim"},
   {
     "mellow-theme/mellow.nvim",
     lazy = false,
     priority = 1000,
     config = function()
       vim.o.background = "dark"
-      vim.cmd.colorscheme("mellow")
+      vim.cmd.colorscheme("kanso")
     end,
   },
 }

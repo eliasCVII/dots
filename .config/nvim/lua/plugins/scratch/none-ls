@@ -10,6 +10,7 @@ return {
         null_ls.builtins.formatting.black,
         null_ls.builtins.formatting.isort,
         null_ls.builtins.formatting.clang_format,
+        null_ls.builtins.formatting.shfmt,
 
         -- Diagnostics
         -- null_ls.builtins.diagnostics.flake8, NOTE: will be deprecated

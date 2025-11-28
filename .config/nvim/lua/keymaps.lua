@@ -23,12 +23,12 @@ vim.keymap.set("t", "<c-l>", "<Cmd>wincmd l<CR>")
 vim.keymap.set("n", "<leader>h", "<Cmd>nohlsearch<CR>")
 
 -- Timew bindings
-vim.keymap.set("n", "<leader>tn", "<Cmd>Timew start<CR>")
-vim.keymap.set("n", "<leader>ts", "<Cmd>Timew stop<CR>")
-vim.keymap.set("n", "<leader>tc", "<Cmd>Timew continue<CR>")
-vim.keymap.set("n", "<leader>tC", "<Cmd>Timew cancel<CR>")
-vim.keymap.set("n", "<leader>td", "<Cmd>Timew delete<CR>")
-vim.keymap.set("n", "<leader>tS", "<Cmd>Timew summary<CR>")
+-- vim.keymap.set("n", "<leader>tn", "<Cmd>Timew start<CR>")
+-- vim.keymap.set("n", "<leader>ts", "<Cmd>Timew stop<CR>")
+-- vim.keymap.set("n", "<leader>tc", "<Cmd>Timew continue<CR>")
+-- vim.keymap.set("n", "<leader>tC", "<Cmd>Timew cancel<CR>")
+-- vim.keymap.set("n", "<leader>td", "<Cmd>Timew delete<CR>")
+-- vim.keymap.set("n", "<leader>tS", "<Cmd>Timew summary<CR>")
 
 -- Doom like keybinds
 vim.keymap.set("n", "<leader>fs", utils.on_save)
@@ -36,7 +36,8 @@ vim.keymap.set("i", "jk", "<Esc>")
 vim.keymap.set("n", "<leader>wv", "<Cmd>vsplit<CR>")
 vim.keymap.set("n", "<leader>ws", "<Cmd>split<CR>")
 vim.keymap.set("n", "<leader>wq", "<Cmd>quit<CR>")
-vim.keymap.set("n", "<leader>fp", "<Cmd>Telescope find_files search_dirs={'~/.config/nvim'}<CR>") -- for "private config" files in ~/.config/nvim
+vim.keymap.set("n", "<leader>fp", "<Cmd>lua MiniPick.start({ source = { items = vim.fn.readdir('/home/elias/.config/nvim') } })<CR>") -- for "private config" files in ~/.config/nvim
+vim.keymap.set("n", "<leader>.", ":Pick files<CR>")
 vim.keymap.set("n", "<leader>ot", "<Cmd>ToggleTerm direction=float<CR>")
 vim.keymap.set("n", "<leader>oT", "<Cmd>ToggleTerm direction=horizontal<CR>")
 vim.keymap.set("n", "<leader>bn", "<Cmd>bnext<CR>")

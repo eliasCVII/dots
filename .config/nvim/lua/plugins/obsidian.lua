@@ -18,7 +18,7 @@ return {
     workspaces = {
       {
         name = "personal",
-        path = "~/elias/Notas",
+        path = "~/ELIAS/Notas",
       },
     },
     notes_subdir = "scratch",

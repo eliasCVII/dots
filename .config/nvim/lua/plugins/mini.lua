@@ -4,11 +4,7 @@ return {
   version = false,
   config = function()
     -- Better surroundings, in visual or normal mode
-    require("mini.surround").setup({
-      mappings = {
-        add = "S", -- Add surrounding in Normal and Visual modes
-      },
-    })
+    require("mini.surround").setup({})
 
     -- Filesystem navigation+modifications
     require("mini.files").setup({
@@ -16,7 +12,7 @@ return {
         -- Maximum number of windows to show side by side
         max_number = math.huge,
         -- Whether to show preview of file/directory under cursor
-        preview = true,
+        preview = false,
         -- Width of focused window
         width_focus = 30,
         -- Width of non-focused window
@@ -41,7 +37,7 @@ return {
     local hipatterns = require("mini.hipatterns")
 
     local words = { -- Change to filetype?
-      Part = "#ea83a5",
+      Part =    "#ea83a5",
       Chapter = "#ea83a5",
     }
 

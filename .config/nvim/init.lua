@@ -14,6 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 require("keymaps")
 require("vim-options")
 require("lazy").setup("plugins")
+require("builtin-lsp")
 
 -- Setup my own lua files and shit
 local utils = require("utils")
