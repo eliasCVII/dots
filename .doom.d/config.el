@@ -10,7 +10,7 @@
 (setq doom-font (font-spec :family "Hack Nerd Font" :size 20 :weight 'semi-light)
      doom-variable-pitch-font (font-spec :family "Hack Nerd Font" :size 21))
 
-(setq doom-theme 'doom-sourcerer)
+(setq doom-theme 'doom-ayu-light)
 
 (setq display-line-numbers-type 'relative)
 
@@ -113,10 +113,10 @@
 
 ;; Basics
 (setq
- org-directory "~/Notas/gtd"
- org-agenda-files '("~/Notas/gtd/gtd.org")
- org-roam-directory "~/elias"
- org-roam-dailies-directory "~/Notas/dailies"
+ org-directory "~/ELIAS/Notas/gtd"
+ org-agenda-files '("~/ELIAS/Notas/gtd/gtd.org")
+ org-roam-directory "~/ELIAS"
+ org-roam-dailies-directory "~/ELIAS/Notas/dailies"
  org-use-property-inheritance t
  org-startup-with-inline-images t
  org-edit-src-content-indentation 0
@@ -220,7 +220,8 @@
 
 ;; (setq org-preview-latex-default-process 'dvisvgm)
 
-(setq org-format-latex-options
+;; This is the NEW variable name
+(setq org-latex-preview-appearance-options
       (list :foreground 'default
             :background 'default
             :html-foreground "Black"
@@ -228,9 +229,10 @@
             :html-scale 2.0
             :matchers '("begin" "$1" "$" "$$" "\\(" "\\[")))
 
-(after! org (plist-put org-format-latex-options :scale 1.75))
+;; This line also uses the NEW variable name
+(after! org (plist-put org-latex-preview-appearance-options :scale 1.75))
 
-(setq org-latex-src-block-backend 'minted)
+;; (setq org-latex-src-block-backend 'minted)
 
 (add-hook 'org-src-mode-hook
           (lambda ()
@@ -241,19 +243,19 @@
   (dolist (pkg '("amsmath" "amssymb" "mathtools" "mathrsfs" "tikz" "pgfplots" "tikz-cd" "minted"))
     (add-to-list 'org-latex-packages-alist `("" ,pkg t))))
 
-(use-package! org-latex-preview
-  :after org
-  :config
-  (plist-put org-latex-preview-appearance-options
-             :page-width 1.0)
-  (add-hook 'org-mode-hook 'org-latex-preview-auto-mode)
-  (setq org-latex-preview-auto-ignored-commands
-        '(next-line previous-line mwheel-scroll ultra-scroll
-          scroll-up-command scroll-down-command
-          evil-scroll-up evil-scroll-down evil-scroll-line-up evil-scroll-line-down)
-        org-latex-preview-numbered t
-        org-latex-preview-live t
-        org-latex-preview-live-debounce 0.25))
+;; (use-package! org-latex-preview
+;;   :after org
+;;   :config
+;;   (plist-put org-latex-preview-appearance-options
+;;              :page-width 1.0)
+;;   (add-hook 'org-mode-hook 'org-latex-preview-auto-mode)
+;;   (setq org-latex-preview-auto-ignored-commands
+;;         '(next-line previous-line mwheel-scroll ultra-scroll
+;;           scroll-up-command scroll-down-command
+;;           evil-scroll-up evil-scroll-down evil-scroll-line-up evil-scroll-line-down)
+;;         org-latex-preview-numbered t
+;;         org-latex-preview-live t
+;;         org-latex-preview-live-debounce 0.25))
 
 (after! cdlatex
   (setq cdlatex-math-modify-alist
@@ -372,9 +374,6 @@
       let ((yas-buffer-local condition '' (require-snippet-condition.auto)))
       (yas-expand)))
 (add-hook 'post-command-hook #'my-yas-try-expanding-auto-snippets))
-
-(after! cc-mode
-  (setq c-basic-offset 2))
 
 (use-package! olivetti
   :custom
