@@ -10,7 +10,7 @@
 (setq doom-font (font-spec :family "Hack Nerd Font" :size 20 :weight 'semi-light)
      doom-variable-pitch-font (font-spec :family "Hack Nerd Font" :size 21))
 
-(setq doom-theme 'doom-ayu-light)
+(setq doom-theme 'modus-operandi)
 
 (setq display-line-numbers-type 'relative)
 
@@ -115,7 +115,7 @@
 (setq
  org-directory "~/ELIAS/Notas/gtd"
  org-agenda-files '("~/ELIAS/Notas/gtd/gtd.org")
- org-roam-directory "~/ELIAS"
+ org-roam-directory "~/ELIAS/Notas/roam"
  org-roam-dailies-directory "~/ELIAS/Notas/dailies"
  org-use-property-inheritance t
  org-startup-with-inline-images t
@@ -146,13 +146,11 @@
                "\\documentclass[11pt,a4paper]{article}
 \\usepackage[utf8]{inputenc}
 \\usepackage[T1]{fontenc}
-\\usepackage{fixltx2e}
 \\usepackage{graphicx}
 \\usepackage{longtable}
 \\usepackage{float}
 \\usepackage{wrapfig}
 \\usepackage{rotating}
-\\usepackage[normalem]{ulem}
 \\usepackage{amsmath}
 \\usepackage{textcomp}
 \\usepackage{marvosym}
@@ -201,7 +199,7 @@
 ;; (setq org-latex-listings 't)
 
 (setq org-latex-pdf-process
-      '("latexmk -pdflatex='pdflatex -interaction nonstopmode' -pdf -bibtex -f %f"))
+      '("latexmk -pdflatex='pdflatex -shell-escape -interaction nonstopmode' -pdf -bibtex -f %f"))
 
 ;;(add-hook 'org-mode-hook 'org-fragtog-mode)
 (setq font-latex-fontify-script nil)
