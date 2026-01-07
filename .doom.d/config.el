@@ -7,8 +7,8 @@
 
 (setq gc-cons-threshold 200000000) ; previous 33554432
 
-(setq doom-font (font-spec :family "Hack Nerd Font" :size 20 :weight 'semi-light)
-     doom-variable-pitch-font (font-spec :family "Hack Nerd Font" :size 21))
+(setq doom-font (font-spec :family "FiraCode Nerd Font Mono" :size 20 :weight 'semi-light)
+     doom-variable-pitch-font (font-spec :family "FiraCode Nerd Font Mono" :size 21))
 
 (setq doom-theme 'modus-operandi)
 
@@ -16,8 +16,8 @@
 
 (add-to-list 'auto-mode-alist '("\\.l\\'" . c-mode))
 
-(add-to-list 'default-frame-alist '(width . 100))
-(add-to-list 'default-frame-alist '(height . 40))
+;; (add-to-list 'default-frame-alist '(width . 100))
+;; (add-to-list 'default-frame-alist '(height . 40))
 
 (remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
 
@@ -336,25 +336,26 @@
 (setq org-agenda-skip-scheduled-if-done t
       org-agenda-skip-deadline-if-done t
       org-agenda-include-deadlines t
-      org-agenda-include-diary t
+      org-agenda-include-diary nil
       org-agenda-block-separator nil
       org-agenda-compact-blocks t
       org-agenda-start-with-log-mode t
       org-agenda-start-day nil)
 (setq org-agenda-custom-commands
-      '(("d" "Get Things DONE"
-         ((agenda "" ((org-agenda-span 1)
-                      (org-super-agenda-groups
-                       '((:name "Today"
-                                :time-grid t
-                                :date nil
-                                :todo "TODAY"
-                                :scheduled nil
-                                :order 1)))))))))
+      '(("n" "Everything this week"
+         ((agenda ""
+                  ((org-agenda-span 21)
+                   (org-agenda-start-day "+0d")))))))
+(setq org-agenda-skip-timestamp-if-done t
+      org-agenda-skip-deadline-if-done t
+      org-agenda-skip-scheduled-if-done t
+      org-agenda-skip-scheduled-if-deadline-is-shown t
+      org-agenda-skip-timestamp-if-deadline-is-shown t)
+(setq org-agenda-time-grid '((daily) (600 1200 1800) "---" "-----"))
 
 (after! org
   (setq org-todo-keywords
-        (quote ((sequence "TODO(t)" "NEXT(n)" "STUDY(s)" "|" "DONE(d)")
+        (quote ((sequence "TODO(t)" "NEXT(n)" "STRT(s)"  "|" "DONE(d)")
                 (sequence "WAITING(w@/!)" "|" "SOMEDAY(o)" "CANCELLED(c@/!)"))))
 
   ;; trigger task states
@@ -387,7 +388,7 @@
          `(("h" "~/" "Home")
            ("c" "~/code/" "Code")
            ("u" "~/elias/Uni" "Uni")
-           ))) 
+           )))
 (map! :leader
       :prefix "o"
       :desc "Dirvish Quick Access"
