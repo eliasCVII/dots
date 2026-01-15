@@ -5,7 +5,7 @@ export ZSH="$HOME/.oh-my-zsh"
 export PATH=$PATH:~/.local/bin:~/.cargo/bin:~/.emacs.d/bin
 
 # Theme
-ZSH_THEME="typewritten"
+ZSH_THEME="agkozak"
 
 # plugins
 plugins=(git zsh-autosuggestions)
@@ -30,7 +30,6 @@ alias neo="neofetch"
 
 [ -f "/home/elias/.zsh-env" ] && source /home/elias/.zsh-env
 
-# setxkbmap -layout us
 
 eval "$(direnv hook zsh)"
 
@@ -42,4 +41,3 @@ function y() {
 	rm -f -- "$tmp"
 }
 
-source /usr/share/nvm/init-nvm.sh
