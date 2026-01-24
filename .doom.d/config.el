@@ -7,8 +7,8 @@
 
 (setq gc-cons-threshold 200000000) ; previous 33554432
 
-(setq doom-font (font-spec :family "FiraCode Nerd Font Mono" :size 20 :weight 'semi-light)
-     doom-variable-pitch-font (font-spec :family "FiraCode Nerd Font Mono" :size 21))
+(setq doom-font (font-spec :family "Hack Nerd Font Mono" :size 20 :weight 'semi-light)
+     doom-variable-pitch-font (font-spec :family "Hack Nerd Font Mono" :size 21))
 
 (setq doom-theme 'modus-operandi)
 
@@ -114,7 +114,6 @@
 ;; Basics
 (setq
  org-directory "~/ELIAS/Notas/gtd"
- org-agenda-files '("~/ELIAS/Notas/gtd/gtd.org")
  org-roam-directory "~/ELIAS/Notas/roam"
  org-roam-dailies-directory "~/ELIAS/Notas/dailies"
  org-use-property-inheritance t
@@ -124,14 +123,14 @@
  org-highlight-latex-and-related '(native script))
 
 ;; Agenda
-(setq org-agenda-deadline-leaders
-      '("" "" "%2d d. ago: ")
-      org-deadline-warning-days 0
-      org-agenda-span 14
-      org-agenda-start-day "-0d"
-      org-agenda-skip-function-global
-      '(org-agenda-skip-entry-if 'todo 'done)
-      org-log-done 'time)
+;; (setq org-agenda-deadline-leaders
+;;       '("" "" "%2d d. ago: ")
+;;       org-deadline-warning-days 0
+;;       org-agenda-span 21
+;;       org-agenda-start-day "-0d"
+;;       org-agenda-skip-function-global
+;;       '(org-agenda-skip-entry-if 'todo 'done)
+;;       org-log-done 'time)
 
 (add-hook 'org-src-mode-hook
           (lambda ()
@@ -346,12 +345,12 @@
          ((agenda ""
                   ((org-agenda-span 21)
                    (org-agenda-start-day "+0d")))))))
-(setq org-agenda-skip-timestamp-if-done t
-      org-agenda-skip-deadline-if-done t
-      org-agenda-skip-scheduled-if-done t
-      org-agenda-skip-scheduled-if-deadline-is-shown t
-      org-agenda-skip-timestamp-if-deadline-is-shown t)
-(setq org-agenda-time-grid '((daily) (600 1200 1800) "---" "-----"))
+;; (setq org-agenda-skip-timestamp-if-done t
+;;       org-agenda-skip-deadline-if-done t
+;;       org-agenda-skip-scheduled-if-done t
+;;       org-agenda-skip-scheduled-if-deadline-is-shown t
+;;       org-agenda-skip-timestamp-if-deadline-is-shown t)
+;; (setq org-agenda-time-grid '((daily) (600 1200 1800) "---" "-----"))
 
 (after! org
   (setq org-todo-keywords
