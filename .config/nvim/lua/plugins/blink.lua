@@ -1,18 +1,11 @@
 return {
   {
     "saghen/blink.cmp",
-    -- lazy = false, -- lazy loading handled internally
     event = "VeryLazy",
-    -- optional: provides snippets for the snippet source
     version = "1.*",
     dependencies = { "L3MON4D3/LuaSnip" },
-    -- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
     build = "cargo build --release",
-    -- On musl libc based systems you need to add this flag
-    -- build = 'RUSTFLAGS="-C target-feature=-crt-static" cargo build --release',
     opts = {
-      -- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-      -- adjusts spacing to ensure icons are aligned
       completion = {
         menu = {
           winblend = vim.o.pumblend,
@@ -113,11 +106,15 @@ return {
       },
 
       sources = {
-        -- Remove 'buffer' if you don't want text completions, by default it's only enabled when LSP returns no items
-        default = { "lsp", "path", "snippets", "buffer" },
+        default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+        providers = {
+          lazydev = {
+            name = "LazyDev",
+            module = "lazydev.integrations.blink",
+            score_offset = 100,
+          },
+        },
       },
-      -- experimental auto-brackets support
-      -- accept = { auto_brackets = { enabled = true } }
 
       signature = { enabled = true },
       snippets = { preset = "luasnip" },
