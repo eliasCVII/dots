@@ -1,0 +1,12 @@
+[mgr]
+ratio = [1,2,4]
+linemode = "size"
+scrolloff = 10
+
+[preview]
+wrap = "yes"
+
+[opener]
+open = [
+  { run = "xdg-open %s", desc = "Open" },
+]
