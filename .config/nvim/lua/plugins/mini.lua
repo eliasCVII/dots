@@ -33,30 +33,6 @@ return {
     --   },
     -- })
 
-    -- Highlight stuff; hex colors #AA0000
-    local hipatterns = require("mini.hipatterns")
-
-    local words = { -- Change to filetype?
-      Part =    "#ea83a5",
-      Chapter = "#ea83a5",
-    }
-
-    local word_color_group = function(_, match)
-      local hex = words[match]
-      if hex == nil then
-        return nil
-      end
-      return MiniHipatterns.compute_hex_color_group(hex, "bg")
-    end
-
-    hipatterns.setup({
-      highlighters = {
-        -- Highlight hex color strings (`#rrggbb`) using that color
-        hex_color = hipatterns.gen_highlighter.hex_color(),
-        word_color = { pattern = "%S+", group = word_color_group },
-      },
-    })
-
     -- some out of the box settings
     require("mini.basics").setup({
       options = {
@@ -76,11 +52,11 @@ return {
     })
 
     -- Comments on gcc, gc
-    require("mini.comment").setup({
-      options = {
-        ignore_blank_line = true,
-      },
-    })
+    -- require("mini.comment").setup({
+    --   options = {
+    --     ignore_blank_line = true,
+    --   },
+    -- })
 
     -- Beautiful indent scopes
     require("mini.indentscope").setup({})
