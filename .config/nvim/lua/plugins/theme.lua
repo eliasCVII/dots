@@ -1,5 +1,4 @@
 return { -- finally a beautiful theme
-  {"ellisonleao/gruvbox.nvim"},
   {"webhooked/kanso.nvim"},
   {"mcchrish/zenbones.nvim", dependencies = "rktjmp/lush.nvim"},
   {

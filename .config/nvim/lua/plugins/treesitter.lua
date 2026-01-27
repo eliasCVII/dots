@@ -1,20 +1,54 @@
 return {
   {
-    "nvim-treesitter/nvim-treesitter",
-    branch = "main",
-    build = ":TSUpdate",
-
+    'nvim-treesitter/nvim-treesitter',
+    branch = 'main',
+    lazy = false,
+    build = ':TSUpdate',
     config = function()
-      local config = require("nvim-treesitter")
+      require('nvim-treesitter').setup({
+        install_dir = vim.fn.stdpath('data') .. '/site',
+      })
 
-      config.setup({
-        highlight = { enable = true },
-        ensure_installed = { "c", "cpp" },
-        ignore_install = { "org" },
-        sync_install = true,
-        modules = {},
-        auto_install = true,
-        indent = { enable = true },
+      local parsers = {
+        'bash',
+        'css',
+        'diff',
+        'editorconfig',
+        'git_config',
+        'git_rebase',
+        'gitattributes',
+        'gitcommit',
+        'gitignore',
+        'hcl',
+        'html',
+        'javascript',
+        'jsdoc',
+        'json',
+        'jsdoc',
+        'php',
+        'lua',
+        'make',
+        'markdown',
+        'markdown_inline',
+        'python',
+        'query',
+        'regex',
+        'toml',
+        'tsx',
+        'typescript',
+        'typst',
+        'vim',
+        'vimdoc',
+        'xml',
+        'yaml',
+      }
+
+      vim.api.nvim_create_autocmd('User', {
+        pattern = 'LazyDone',
+        once = true,
+        callback = function()
+          require('nvim-treesitter').install(parsers)
+        end,
       })
     end,
   },
@@ -39,18 +73,23 @@ return {
       map({ 'x', 'o' }, 'af', function()
         require('nvim-treesitter-textobjects.select').select_textobject('@function.outer', 'textobjects')
       end, { desc = 'outer function' })
+
       map({ 'x', 'o' }, 'if', function()
         require('nvim-treesitter-textobjects.select').select_textobject('@function.inner', 'textobjects')
       end, { desc = 'inner function' })
+
       map({ 'x', 'o' }, 'ac', function()
         require('nvim-treesitter-textobjects.select').select_textobject('@class.outer', 'textobjects')
       end, { desc = 'outer class' })
+
       map({ 'x', 'o' }, 'ic', function()
         require('nvim-treesitter-textobjects.select').select_textobject('@class.inner', 'textobjects')
       end, { desc = 'inner class' })
+
       map({ 'x', 'o' }, 'aa', function()
         require('nvim-treesitter-textobjects.select').select_textobject('@parameter.outer', 'textobjects')
       end, { desc = 'outer argument' })
+
       map({ 'x', 'o' }, 'ia', function()
         require('nvim-treesitter-textobjects.select').select_textobject('@parameter.inner', 'textobjects')
       end, { desc = 'inner argument' })
@@ -59,21 +98,44 @@ return {
       map({ 'n', 'x', 'o' }, ']f', function()
         require('nvim-treesitter-textobjects.move').goto_next_start('@function.outer', 'textobjects')
       end, { desc = 'next function start' })
+
       map({ 'n', 'x', 'o' }, '[f', function()
         require('nvim-treesitter-textobjects.move').goto_previous_start('@function.outer', 'textobjects')
       end, { desc = 'previous function start' })
+
       map({ 'n', 'x', 'o' }, ']F', function()
         require('nvim-treesitter-textobjects.move').goto_next_end('@function.outer', 'textobjects')
       end, { desc = 'next function end' })
+
       map({ 'n', 'x', 'o' }, '[F', function()
         require('nvim-treesitter-textobjects.move').goto_previous_end('@function.outer', 'textobjects')
       end, { desc = 'previous function end' })
+
       map({ 'n', 'x', 'o' }, ']k', function()
         require('nvim-treesitter-textobjects.move').goto_next_start('@class.outer', 'textobjects')
       end, { desc = 'next class start' })
+
       map({ 'n', 'x', 'o' }, '[k', function()
         require('nvim-treesitter-textobjects.move').goto_previous_start('@class.outer', 'textobjects')
       end, { desc = 'previous class start' })
     end,
+  },
+  {
+    'nvim-treesitter/nvim-treesitter-context',
+    event = 'VeryLazy',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    opts = {
+      max_lines = 3,
+      min_window_height = 20,
+    },
+    keys = {
+      {
+        '[C',
+        function()
+          require('treesitter-context').go_to_context()
+        end,
+        desc = 'go to context',
+      },
+    },
   },
 }

@@ -20,7 +20,7 @@ vim.keymap.set("t", "<c-h>", "<Cmd>wincmd h<CR>")
 vim.keymap.set("t", "<c-l>", "<Cmd>wincmd l<CR>")
 
 -- clear highlight
-vim.keymap.set("n", "<leader>h", "<Cmd>nohlsearch<CR>")
+vim.keymap.set("n", "<Esc>", "<Cmd>nohlsearch<CR>")
 
 -- Timew bindings
 -- vim.keymap.set("n", "<leader>tn", "<Cmd>Timew start<CR>")
@@ -38,8 +38,8 @@ vim.keymap.set("n", "<leader>ws", "<Cmd>split<CR>")
 vim.keymap.set("n", "<leader>wq", "<Cmd>quit<CR>")
 vim.keymap.set("n", "<leader>fp", "<Cmd>lua MiniPick.start({ source = { items = vim.fn.readdir('/home/elias/.config/nvim') } })<CR>") -- for "private config" files in ~/.config/nvim
 vim.keymap.set("n", "<leader>.", ":Pick files<CR>")
-vim.keymap.set("n", "<leader>ot", "<Cmd>ToggleTerm direction=float<CR>")
-vim.keymap.set("n", "<leader>oT", "<Cmd>ToggleTerm direction=horizontal<CR>")
+vim.keymap.set("n", "<leader>oT", "<Cmd>vertical term<CR>")
+vim.keymap.set("n", "<leader>oT", "<Cmd>horizontal term<CR>")
 vim.keymap.set("n", "<leader>bn", "<Cmd>bnext<CR>")
 vim.keymap.set("n", "<leader>bp", "<Cmd>bprev<CR>")
 -- vim.keymap.set("n", "<leader>bf", "<Cmd>FzfLua buffers<CR>")
