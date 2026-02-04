@@ -9,15 +9,10 @@ return {
     -- Filesystem navigation+modifications
     require("mini.files").setup({
       windows = {
-        -- Maximum number of windows to show side by side
         max_number = math.huge,
-        -- Whether to show preview of file/directory under cursor
         preview = false,
-        -- Width of focused window
         width_focus = 30,
-        -- Width of non-focused window
         width_nofocus = 15,
-        -- Width of preview window
         width_preview = 55,
       },
       mappings = {
@@ -25,13 +20,6 @@ return {
         go_in_plus = "<CR>",
       },
     })
-
-    -- Jump around like a monkey
-    -- require("mini.jump2d").setup({
-    --   mappings = {
-    --     start_jumping = "<CR>",
-    --   },
-    -- })
 
     -- some out of the box settings
     require("mini.basics").setup({
@@ -51,20 +39,7 @@ return {
       },
     })
 
-    -- Comments on gcc, gc
-    -- require("mini.comment").setup({
-    --   options = {
-    --     ignore_blank_line = true,
-    --   },
-    -- })
-
-    -- Beautiful indent scopes
-    require("mini.indentscope").setup({})
-
     require("mini.pairs").setup({})
-
-    -- Extend f, F, t, T
-    -- require("mini.jump").setup()
 
     -- Move selected blocks
     require("mini.move").setup({
@@ -112,13 +87,14 @@ return {
     -- Bracket movement
     require("mini.bracketed").setup() -- TODO: learn mappings
 
-    -- Visited files
-    -- require("mini.visits").setup() -- replace telescope frecency/ spc-fr?
-
     -- Remove whitespace
     require("mini.trailspace").setup()
 
     -- Extra features
     require("mini.extra").setup()
+    require("mini.git").setup();
+    require("mini.diff").setup();
+
+    require("mini.indentscope").setup({})
   end,
 }

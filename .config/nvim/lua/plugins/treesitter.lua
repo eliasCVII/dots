@@ -4,45 +4,19 @@ return {
     branch = 'main',
     lazy = false,
     build = ':TSUpdate',
-    config = function()
-      require('nvim-treesitter').setup({
-        install_dir = vim.fn.stdpath('data') .. '/site',
-      })
-
-      local parsers = {
-        'bash',
-        'css',
-        'diff',
-        'editorconfig',
-        'git_config',
-        'git_rebase',
-        'gitattributes',
-        'gitcommit',
-        'gitignore',
-        'html',
-        'json',
-        'php',
-        'lua',
-        'make',
-        'markdown',
-        'markdown_inline',
-        'python',
-        'query',
-        'regex',
-        'toml',
-        'vim',
-        'vimdoc',
-        'yaml',
-      }
-
-      vim.api.nvim_create_autocmd('User', {
-        pattern = 'LazyDone',
-        once = true,
-        callback = function()
-          require('nvim-treesitter').install(parsers)
-        end,
-      })
-    end,
+    -- config = function()
+    --   require('nvim-treesitter').setup({
+    --     install_dir = vim.fn.stdpath('data') .. '/site',
+    --   })
+    --
+    --   vim.api.nvim_create_autocmd('User', {
+    --     pattern = 'LazyDone',
+    --     once = true,
+    --     callback = function()
+    --       require('nvim-treesitter').install(parsers)
+    --     end,
+    --   })
+    -- end,
   },
   {
     'nvim-treesitter/nvim-treesitter-textobjects',

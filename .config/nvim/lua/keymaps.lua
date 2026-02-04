@@ -70,10 +70,6 @@ vim.keymap.set("n", "<F1>", function()
   utils.toggle_colorcolumn()
 end)
 
--- vim.keymap.set("n", "<F2>", function()
---   utils.toggle_diagnostics()
--- end)
-
 vim.keymap.set("n", "<leader>tl", function()
   utils.toggle_numbers()
 end)
@@ -89,7 +85,8 @@ vim.keymap.set(
 )
 
 vim.keymap.set("n", "<leader>th", "<Cmd>Telescope help_tags<CR>")
--- vim.keymap.set("n", "<leader>tg", "<Cmd>lua Snacks.picker.grep()<CR>")
+vim.keymap.set("n", "<leader>tg", "<Cmd>Pick grep_live<CR>")
+vim.keymap.set("n", "<leader>bi", "<Cmd>Pick buffers<CR>")
 vim.keymap.set("n", "<leader>u", "<Cmd>UndotreeToggle<CR>")
 
 vim.keymap.set("n", "<leader>p", "<Cmd>Precognition toggle<CR>")

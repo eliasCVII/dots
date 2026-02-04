@@ -18,18 +18,18 @@ return {
       use_diagnostic_signs = true
     },
   },
-  {
-    "lewis6991/gitsigns.nvim",
-    event = "VeryLazy",
-    opts = {
-      signs = {
-        add = { text = "▎" },
-        change = { text = "▎" },
-        delete = { text = "" },
-        topdelete = { text = "" },
-        changedelete = { text = "▎" },
-        untracked = { text = "▎" },
-      },
-    },
-  },
+  -- {
+  --   "lewis6991/gitsigns.nvim",
+  --   event = "VeryLazy",
+  --   opts = {
+  --     signs = {
+  --       add = { text = "▎" },
+  --       change = { text = "▎" },
+  --       delete = { text = "" },
+  --       topdelete = { text = "" },
+  --       changedelete = { text = "▎" },
+  --       untracked = { text = "▎" },
+  --     },
+  --   },
+  -- },
 }
