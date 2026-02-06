@@ -17,7 +17,7 @@ export ZSH="$HOME/.oh-my-zsh"
 export PATH=$PATH:~/.local/bin:~/.cargo/bin:~/.emacs.d/bin
 
 # Theme
-ZSH_THEME="typewritten"
+ZSH_THEME="agkozak"
 
 # plugins
 plugins=(git zsh-autosuggestions)

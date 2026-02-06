@@ -96,3 +96,5 @@ vim.keymap.set("n", "<leader>Tn", "<Cmd>tabnew<CR>")
 vim.keymap.set("n", "<leader>Tc", "<Cmd>tabclose<CR>")
 vim.keymap.set("n", "<A-,>", "<Cmd>tabnext<CR>")
 vim.keymap.set("n", "<A-.>", "<Cmd>tabprevious<CR>")
+
+vim.keymap.set("n", "<leader>gd", "<Cmd>lua MiniDiff.toggle_overlay()<CR>")

@@ -20,10 +20,25 @@ return {
         lualine_a = {
           "mode",
         },
-        lualine_b = { "diagnostics" },
-        lualine_c = {"filename"},
+        lualine_b = { "diff" },
+        lualine_c = {
+          {
+            'filename',
+            file_status = true,
+            newfile_status = false,
+            path = 3,
+            shorting_target = 40,
+            symbols = {
+              modified = '[+]', -- Text to show when the file is modified.
+              readonly = '[-]', -- Text to show when the file is non-modifiable or readonly.
+              unnamed = '[No Name]', -- Text to show for unnamed buffers.
+              newfile = '[New]', -- Text to show for newly created file before first write
+            }
+          }
+        },
         lualine_x = { "clock", "filetype" },
         lualine_y = {
+          "branch"
           -- {
           --   "timew",
           --   spinners = false,
