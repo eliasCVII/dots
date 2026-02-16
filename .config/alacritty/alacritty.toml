@@ -1,0 +1,14 @@
+[general]
+import = [ "~/.config/alacritty/colors.toml" ]
+
+[window]
+opacity = 0.95
+padding.x = 20
+padding.y = 20
+
+[font]
+normal = { family = "Hack Nerd Font Mono", style = "Regular" }
+size = 16.0
+
+[cursor]
+style = { shape = "Block", blinking = "On" }
