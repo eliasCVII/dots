@@ -3,14 +3,14 @@ DISABLE_COMPFIX="true"
 export ZSH_COMPDUMP="$HOME/.zcompdump"
 
 # Optimize compinit
-setopt EXTENDED_GLOB
-autoload -Uz compinit
-if [[ -n "$ZSH_COMPDUMP"(#qN.m-24) ]]; then
-  compinit -C -d "$ZSH_COMPDUMP"
-else
-  compinit -d "$ZSH_COMPDUMP"
-fi
-unsetopt EXTENDED_GLOB
+# setopt EXTENDED_GLOB
+# autoload -Uz compinit
+# if [[ -n "$ZSH_COMPDUMP"(#qN.m-24) ]]; then
+#   compinit -C -d "$ZSH_COMPDUMP"
+# else
+#   compinit -d "$ZSH_COMPDUMP"
+# fi
+# unsetopt EXTENDED_GLOB
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -29,9 +29,9 @@ ZSH_AUTOSUGGEST_USE_ASYNC=1
 bindkey '^ ' autosuggest-accept # set ctrl-space to accept suggestion
 
 # Shadow compinit to prevent OMZ from running it again
-compinit() { :; }
+# compinit() { :; }
 source $ZSH/oh-my-zsh.sh
-unfunction compinit
+# unfunction compinit
 
 # Set nvim as defaul editor
 export EDITOR=nvim
@@ -54,3 +54,4 @@ function y() {
 eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
 eval "$(/usr/bin/mise activate zsh)"
+

@@ -7,8 +7,8 @@
 
 (setq gc-cons-threshold 200000000) ; previous 33554432
 
-(setq doom-font (font-spec :family "Hack Nerd Font Mono" :size 20 :weight 'semi-light)
-     doom-variable-pitch-font (font-spec :family "Hack Nerd Font Mono" :size 21))
+(setq doom-font (font-spec :family "Hack Nerd Font Mono" :size 20 :weight 'semi-light))
+;;     doom-variable-pitch-font (font-spec :family "Hack Nerd Font Mono" :size 21))
 
 (setq doom-theme 'modus-operandi)
 
