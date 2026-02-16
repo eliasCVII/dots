@@ -20,3 +20,5 @@ require("builtin-lsp")
 local utils = require("utils")
 utils.wrap()
 utils.tabline()
+
+vim.lsp.enable("phpactor")

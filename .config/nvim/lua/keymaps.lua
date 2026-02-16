@@ -36,7 +36,8 @@ vim.keymap.set("i", "jk", "<Esc>")
 vim.keymap.set("n", "<leader>wv", "<Cmd>vsplit<CR>")
 vim.keymap.set("n", "<leader>ws", "<Cmd>split<CR>")
 vim.keymap.set("n", "<leader>wq", "<Cmd>quit<CR>")
-vim.keymap.set("n", "<leader>fp", "<Cmd>lua MiniPick.start({ source = { items = vim.fn.readdir('/home/elias/.config/nvim') } })<CR>") -- for "private config" files in ~/.config/nvim
+vim.keymap.set("n", "<leader>fp",
+  "<Cmd>lua MiniPick.start({ source = { items = vim.fn.readdir('/home/elias/.config/nvim') } })<CR>") -- for "private config" files in ~/.config/nvim
 vim.keymap.set("n", "<leader>.", ":Pick files<CR>")
 vim.keymap.set("n", "<leader>oT", "<Cmd>vertical term<CR>")
 vim.keymap.set("n", "<leader>oT", "<Cmd>horizontal term<CR>")
@@ -51,10 +52,11 @@ local map = function(keys, func, desc)
   vim.keymap.set("n", keys, func, { desc = "LSP: " .. desc })
 end
 -- vim.keymap.set("n", "<leader>gf", utils.autoformat, {})
-map("<leader>gf", utils.autoformat, "Format")
+map("<leader>ff", utils.autoformat, "Format")
 map("<leader>rn", vim.lsp.buf.rename, "Rename")
 map("<leader>ca", vim.lsp.buf.code_action, "Code Action")
 map("K", vim.lsp.buf.hover, "Hover documentation")
+
 -- map("<leader>gD", vim.lsp.buf.declaration, "Goto Declaration")
 -- map("<leader>gd", vim.lsp.buf.definition, "Goto Definition")
 -- map("<leader>gr", vim.lsp.buf.references, "Goto Reference")
@@ -97,4 +99,17 @@ vim.keymap.set("n", "<leader>Tc", "<Cmd>tabclose<CR>")
 vim.keymap.set("n", "<A-,>", "<Cmd>tabnext<CR>")
 vim.keymap.set("n", "<A-.>", "<Cmd>tabprevious<CR>")
 
-vim.keymap.set("n", "<leader>gd", "<Cmd>lua MiniDiff.toggle_overlay()<CR>")
+-- vim.keymap.set("n", "<leader>gd", "<Cmd>lua MiniDiff.toggle_overlay()<CR>")
+
+-- Git utils
+vim.keymap.set("n", "]h", "<Cmd>Gitsigns next_hunk<CR>")
+vim.keymap.set("n", "[h", "<Cmd>Gitsigns prev_hunk<CR>")
+vim.keymap.set("n", "<leader>gb", "<Cmd>Gitsigns toggle_current_line_blame<CR>")
+vim.keymap.set("n", "<leader>gw", "<Cmd>Gitsigns toggle_word_diff<CR>")
+
+vim.keymap.set("n", "<leader>X", "<Cmd>bd<CR>", { desc = "source this file" })
+
+-- vim.keymap.set("n", "<leader>bs", function()
+--   vim.fn.jobstart({ 'browser-sync', 'start', '--proxy', 'localhost:8080', '--files', '**/*.php' })
+--   print("Starting Browser-Sync")
+-- end, { desc = "Launch Browser-Sync" })

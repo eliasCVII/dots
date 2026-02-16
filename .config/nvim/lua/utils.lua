@@ -57,7 +57,7 @@ U.win_config = function()
 end
 
 U.wrap = function() -- wrap on stuff that aint for coding
-  local pattern = { "*.tex", "*.md", "*.org", "*.typ" }
+  local pattern = { "*.tex", "*.md", "*.org", "*.typ", "*.php" }
   vim.api.nvim_create_autocmd("BufEnter", {
     pattern = "*", -- Matches all files not in the specified patterns
     callback = function()
@@ -143,6 +143,34 @@ U.tabline = function()
   end
 
   vim.o.tabline = "%!v:lua.Tabline()"
+end
+
+U.apply_indent = function()
+  local buf = vim.api.nvim_get_current_buf()
+  local lnum = vim.api.nvim_win_get_cursor(0)[1]
+
+  local line = vim.api.nvim_buf_get_lines(buf, lnum - 1, lnum, false)[1]
+  if line ~= "" then
+    return
+  end
+
+  -- get indent from indentexpr (Tree-sitter or fallback)
+  local old_lnum = vim.v.lnum
+  vim.v.lnum = lnum
+  local indent = vim.fn.eval(vim.bo.indentexpr)
+  vim.v.lnum = old_lnum
+
+  if indent > 0 then
+    vim.api.nvim_buf_set_lines(
+      buf,
+      lnum - 1,
+      lnum,
+      false,
+      { string.rep(" ", indent) }
+    )
+  end
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("$", true, false, true), "n",
+    true)
 end
 
 return U

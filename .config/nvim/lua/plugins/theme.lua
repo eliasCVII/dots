@@ -1,6 +1,8 @@
 return { -- finally a beautiful theme
-  {"webhooked/kanso.nvim"},
-  {"mcchrish/zenbones.nvim", dependencies = "rktjmp/lush.nvim"},
+  { "webhooked/kanso.nvim" },
+  { "mcchrish/zenbones.nvim",        dependencies = "rktjmp/lush.nvim" },
+  { dir = "~/repo/monochrome.nvim/", dev = true },
+  { 'kungfusheep/mfd.nvim',          opts = { bright_comments = true } },
   {
     "mellow-theme/mellow.nvim",
     lazy = false,
