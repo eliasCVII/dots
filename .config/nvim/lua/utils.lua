@@ -173,4 +173,21 @@ U.apply_indent = function()
     true)
 end
 
+U.browser_sync = function()
+  vim.fn.jobstart(
+    { 'browser-sync', 'start', '--proxy', 'localhost:8080', '--files', '**/*.php' },
+    {
+      on_stdout = function(chanid, data, name)
+        vim.notify(vim.inspect(data), vim.log.levels.INFO)
+      end,
+      on_stderr = function(chanid, data, name)
+        vim.notify(vim.inspect(data), vim.log.levels.WARN)
+      end,
+      on_exit = function(id, exitcode, event)
+        vim.notify(vim.inspect(exitcode))
+      end,
+    }
+  )
+end
+
 return U

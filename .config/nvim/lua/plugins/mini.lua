@@ -92,7 +92,7 @@ return {
     require("mini.trailspace").setup()
 
     -- Extra features
-    require("mini.extra").setup() -- TODO: add keymap for: hipattern, git_, buf_line
+    require("mini.extra").setup() -- TODO: add keymap for pickers: hipattern, git_, buf_line
 
     -- Highlight indent scope
     require("mini.indentscope").setup({})
@@ -151,6 +151,7 @@ return {
         hack      = { pattern = '%f[%w]()HACK()%f[%W]', group = 'MiniHipatternsHack' },
         todo      = { pattern = '%f[%w]()TODO()%f[%W]', group = 'MiniHipatternsTodo' },
         note      = { pattern = '%f[%w]()NOTE()%f[%W]', group = 'MiniHipatternsNote' },
+        idea      = { pattern = '%f[%w]()IDEA()%f[%W]', group = 'MiniHipatternsNote' },
         hex_color = hipatterns.gen_highlighter.hex_color(),
       },
     })

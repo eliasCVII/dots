@@ -104,12 +104,14 @@ vim.keymap.set("n", "<A-.>", "<Cmd>tabprevious<CR>")
 -- Git utils
 vim.keymap.set("n", "]h", "<Cmd>Gitsigns next_hunk<CR>")
 vim.keymap.set("n", "[h", "<Cmd>Gitsigns prev_hunk<CR>")
-vim.keymap.set("n", "<leader>gb", "<Cmd>Gitsigns toggle_current_line_blame<CR>")
-vim.keymap.set("n", "<leader>gw", "<Cmd>Gitsigns toggle_word_diff<CR>")
+vim.keymap.set("n", "<Leader>gh", "<Cmd>Gitsigns preview_hunk_inline<CR>")
+vim.keymap.set("n", "<leader>gb", "<Cmd>Gitsigns toggle_current_line_blame<CR>",
+  { desc = "Toggle inline blame" }
+)
+vim.keymap.set("n", "<leader>gw", "<Cmd>Gitsigns toggle_word_diff<CR>", { desc = "Toggle word diff" })
+vim.keymap.set("n", "<leader>gp", "<Cmd>Pick git_hunks<CR>", { desc = "Search git hunks" })
 
-vim.keymap.set("n", "<leader>X", "<Cmd>bd<CR>", { desc = "source this file" })
+vim.keymap.set("n", "<leader>X", "<Cmd>lua MiniBufremove.delete()<CR>", { desc = "Source this file" })
+vim.keymap.set("n", "<leader>hk", "<Cmd>Pick hipatterns<CR>", { desc = "Source this file" })
 
--- vim.keymap.set("n", "<leader>bs", function()
---   vim.fn.jobstart({ 'browser-sync', 'start', '--proxy', 'localhost:8080', '--files', '**/*.php' })
---   print("Starting Browser-Sync")
--- end, { desc = "Launch Browser-Sync" })
+vim.keymap.set("n", "<leader>bs", utils.browser_sync, { desc = "Launch Browser-Sync" })

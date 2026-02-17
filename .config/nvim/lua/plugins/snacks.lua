@@ -50,14 +50,14 @@ return {
     -- Search
     { "<leader>cR", function() Snacks.rename.rename_file() end,          desc = "Rename File", },
     { "<leader>sw", function() Snacks.picker.grep_word() end,            desc = "Visual selection or word", mode = { "n", "x" }, },
-    { "<leader>sd", function() Snacks.picker.diagnostics() end,          desc = "Diagnostics", },
-    { "<leader>sD", function() Snacks.picker.diagnostics_buffer() end,   desc = "Buffer Diagnostics", },
-    { "<leader>su", function() Snacks.picker.undo() end,                 desc = "Undo History" },
-    { "<leader>/",  function() Snacks.picker.lines() end,                desc = "Buffer Lines" },
+    -- { "<leader>sd", function() Snacks.picker.diagnostics() end,          desc = "Diagnostics", },
+    -- { "<leader>sD", function() Snacks.picker.diagnostics_buffer() end,   desc = "Buffer Diagnostics", },
+    -- { "<leader>su", function() Snacks.picker.undo() end,                 desc = "Undo History" },
+    -- { "<leader>/",  function() Snacks.picker.lines() end,                desc = "Buffer Lines" },
     -- { "<leader>tg", function() Snacks.picker.grep() end, desc = "Grep" },
 
     -- Other
-    { "<leader>sk", function() Snacks.picker.keymaps() end,              desc = "Keymaps" },
+    -- { "<leader>sk", function() Snacks.picker.keymaps() end,              desc = "Keymaps" },
     { "<leader>ht", function() Snacks.picker.colorschemes() end,         desc = "Colorschemes" },
 
     -- Buffers
