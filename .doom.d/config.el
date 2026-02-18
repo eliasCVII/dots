@@ -10,7 +10,7 @@
 (setq doom-font (font-spec :family "Hack Nerd Font Mono" :size 20 :weight 'semi-light))
 ;;     doom-variable-pitch-font (font-spec :family "Hack Nerd Font Mono" :size 21))
 
-(setq doom-theme 'modus-operandi)
+(setq doom-theme 'doom-tomorrow-night)
 
 (setq display-line-numbers-type 'relative)
 
