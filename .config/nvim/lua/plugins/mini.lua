@@ -101,6 +101,8 @@ return {
 
     require("mini.bufremove").setup()
 
+    require("mini.git").setup()
+
     local miniclue = require('mini.clue')
     miniclue.setup({
       triggers = {

@@ -10,6 +10,7 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
+-- vim o what huh ?
 
 require("keymaps")
 require("options")
@@ -21,4 +22,4 @@ local utils = require("utils")
 utils.wrap()
 utils.tabline()
 
-vim.lsp.enable("phpactor")
+-- vim.lsp.enable("phpactor")
