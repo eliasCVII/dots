@@ -84,8 +84,8 @@ return {
         -- Create some toggle mappings
         Snacks.toggle.diagnostics():map("<F2>")
         -- Snacks.toggle.indent():map("<leader>ug")
-        Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ub")
-        Snacks.toggle.dim():map("<leader>uD")
+        -- Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ub")
+        -- Snacks.toggle.dim():map("<leader>uD")
       end,
     })
   end,

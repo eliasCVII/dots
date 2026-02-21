@@ -81,12 +81,10 @@ vim.keymap.set("n", "<leader>Tc", "<Cmd>tabclose<CR>")
 vim.keymap.set("n", "<A-,>", "<Cmd>tabnext<CR>")
 vim.keymap.set("n", "<A-.>", "<Cmd>tabprevious<CR>")
 
--- vim.keymap.set("n", "<leader>gd", "<Cmd>lua MiniDiff.toggle_overlay()<CR>")
-
 -- Git utils
 vim.keymap.set("n", "]h", "<Cmd>Gitsigns next_hunk<CR>")
 vim.keymap.set("n", "[h", "<Cmd>Gitsigns prev_hunk<CR>")
-vim.keymap.set("n", "<Leader>gh", "<Cmd>Gitsigns preview_hunk_inline<CR>")
+vim.keymap.set("n", "<Leader>gh", "<Cmd>lua MiniDiff.toggle_overlay()<CR>")
 vim.keymap.set("n", "<leader>gb", "<Cmd>Gitsigns toggle_current_line_blame<CR>",
   { desc = "Toggle inline blame" }
 )
