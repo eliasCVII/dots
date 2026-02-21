@@ -14,7 +14,7 @@ export ZSH_COMPDUMP="$HOME/.zcompdump"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-export PATH=$PATH:~/.local/bin:~/.cargo/bin:~/.emacs.d/bin
+export PATH=$PATH:~/.local/bin:~/.cargo/bin:~/.emacs.d/bin:~/go/bin
 
 # Theme
 ZSH_THEME="agkozak"
@@ -55,3 +55,6 @@ eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
 eval "$(/usr/bin/mise activate zsh)"
 
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"

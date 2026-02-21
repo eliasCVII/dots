@@ -103,6 +103,7 @@ U.toggle_numbers = function()
     vim.opt.nu = true
   end
 end
+
 U.autoformat = function()
   vim.lsp.buf.format()
   MiniTrailspace.trim()

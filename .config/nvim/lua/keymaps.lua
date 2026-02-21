@@ -22,22 +22,12 @@ vim.keymap.set("t", "<c-l>", "<Cmd>wincmd l<CR>")
 -- clear highlight
 vim.keymap.set("n", "<Esc>", "<Cmd>nohlsearch<CR>")
 
--- Timew bindings
--- vim.keymap.set("n", "<leader>tn", "<Cmd>Timew start<CR>")
--- vim.keymap.set("n", "<leader>ts", "<Cmd>Timew stop<CR>")
--- vim.keymap.set("n", "<leader>tc", "<Cmd>Timew continue<CR>")
--- vim.keymap.set("n", "<leader>tC", "<Cmd>Timew cancel<CR>")
--- vim.keymap.set("n", "<leader>td", "<Cmd>Timew delete<CR>")
--- vim.keymap.set("n", "<leader>tS", "<Cmd>Timew summary<CR>")
-
 -- Doom like keybinds
 vim.keymap.set("n", "<leader>fs", utils.on_save)
 vim.keymap.set("i", "jk", "<Esc>")
 vim.keymap.set("n", "<leader>wv", "<Cmd>vsplit<CR>")
 vim.keymap.set("n", "<leader>ws", "<Cmd>split<CR>")
 vim.keymap.set("n", "<leader>wq", "<Cmd>quit<CR>")
-vim.keymap.set("n", "<leader>fp",
-  "<Cmd>lua MiniPick.start({ source = { items = vim.fn.readdir('/home/elias/.config/nvim') } })<CR>") -- for "private config" files in ~/.config/nvim
 vim.keymap.set("n", "<leader>.", ":Pick files<CR>")
 vim.keymap.set("n", "<leader>oT", "<Cmd>vertical term<CR>")
 vim.keymap.set("n", "<leader>oT", "<Cmd>horizontal term<CR>")
@@ -56,10 +46,6 @@ map("<leader>ff", utils.autoformat, "Format")
 map("<leader>rn", vim.lsp.buf.rename, "Rename")
 map("<leader>ca", vim.lsp.buf.code_action, "Code Action")
 map("K", vim.lsp.buf.hover, "Hover documentation")
-
--- map("<leader>gD", vim.lsp.buf.declaration, "Goto Declaration")
--- map("<leader>gd", vim.lsp.buf.definition, "Goto Definition")
--- map("<leader>gr", vim.lsp.buf.references, "Goto Reference")
 
 -- Zen Mode
 vim.keymap.set("n", "<leader>tz", "<Cmd>ZenMode<CR>")
@@ -86,14 +72,10 @@ vim.keymap.set(
   { noremap = true, silent = true }
 )
 
-vim.keymap.set("n", "<leader>th", "<Cmd>Telescope help_tags<CR>")
+vim.keymap.set("n", "<leader>th", "<Cmd>Pick help<CR>")
 vim.keymap.set("n", "<leader>tg", "<Cmd>Pick grep_live<CR>")
 vim.keymap.set("n", "<leader>bi", "<Cmd>Pick buffers<CR>")
 vim.keymap.set("n", "<leader>u", "<Cmd>UndotreeToggle<CR>")
-
-vim.keymap.set("n", "<leader>p", "<Cmd>Precognition toggle<CR>")
-vim.keymap.set("n", "<leader>Th", "<Cmd>Hardtime toggle<CR>")
-
 vim.keymap.set("n", "<leader>Tn", "<Cmd>tabnew<CR>")
 vim.keymap.set("n", "<leader>Tc", "<Cmd>tabclose<CR>")
 vim.keymap.set("n", "<A-,>", "<Cmd>tabnext<CR>")
@@ -111,6 +93,7 @@ vim.keymap.set("n", "<leader>gb", "<Cmd>Gitsigns toggle_current_line_blame<CR>",
 vim.keymap.set("n", "<leader>gw", "<Cmd>Gitsigns toggle_word_diff<CR>", { desc = "Toggle word diff" })
 vim.keymap.set("n", "<leader>gp", "<Cmd>Pick git_hunks<CR>", { desc = "Search git hunks" })
 
+-- Other bullshit
 vim.keymap.set("n", "<leader>X", "<Cmd>lua MiniBufremove.delete()<CR>", { desc = "Source this file" })
 vim.keymap.set("n", "<leader>hk", "<Cmd>Pick hipatterns<CR>", { desc = "Source this file" })
 

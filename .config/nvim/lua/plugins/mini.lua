@@ -102,6 +102,7 @@ return {
     require("mini.bufremove").setup()
 
     require("mini.git").setup()
+    require("mini.diff").setup()
 
     local miniclue = require('mini.clue')
     miniclue.setup({
