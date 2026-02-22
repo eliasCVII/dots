@@ -85,18 +85,19 @@ vim.keymap.set("n", "<A-.>", "<Cmd>tabprevious<CR>")
 vim.keymap.set("n", "]h", "<Cmd>Gitsigns next_hunk<CR>")
 vim.keymap.set("n", "[h", "<Cmd>Gitsigns prev_hunk<CR>")
 vim.keymap.set("n", "<Leader>gh", "<Cmd>lua MiniDiff.toggle_overlay()<CR>")
-vim.keymap.set("n", "<leader>gb", "<Cmd>Gitsigns toggle_current_line_blame<CR>",
-  { desc = "Toggle inline blame" }
-)
+vim.keymap.set("n", "<leader>gb", "<Cmd>Gitsigns toggle_current_line_blame<CR>", { desc = "Toggle inline blame" })
 vim.keymap.set("n", "<leader>gw", "<Cmd>Gitsigns toggle_word_diff<CR>", { desc = "Toggle word diff" })
 vim.keymap.set("n", "<leader>gp", "<Cmd>Pick git_hunks<CR>", { desc = "Search git hunks" })
 vim.keymap.set("n", "<leader>gsh", "<Cmd>Gitsigns stage_hunk<CR>", { desc = "Stage hunk" })
-vim.keymap.set("n", "<leader>gsb", "<Cmd>Gitsigns stage_buffer<CR>", { desc = "Stage buffer" })
 vim.keymap.set("n", "<leader>guh", "<Cmd>Gitsigns undo_stage_hunk<CR>", { desc = "Undo hunk stage" })
+vim.keymap.set("n", "<leader>gsb", "<Cmd>Gitsigns stage_buffer<CR>", { desc = "Stage buffer" })
+vim.keymap.set("n", "<leader>gub", "<Cmd>Gitsigns stage_buffer<CR>", { desc = "Stage buffer" })
 vim.keymap.set("n", "<leader>gc", "<Cmd>Git commit<CR>", { desc = "git commit" })
+vim.keymap.set("n", "<leader>gg", "<Cmd>Git<CR>", { desc = "fugitive" })
+vim.keymap.set("n", "<leader>gd", "<Cmd>Gvdiffsplit<CR>", { desc = "Open diff in vsplit" })
 
 -- Other bullshit
-vim.keymap.set("n", "<leader>X", "<Cmd>lua MiniBufremove.delete()<CR>", { desc = "Source this file" })
-vim.keymap.set("n", "<leader>hk", "<Cmd>Pick hipatterns<CR>", { desc = "Source this file" })
+vim.keymap.set("n", "<leader>X", "<Cmd>lua MiniBufremove.delete()<CR>", { desc = "Delete this buffer" })
+vim.keymap.set("n", "<leader>hk", "<Cmd>Pick hipatterns<CR>", { desc = "Search for matching patterns" })
 
 vim.keymap.set("n", "<leader>bs", utils.browser_sync, { desc = "Launch Browser-Sync" })
