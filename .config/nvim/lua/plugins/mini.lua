@@ -1,166 +1,162 @@
-return {
-  "echasnovski/mini.nvim",
-  event = "VeryLazy",
-  version = false,
-  config = function()
-    -- Better surroundings, in visual or normal mode
-    require("mini.surround").setup({})
+vim.pack.add({
+	"https://www.github.com/echasnovski/mini.nvim",
+})
 
-    -- Filesystem navigation+modifications
-    require("mini.files").setup({
-      windows = {
-        max_number = math.huge,
-        preview = false,
-        width_focus = 30,
-        width_nofocus = 15,
-        width_preview = 55,
-      },
-      mappings = {
-        go_in = "l",
-        go_in_plus = "<CR>",
-      },
-    })
+require("mini.surround").setup({})
 
-    -- some out of the box settings
-    require("mini.basics").setup({
-      options = {
-        basic = false,
-        extra_ui = false,
-        win_borders = "default",
-      },
-      mappings = {
-        basic = false,
-        option_toggle_prefix = "",
-        windows = false,
-        move_with_alt = true,
-      },
-      autocommands = {
-        basic = false,
-      },
-    })
+-- Filesystem navigation+modifications
+require("mini.files").setup({
+	windows = {
+		max_number = math.huge,
+		preview = false,
+		width_focus = 30,
+		width_nofocus = 15,
+		width_preview = 55,
+	},
+	mappings = {
+		go_in = "l",
+		go_in_plus = "<CR>",
+	},
+})
 
-    require("mini.pairs").setup({})
+-- some out of the box settings
+require("mini.basics").setup({
+	options = {
+		basic = false,
+		extra_ui = false,
+		win_borders = "default",
+	},
+	mappings = {
+		basic = false,
+		option_toggle_prefix = "",
+		windows = false,
+		move_with_alt = true,
+	},
+	autocommands = {
+		basic = false,
+	},
+})
 
-    -- Move selected blocks
-    require("mini.move").setup({
-      mappings = {
-        -- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
-        left = "<M-h>",
-        right = "<M-l>",
-        down = "<M-j>",
-        up = "<M-k>",
+require("mini.pairs").setup({})
 
-        -- Move current line in Normal mode
-        line_left = "",
-        line_right = "",
-        line_down = "",
-        line_up = "",
-      },
-    })
+-- Move selected blocks
+require("mini.move").setup({
+	mappings = {
+		-- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
+		left = "<M-h>",
+		right = "<M-l>",
+		down = "<M-j>",
+		up = "<M-k>",
 
-    -- gS
-    require("mini.splitjoin").setup()
+		-- Move current line in Normal mode
+		line_left = "",
+		line_right = "",
+		line_down = "",
+		line_up = "",
+	},
+})
 
-    require("mini.misc").setup()
+-- gS
+require("mini.splitjoin").setup()
 
-    require("mini.misc").setup_restore_cursor()
+require("mini.misc").setup()
 
-    -- Great picker for anything
-    local win_config = function()
-      local height = 20
-      local width = 70
-      return {
-        config = {
-          anchor = "NW",
-          height = height,
-          width = width,
-          row = math.floor(0.5 * vim.o.lines - (height / 2)),
-          col = math.floor(0.5 * (vim.o.columns - width)),
-        },
-        prompt_prefix = " : ",
-      }
-    end
+require("mini.misc").setup_restore_cursor()
 
-    require("mini.pick").setup({
-      window = win_config(),
-    })
+-- Great picker for anything
+local win_config = function()
+	local height = 20
+	local width = 70
+	return {
+		config = {
+			anchor = "NW",
+			height = height,
+			width = width,
+			row = math.floor(0.5 * vim.o.lines - (height / 2)),
+			col = math.floor(0.5 * (vim.o.columns - width)),
+		},
+		prompt_prefix = " : ",
+	}
+end
 
-    -- Bracket movement
-    require("mini.bracketed").setup() -- TODO: learn mappings
+require("mini.pick").setup({
+	window = win_config(),
+})
 
-    -- Remove whitespace
-    require("mini.trailspace").setup()
+-- Bracket movement
+require("mini.bracketed").setup() -- TODO: learn mappings
 
-    -- Extra features
-    require("mini.extra").setup() -- TODO: add keymap for pickers: hipattern, git_, buf_line
+-- Remove whitespace
+require("mini.trailspace").setup()
 
-    -- Highlight indent scope
-    require("mini.indentscope").setup({})
+-- Extra features
+require("mini.extra").setup() -- TODO: add keymap for pickers: hipattern, git_, buf_line
 
-    require("mini.tabline").setup() -- TODO: fuk this
+-- Highlight indent scope
+require("mini.indentscope").setup({})
 
-    require("mini.bufremove").setup()
+require("mini.tabline").setup() -- TODO: fuk this
 
-    require("mini.diff").setup({
-      view = {
-        style = 'sign',
-        signs = { add = '', change = '', delete = '' }
-      }
-    })
+require("mini.bufremove").setup()
 
-    local miniclue = require('mini.clue')
-    miniclue.setup({
-      triggers = {
-        -- Leader triggers
-        { mode = { 'n', 'x' }, keys = '<Leader>' },
+require("mini.diff").setup({
+	view = {
+		style = "sign",
+		signs = { add = "", change = "", delete = "" },
+	},
+})
 
-        -- `[` and `]` keys
-        { mode = 'n',          keys = '[' },
-        { mode = 'n',          keys = ']' },
+local miniclue = require("mini.clue")
+miniclue.setup({
+	triggers = {
+		-- Leader triggers
+		{ mode = { "n", "x" }, keys = "<Leader>" },
 
-        -- Built-in completion
-        { mode = 'i',          keys = '<C-x>' },
+		-- `[` and `]` keys
+		{ mode = "n", keys = "[" },
+		{ mode = "n", keys = "]" },
 
-        -- `g` key
-        { mode = { 'n', 'x' }, keys = 'g' },
+		-- Built-in completion
+		{ mode = "i", keys = "<C-x>" },
 
-        -- Marks
-        { mode = { 'n', 'x' }, keys = "'" },
-        { mode = { 'n', 'x' }, keys = '`' },
+		-- `g` key
+		{ mode = { "n", "x" }, keys = "g" },
 
-        -- Registers
-        { mode = { 'n', 'x' }, keys = '"' },
-        { mode = { 'i', 'c' }, keys = '<C-r>' },
+		-- Marks
+		{ mode = { "n", "x" }, keys = "'" },
+		{ mode = { "n", "x" }, keys = "`" },
 
-        -- Window commands
-        { mode = 'n',          keys = '<C-w>' },
+		-- Registers
+		{ mode = { "n", "x" }, keys = '"' },
+		{ mode = { "i", "c" }, keys = "<C-r>" },
 
-        -- `z` key
-        { mode = { 'n', 'x' }, keys = 'z' },
-      },
+		-- Window commands
+		{ mode = "n", keys = "<C-w>" },
 
-      clues = {
-        -- Enhance this by adding descriptions for <Leader> mapping groups
-        miniclue.gen_clues.square_brackets(),
-        miniclue.gen_clues.builtin_completion(),
-        miniclue.gen_clues.g(),
-        miniclue.gen_clues.marks(),
-        miniclue.gen_clues.registers(),
-        miniclue.gen_clues.windows(),
-        miniclue.gen_clues.z(),
-      },
-    })
+		-- `z` key
+		{ mode = { "n", "x" }, keys = "z" },
+	},
 
-    local hipatterns = require('mini.hipatterns')
-    hipatterns.setup({
-      highlighters = {
-        fixme     = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'MiniHipatternsFixme' },
-        hack      = { pattern = '%f[%w]()HACK()%f[%W]', group = 'MiniHipatternsHack' },
-        todo      = { pattern = '%f[%w]()TODO()%f[%W]', group = 'MiniHipatternsTodo' },
-        note      = { pattern = '%f[%w]()NOTE()%f[%W]', group = 'MiniHipatternsNote' },
-        idea      = { pattern = '%f[%w]()IDEA()%f[%W]', group = 'MiniHipatternsNote' },
-        hex_color = hipatterns.gen_highlighter.hex_color(),
-      },
-    })
-  end,
-}
+	clues = {
+		-- Enhance this by adding descriptions for <Leader> mapping groups
+		miniclue.gen_clues.square_brackets(),
+		miniclue.gen_clues.builtin_completion(),
+		miniclue.gen_clues.g(),
+		miniclue.gen_clues.marks(),
+		miniclue.gen_clues.registers(),
+		miniclue.gen_clues.windows(),
+		miniclue.gen_clues.z(),
+	},
+})
+
+local hipatterns = require("mini.hipatterns")
+hipatterns.setup({
+	highlighters = {
+		fixme = { pattern = "%f[%w]()FIXME()%f[%W]", group = "MiniHipatternsFixme" },
+		hack = { pattern = "%f[%w]()HACK()%f[%W]", group = "MiniHipatternsHack" },
+		todo = { pattern = "%f[%w]()TODO()%f[%W]", group = "MiniHipatternsTodo" },
+		note = { pattern = "%f[%w]()NOTE()%f[%W]", group = "MiniHipatternsNote" },
+		idea = { pattern = "%f[%w]()IDEA()%f[%W]", group = "MiniHipatternsNote" },
+		hex_color = hipatterns.gen_highlighter.hex_color(),
+	},
+})

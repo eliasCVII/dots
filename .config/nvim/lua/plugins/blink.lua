@@ -1,12 +1,26 @@
-return {
+vim.pack.add({
   {
-    "saghen/blink.cmp",
-    event = "VeryLazy",
-    version = "1.*",
-    dependencies = { "L3MON4D3/LuaSnip" },
-    build = "cargo build --release",
-    opts = {
+    src = "https://github.com/saghen/blink.cmp",
+    version = vim.version.range("^1"),
+  },
+})
+
+-- Lazy load on first insert mode entry
+local group = vim.api.nvim_create_augroup("BlinkCmpLazyLoad", { clear = true })
+
+vim.api.nvim_create_autocmd("InsertEnter", {
+  pattern = "*",
+  group = group,
+  once = true,
+  callback = function()
+    require("blink.cmp").setup({
+      keymap = { preset = "super-tab" },
+      appearance = {
+        nerd_font_variant = "mono",
+        -- use_nvim_cmp_as_default = true,
+      },
       completion = {
+        documentation = { auto_show = false },
         menu = {
           winblend = vim.o.pumblend,
           draw = {
@@ -18,18 +32,9 @@ return {
         },
         accept = {
           auto_brackets = {
-            enabled = false,
+            enabled = true,
           },
         },
-        documentation = {
-          auto_show = true,
-          auto_show_delay_ms = 200,
-        },
-        list = {
-          selection = { preselect = false, auto_insert = false },
-        },
-        trigger = { show_in_snippet = false },
-        ghost_text = { enabled = true },
       },
       keymap = {
         ["<C-e>"] = { "hide", "fallback" },
@@ -55,69 +60,15 @@ return {
         ["<C-b>"] = { "scroll_documentation_up", "fallback" },
         ["<C-f>"] = { "scroll_documentation_down", "fallback" },
       },
-      appearance = {
-        nerd_font_variant = "normal",
-        kind_icons = {
-          Array = " ",
-          Boolean = "󰨙 ",
-          Class = " ",
-          Codeium = "󰘦 ",
-          Color = " ",
-          Control = " ",
-          Collapsed = " ",
-          Constant = "󰏿 ",
-          Constructor = " ",
-          Copilot = " ",
-          Enum = " ",
-          EnumMember = " ",
-          Event = " ",
-          Field = " ",
-          File = " ",
-          Folder = " ",
-          Function = "󰊕 ",
-          Interface = " ",
-          Key = " ",
-          Keyword = " ",
-          Method = "󰊕 ",
-          Module = " ",
-          Namespace = "󰦮 ",
-          Null = " ",
-          Number = "󰎠 ",
-          Object = " ",
-          Operator = " ",
-          Package = " ",
-          Property = " ",
-          Reference = " ",
-          Snippet = " ",
-          String = " ",
-          Struct = "󰆼 ",
-          TabNine = "󰏚 ",
-          Text = " ",
-          TypeParameter = " ",
-          Unit = " ",
-          Value = " ",
-          Variable = "󰀫 ",
-        },
-      },
-      cmdline = {
-        enabled = false,
-        keymap = { preset = "inherit" },
-        completion = { menu = { auto_show = true } },
-      },
-
       sources = {
-        default = { "lazydev", "lsp", "path", "snippets", "buffer" },
-        providers = {
-          lazydev = {
-            name = "LazyDev",
-            module = "lazydev.integrations.blink",
-            score_offset = 100,
-          },
-        },
+        default = { "lsp", "path", "snippets", "buffer" },
       },
-
-      signature = { enabled = true },
-      snippets = { preset = "luasnip" },
-    },
-  },
-}
+      snippets = {
+        expand = function(snippet)
+          require("luasnip").lsp_expand(snippet)
+        end,
+      },
+      fuzzy = { implementation = "prefer_rust_with_warning" },
+    })
+  end,
+})

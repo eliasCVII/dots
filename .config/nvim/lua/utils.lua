@@ -84,15 +84,6 @@ U.toggle_colorcolumn = function() -- toggle colorcolumn on and off
   end
 end
 
-U.toggle_diagnostics = function()
-  local value = vim.diagnostic.is_disabled()
-  if not value then
-    vim.diagnostic.disable()
-  else
-    vim.diagnostic.enable()
-  end
-end
-
 U.toggle_numbers = function()
   local value = vim.wo.nu
   if value then
@@ -162,33 +153,23 @@ U.apply_indent = function()
   vim.v.lnum = old_lnum
 
   if indent > 0 then
-    vim.api.nvim_buf_set_lines(
-      buf,
-      lnum - 1,
-      lnum,
-      false,
-      { string.rep(" ", indent) }
-    )
+    vim.api.nvim_buf_set_lines(buf, lnum - 1, lnum, false, { string.rep(" ", indent) })
   end
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("$", true, false, true), "n",
-    true)
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("$", true, false, true), "n", true)
 end
 
 U.browser_sync = function()
-  vim.fn.jobstart(
-    { 'browser-sync', 'start', '--proxy', 'localhost:8080', '--files', '**/*.php' },
-    {
-      on_stdout = function(chanid, data, name)
-        vim.notify(vim.inspect(data), vim.log.levels.INFO)
-      end,
-      on_stderr = function(chanid, data, name)
-        vim.notify(vim.inspect(data), vim.log.levels.WARN)
-      end,
-      on_exit = function(id, exitcode, event)
-        vim.notify(vim.inspect(exitcode))
-      end,
-    }
-  )
+  vim.fn.jobstart({ "browser-sync", "start", "--proxy", "localhost:8080", "--files", "**/*.php" }, {
+    on_stdout = function(chanid, data, name)
+      vim.notify(vim.inspect(data), vim.log.levels.INFO)
+    end,
+    on_stderr = function(chanid, data, name)
+      vim.notify(vim.inspect(data), vim.log.levels.WARN)
+    end,
+    on_exit = function(id, exitcode, event)
+      vim.notify(vim.inspect(exitcode))
+    end,
+  })
 end
 
 return U

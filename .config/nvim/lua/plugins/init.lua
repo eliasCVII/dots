@@ -1,0 +1,7 @@
+require("plugins.theme")
+require("plugins.blink")
+require("plugins.git")
+require("plugins.mini")
+require("plugins.treesitter")
+require("plugins.lsp")
+require("plugins.snip")
