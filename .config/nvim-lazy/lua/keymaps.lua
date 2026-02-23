@@ -28,7 +28,7 @@ vim.keymap.set("i", "jk", "<Esc>")
 vim.keymap.set("n", "<leader>wv", "<Cmd>vsplit<CR>")
 vim.keymap.set("n", "<leader>ws", "<Cmd>split<CR>")
 vim.keymap.set("n", "<leader>wq", "<Cmd>quit<CR>")
-vim.keymap.set("n", "<leader>.", ":Pick files tool='git'<CR>")
+vim.keymap.set("n", "<leader>.", ":Pick files<CR>")
 vim.keymap.set("n", "<leader>oT", "<Cmd>vertical term<CR>")
 vim.keymap.set("n", "<leader>oT", "<Cmd>horizontal term<CR>")
 vim.keymap.set("n", "<leader>bn", "<Cmd>bnext<CR>")
@@ -37,15 +37,15 @@ vim.keymap.set("n", "<leader>bp", "<Cmd>bprev<CR>")
 -- File browsing bindings
 vim.keymap.set("n", "<leader>e", "<Cmd>lua MiniFiles.open()<CR>", {})
 
--- LSP
-local opts = { noremap = true, silent = true, buffer = bufnr }
-vim.keymap.set("n", "<leader>ff", utils.autoformat, { desc= "Format" })
-vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc="Rename" })
-vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc="Code Action" })
-vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc ="Hover documentation" })
-vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float, { desc = "Diagnostic popup" })
-vim.keymap.set("n", "<leader>gD", vim.lsp.buf.definition, opts)
-vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+-- LSP binds
+local map = function(keys, func, desc)
+  vim.keymap.set("n", keys, func, { desc = "LSP: " .. desc })
+end
+-- vim.keymap.set("n", "<leader>gf", utils.autoformat, {})
+map("<leader>ff", utils.autoformat, "Format")
+map("<leader>rn", vim.lsp.buf.rename, "Rename")
+map("<leader>ca", vim.lsp.buf.code_action, "Code Action")
+map("K", vim.lsp.buf.hover, "Hover documentation")
 
 -- Zen Mode
 vim.keymap.set("n", "<leader>tz", "<Cmd>ZenMode<CR>")
@@ -101,3 +101,11 @@ vim.keymap.set("n", "<leader>X", "<Cmd>lua MiniBufremove.delete()<CR>", { desc =
 vim.keymap.set("n", "<leader>hk", "<Cmd>Pick hipatterns<CR>", { desc = "Search for matching patterns" })
 
 vim.keymap.set("n", "<leader>bs", utils.browser_sync, { desc = "Launch Browser-Sync" })
+
+-- better movement in wrapped text
+vim.keymap.set("n", "j", function()
+  return vim.v.count == 0 and "gj" or "j"
+end, { expr = true, silent = true, desc = "Down (wrap-aware)" })
+vim.keymap.set("n", "k", function()
+  return vim.v.count == 0 and "gk" or "k"
+end, { expr = true, silent = true, desc = "Up (wrap-aware)" })

@@ -10,10 +10,7 @@ return {
       "neovim/nvim-lspconfig",
     },
     event = { "VeryLazy", "BufReadPre", "BufNewFile" },
-    opts = {},
-  },
-  {
-    "https://github.com/creativenull/efmls-configs-nvim",
+    opts = {}
   },
   {
     "folke/lazydev.nvim",

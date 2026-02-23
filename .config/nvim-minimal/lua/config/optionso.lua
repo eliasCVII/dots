@@ -1,0 +1,86 @@
+-- General
+vim.o.swapfile = false
+vim.o.termguicolors = true
+vim.o.clipboard = "unnamed,unnamedplus"
+vim.o.mouse = "a"                              -- Enable mouse
+vim.o.mousescroll = "ver:25,hor:5"             -- Customize mouse scroll
+vim.o.switchbuf = "usetab"                     -- Use already opened buffers when switching
+vim.o.undofile = true                          -- Enable persistent undo
+vim.o.shada = "'100,<50,s10,:1000,/100,@100,h" -- Limit ShaDa file (for startup)
+vim.cmd("filetype plugin indent on")
+if vim.fn.exists("syntax_on") ~= 1 then
+  vim.cmd("syntax enable")
+end
+vim.o.nu = true
+vim.o.rnu = true
+vim.o.scrolloff = 10
+
+-- UI
+vim.o.breakindent = true                  -- Indent wrapped lines to match line start
+vim.o.breakindentopt = "list:-1"          -- Add padding for lists (if 'wrap' is set)
+vim.o.colorcolumn = "80"                  -- Draw column on the right of maximum width
+vim.o.cursorline = true                   -- Enable current line highlighting
+vim.o.linebreak = true                    -- Wrap lines at 'breakat' (if 'wrap' is set)
+vim.o.list = true                         -- Show helpful text indicators
+vim.o.number = true                       -- Show line numbers
+vim.o.pumborder = "single"                -- Use border in popup menu
+vim.o.pumheight = 10                      -- Make popup menu smaller
+vim.o.pummaxwidth = 100                   -- Make popup menu not too wide
+vim.o.ruler = false                       -- Don't show cursor coordinates
+vim.o.shortmess = "CFOSWaco"              -- Disable some built-in completion messages
+vim.o.showmode = false                    -- Don't show mode in command line
+vim.o.signcolumn = "yes"                  -- Always show signcolumn (less flicker)
+vim.o.splitbelow = true                   -- Horizontal splits will be below
+vim.o.splitkeep = "screen"                -- Reduce scroll during window split
+vim.o.splitright = true                   -- Vertical splits will be to the right
+vim.o.winborder = "single"                -- Use border in floating windows
+vim.o.wrap = false                        -- Don't visually wrap lines (toggle with \w)
+vim.o.winblend = 0                        -- Floating window transparency
+vim.opt.conceallevel = 0                  -- Don't hide markup
+vim.opt.concealcursor = ""                -- Don't hide cursor line markup
+
+vim.o.cursorlineopt = "screenline,number" -- Show cursor line per screen line
+
+vim.o.fillchars = "eob: ,fold:╌"
+vim.opt.listchars = { tab = "»  ", trail = "·", nbsp = "␣", extends = "…", precedes = "…" }
+
+--- Fold
+vim.o.foldlevel = 10        -- Fold nothing by default; set to 0 or 1 to fold
+vim.o.foldmethod = "indent" -- Fold based on indent level
+vim.o.foldnestmax = 10      -- Limit number of fold levels
+vim.o.foldtext = ""         -- Show text under fold with its highlighting
+
+-- Editing
+vim.o.formatoptions = "rqnl1j" -- Improve comment editing
+vim.o.ignorecase = true        -- Ignore case during search
+vim.o.incsearch = true         -- Show search matches while typing
+vim.o.hlsearch = true
+vim.o.infercase = true         -- Infer case in built-in completion
+vim.o.smartcase = true         -- Respect case if search pattern has upper case
+vim.o.spelloptions = "camel"   -- Treat camelCase word parts as separate words
+vim.o.virtualedit = "block"    -- Allow going past end of line in blockwise mode
+
+--- Tabs
+vim.opt.tabstop = 2                     -- tabwidth
+vim.opt.shiftwidth = 2                  -- indent width
+vim.opt.softtabstop = 2                 -- soft tab stop not tabs on tab/backspace
+vim.opt.expandtab = false               -- use spaces instead of tabs
+vim.opt.smartindent = true              -- smart auto-indent
+vim.opt.autoindent = true               -- copy indent from current line
+
+vim.o.iskeyword = "@,48-57,_,192-255,-" -- Treat dash as `word` textobject part
+vim.opt.path:append("**")               -- include subdirectories in search
+vim.o.formatlistpat = [[^\s*[0-9\-\+\*]\+[\.\)]*\s\+]]
+
+vim.opt.encoding = "UTF-8" -- Set encoding
+
+-- Built-in completion
+vim.o.complete = ".,w,b,kspell"                     -- Use less sources
+vim.o.completeopt = "menuone,noselect,fuzzy,nosort" -- Use custom behavior
+vim.o.completetimeout = 100                         -- Limit sources delay
+
+vim.o.wildmenu = true
+vim.o.wildmode = "longest:full,full"
+vim.opt.wildignore:append({ "*.o", "*.obj", "*.pyc", "*.class", "*.jar" })
+
+vim.opt.diffopt:append("linematch:60") -- que es esto

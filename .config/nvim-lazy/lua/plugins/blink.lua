@@ -18,17 +18,17 @@ return {
         },
         accept = {
           auto_brackets = {
-            enabled = true,
+            enabled = false,
           },
         },
         documentation = {
-          auto_show = false,
+          auto_show = true,
           auto_show_delay_ms = 200,
         },
-        -- list = {
-        --   selection = { preselect = false, auto_insert = false },
-        -- },
-        -- trigger = { show_in_snippet = false },
+        list = {
+          selection = { preselect = false, auto_insert = false },
+        },
+        trigger = { show_in_snippet = false },
         ghost_text = { enabled = true },
       },
       keymap = {
@@ -99,11 +99,11 @@ return {
           Variable = "󰀫 ",
         },
       },
-      -- cmdline = {
-      --   enabled = false,
-      --   keymap = { preset = "inherit" },
-      --   completion = { menu = { auto_show = true } },
-      -- },
+      cmdline = {
+        enabled = false,
+        keymap = { preset = "inherit" },
+        completion = { menu = { auto_show = true } },
+      },
 
       sources = {
         default = { "lazydev", "lsp", "path", "snippets", "buffer" },

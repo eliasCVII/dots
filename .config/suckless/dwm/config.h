@@ -55,8 +55,12 @@ static Sp scratchpads[] = {
 };
 
 static const char *const autostart[] = {
-    "picom",     NULL, "slstatus", NULL,          "mpd", NULL, "dunst", NULL,
-    "clipmenud", NULL, "xrdb",     ".Xresources", NULL,  NULL /* terminate */
+    "picom", NULL,   "slstatus",
+    NULL,    "mpd",  NULL,
+    "dunst", NULL,   "clipmenud",
+    NULL,    "xrdb", ".Xresources",
+    NULL,    "feh",  "--bg-fill /home/elias/Pictures/wallpapers/what.jpg",
+    NULL,    NULL /* terminate */
 };
 
 /* tagging */
@@ -64,8 +68,8 @@ static const char *tags[] = {"",  "",  " ",  " ", "󰑈",
                              "󰙯", " ", "󰣠 ", "",  ""};
 static const Rule rules[] = {
     /* xprop(1):
-     *	WM_CLASS(STRING) = instance, class
-     *	WM_NAME(STRING) = title
+     *  WM_CLASS(STRING) = instance, class
+     *  WM_NAME(STRING) = title
      */
     /* class              instance          title           tags mask isfloating
        isterminal noswallow   monitor */
@@ -75,15 +79,6 @@ static const Rule rules[] = {
     {"Firefox", NULL, NULL, 1 << 9, False, 0, -1, -1},
     {"obs", NULL, NULL, 1 << 7, False, 0, -1, -1},
     {"Surf", NULL, NULL, 1 << 3, False, 0, -1, -1},
-    {"Virt-manager", NULL, NULL, 1 << 8, False, 0, -1, -1},
-    {"Chromium", NULL, NULL, 1 << 1, False, 0, -1, -1},
-    {"transmission-gtk", NULL, NULL, 1 << 9, False, 0, -1, -1},
-    {"Gimp", NULL, NULL, 1 << 5, False, 0, -1, -1},
-    {"kdenlive", NULL, NULL, 1 << 3, False, 0, -1, -1},
-    {"st", NULL, "ranger", 1 << 6, False, 0, -1, -1},
-    {"st", NULL, "newsboat", 1 << 7, False, 0, -1, -1},
-    {"qutebrowser", NULL, NULL, 1 << 3, False, 0, -1, -1},
-    {"st", NULL, NULL, 0, 0, 1, 1, -1},
     {"Alacritty", NULL, NULL, 0, 0, 1, 1, -1},
     {"Sakura", NULL, NULL, 1 << 2, 0, 1, 1, -1},
     {NULL, NULL, "Event Tester", 0, 0, 0, 1, -1},
@@ -188,14 +183,14 @@ static const Key keys[] = {
             TAGKEYS(XK_9, 8) TAGKEYS(XK_0, 9)
 
     // This only for fr keyboards
-    //		TAGKEYS(                         XK_ampersand, 0)
-    //		TAGKEYS(                         XK_eacute, 1) 		TAGKEYS(
-    // XK_quotedbl,                             2) 		TAGKEYS(
-    // XK_apostrophe, 3) 		TAGKEYS( XK_parenleft, 4)
-    //		TAGKEYS(                         XK_minus, 5) 		TAGKEYS(
-    // XK_egrave,                               6) 		TAGKEYS(
-    // XK_underscore, 7) 		TAGKEYS( XK_ccedilla, 8)
-    //		TAGKEYS(                         XK_agrave, 9)
+    //    TAGKEYS(                         XK_ampersand, 0)
+    //    TAGKEYS(                         XK_eacute, 1)    TAGKEYS(
+    // XK_quotedbl,                             2)    TAGKEYS(
+    // XK_apostrophe, 3)    TAGKEYS( XK_parenleft, 4)
+    //    TAGKEYS(                         XK_minus, 5)     TAGKEYS(
+    // XK_egrave,                               6)    TAGKEYS(
+    // XK_underscore, 7)    TAGKEYS( XK_ccedilla, 8)
+    //    TAGKEYS(                         XK_agrave, 9)
 };
 /* button definitions */
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle,

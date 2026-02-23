@@ -1,32 +1,20 @@
-local rnu = vim.wo.rnu
-local nu = vim.wo.nu
+vim.pack.add({
+  "https://www.github.com/neovim/nvim-lspconfig",
+  "https://github.com/mason-org/mason.nvim",
+  "https://github.com/creativenull/efmls-configs-nvim",
+})
 
 local function augroup(name)
   return vim.api.nvim_create_augroup("user_" .. name, { clear = true })
 end
 
-vim.diagnostic.config({
-  signs = { priority = 9999, severity = { min = "WARN", max = "ERROR" } },
-
-  -- Show all diagnostics as underline (for their messages type `<Leader>ld`)
-  underline = { severity = { min = "HINT", max = "ERROR" } },
-
-  -- Show more details immediately for errors on the current line
-  virtual_lines = false,
-  virtual_text = {
-    current_line = true,
-    --severity = { min = "ERROR", max = "ERROR" },
-  },
-
-  -- Don't update diagnostics when typing
-  update_in_insert = false,
-})
+require("mason").setup({})
 
 local signs = {
   Error = "\u{f06a} ", -- nf-fa-exclamation_circle
-  Warn = "\u{f071} ",  -- nf-fa-exclamation_triangle
-  Hint = "\u{f0eb} ",  -- nf-fa-lightbulb_o
-  Info = "\u{f05a} ",  -- nf-fa-info_circle
+  Warn = "\u{f071} ", -- nf-fa-exclamation_triangle
+  Hint = "\u{f0eb} ", -- nf-fa-lightbulb_o
+  Info = "\u{f05a} ", -- nf-fa-info_circle
 }
 
 for type, icon in pairs(signs) do
@@ -51,6 +39,11 @@ local function lsp_on_attach(ev)
 
   local bufnr = ev.buf
   local opts = { noremap = true, silent = true, buffer = bufnr }
+
+  vim.keymap.set("n", "<leader>gD", vim.lsp.buf.definition, opts)
+  vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+  vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+  vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 
   if client:supports_method("textDocument/codeAction", bufnr) then
     vim.keymap.set("n", "<leader>oi", function()
@@ -80,6 +73,11 @@ vim.lsp.config("lua_ls", {
     },
   },
 })
+vim.lsp.config("pyright", {})
+vim.lsp.config("bashls", {})
+vim.lsp.config("ts_ls", {})
+vim.lsp.config("gopls", {})
+vim.lsp.config("clangd", {})
 
 do
   local luacheck = require("efmls-configs.linters.luacheck")
@@ -110,9 +108,18 @@ do
       "css",
       "go",
       "html",
+      "javascript",
+      "javascriptreact",
+      "json",
+      "jsonc",
+      "lua",
       "markdown",
       "python",
       "sh",
+      "typescript",
+      "typescriptreact",
+      "vue",
+      "svelte",
       "php",
     },
     init_options = { documentFormatting = false },
@@ -123,11 +130,31 @@ do
         cpp = { clangfmt, cpplint },
         css = { prettier_d },
         html = { prettier_d },
+        javascript = { eslint_d, prettier_d },
+        javascriptreact = { eslint_d, prettier_d },
+        -- json = { eslint_d, fixjson },
+        -- jsonc = { eslint_d, fixjson },
+        lua = { luacheck, stylua },
         markdown = { prettier_d },
         python = { flake8, black },
         sh = { shellcheck, shfmt },
+        typescript = { eslint_d, prettier_d },
+        typescriptreact = { eslint_d, prettier_d },
+        vue = { eslint_d, prettier_d },
+        svelte = { eslint_d, prettier_d },
         php = { phplint, phpfmt },
       },
     },
   })
 end
+
+vim.lsp.enable({
+  "lua_ls",
+  "pyright",
+  "bashls",
+  "ts_ls",
+  "gopls",
+  "clangd",
+  "efm",
+  "intelephense",
+})

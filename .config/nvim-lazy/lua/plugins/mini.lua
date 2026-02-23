@@ -83,12 +83,6 @@ return {
 
     require("mini.pick").setup({
       window = win_config(),
-      mappings = {
-        toggle_info    = '<S-Tab>',
-        toggle_preview = '<Tab>',
-        move_down      = '<C-j>',
-        move_up        = '<C-k>',
-      }
     })
 
     -- Bracket movement
