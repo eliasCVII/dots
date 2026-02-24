@@ -28,7 +28,7 @@ vim.keymap.set("i", "jk", "<Esc>")
 vim.keymap.set("n", "<leader>wv", "<Cmd>vsplit<CR>")
 vim.keymap.set("n", "<leader>ws", "<Cmd>split<CR>")
 vim.keymap.set("n", "<leader>wq", "<Cmd>quit<CR>")
-vim.keymap.set("n", "<leader>.", ":Pick files tool='git'<CR>")
+vim.keymap.set("n", "<leader>.", ":Pick files tool='fallback'<CR>")
 vim.keymap.set("n", "<leader>oT", "<Cmd>vertical term<CR>")
 vim.keymap.set("n", "<leader>oT", "<Cmd>horizontal term<CR>")
 vim.keymap.set("n", "<leader>bn", "<Cmd>bnext<CR>")
@@ -47,9 +47,6 @@ vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float, { desc = "Diagnosti
 vim.keymap.set("n", "<leader>gD", vim.lsp.buf.definition, opts)
 vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 
--- Zen Mode
-vim.keymap.set("n", "<leader>tz", "<Cmd>ZenMode<CR>")
-
 -- source %
 vim.keymap.set("n", "<leader><leader>x", "<Cmd>source%<CR>")
 
@@ -58,11 +55,15 @@ vim.keymap.set("n", "<F1>", function()
   utils.toggle_colorcolumn()
 end)
 
+-- Toggle diagnostics
+vim.keymap.set("n", "<F2>", function()
+  vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+end, { desc = "Toggle diagnostics" })
+
+-- Turn on/off gutter numbers
 vim.keymap.set("n", "<leader>tl", function()
   utils.toggle_numbers()
 end)
-
--- vim.keymap.set("n", "<leader>D", vim.diagnostic.open_float)
 
 -- Telescope
 vim.keymap.set(
@@ -99,5 +100,29 @@ vim.keymap.set("n", "<leader>gd", "<Cmd>Gvdiffsplit<CR>", { desc = "Open diff in
 -- Other bullshit
 vim.keymap.set("n", "<leader>X", "<Cmd>lua MiniBufremove.delete()<CR>", { desc = "Delete this buffer" })
 vim.keymap.set("n", "<leader>hk", "<Cmd>Pick hipatterns<CR>", { desc = "Search for matching patterns" })
-
 vim.keymap.set("n", "<leader>bs", utils.browser_sync, { desc = "Launch Browser-Sync" })
+
+-- better movement in wrapped text
+vim.keymap.set("n", "j", function()
+  return vim.v.count == 0 and "gj" or "j"
+end, { expr = true, silent = true, desc = "Down (wrap-aware)" })
+vim.keymap.set("n", "k", function()
+  return vim.v.count == 0 and "gk" or "k"
+end, { expr = true, silent = true, desc = "Up (wrap-aware)" })
+
+-- Center screen when jumping
+vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result (centered)" })
+vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result (centered)" })
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Half page down (centered)" })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half page up (centered)" })
+
+-- Buffer shit
+vim.keymap.set('n', '<leader>rb', function()
+  local old_name = vim.fn.expand('%')
+  local new_name = vim.fn.input('New file name: ', old_name)
+  if new_name ~= '' and new_name ~= old_name then
+    vim.cmd('saveas ' .. new_name)
+    vim.fn.delete(old_name)
+    print('File renamed to: ' .. new_name)
+  end
+end, { desc = 'Rename current file' })
