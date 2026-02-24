@@ -84,15 +84,6 @@ vim.opt.list           = true
 vim.o.fillchars        = 'eob: ,fold:╌'
 vim.opt.listchars      = { tab = "»  ", trail = "·", nbsp = "␣", extends = "…", precedes = "…" }
 
--- Highlight on yank
-vim.api.nvim_create_autocmd("TextYankPost", {
-  desc = "Highlight when yanking (copying) text",
-  group = vim.api.nvim_create_augroup("yank", { clear = true }),
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-})
-
 vim.opt.conceallevel = 2
 
 vim.o.iskeyword = '@,48-57,_,192-255,-' -- Treat dash as `word` textobject part

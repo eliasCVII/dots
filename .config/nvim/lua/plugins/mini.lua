@@ -63,8 +63,6 @@ return {
 
     require("mini.misc").setup()
 
-    require("mini.misc").setup_restore_cursor()
-
     -- Great picker for anything
     local win_config = function()
       local height = 20

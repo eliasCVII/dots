@@ -3,8 +3,6 @@ local utils = require("utils")
 -- setup leader
 vim.g.mapleader = " "
 
--- Neovim navigation
-
 -- Navigate vim panes better
 vim.keymap.set("n", "<c-k>", "<Cmd>wincmd k<CR>")
 vim.keymap.set("n", "<c-j>", "<Cmd>wincmd j<CR>")
@@ -28,7 +26,6 @@ vim.keymap.set("i", "jk", "<Esc>")
 vim.keymap.set("n", "<leader>wv", "<Cmd>vsplit<CR>")
 vim.keymap.set("n", "<leader>ws", "<Cmd>split<CR>")
 vim.keymap.set("n", "<leader>wq", "<Cmd>quit<CR>")
-vim.keymap.set("n", "<leader>.", ":Pick files tool='fallback'<CR>")
 vim.keymap.set("n", "<leader>oT", "<Cmd>vertical term<CR>")
 vim.keymap.set("n", "<leader>oT", "<Cmd>horizontal term<CR>")
 vim.keymap.set("n", "<leader>bn", "<Cmd>bnext<CR>")
@@ -73,10 +70,13 @@ vim.keymap.set(
   { noremap = true, silent = true }
 )
 
+-- Pickers
 vim.keymap.set("n", "<leader>th", "<Cmd>Pick help<CR>")
 vim.keymap.set("n", "<leader>tg", "<Cmd>Pick grep_live<CR>")
 vim.keymap.set("n", "<leader>bi", "<Cmd>Pick buffers<CR>")
-vim.keymap.set("n", "<leader>u", "<Cmd>UndotreeToggle<CR>")
+vim.keymap.set("n", "<leader>hk", "<Cmd>Pick hipatterns<CR>", { desc = "Search for matching patterns" })
+
+-- Tab movement
 vim.keymap.set("n", "<leader>Tn", "<Cmd>tabnew<CR>")
 vim.keymap.set("n", "<leader>Tc", "<Cmd>tabclose<CR>")
 vim.keymap.set("n", "<A-,>", "<Cmd>tabnext<CR>")
@@ -99,8 +99,8 @@ vim.keymap.set("n", "<leader>gd", "<Cmd>Gvdiffsplit<CR>", { desc = "Open diff in
 
 -- Other bullshit
 vim.keymap.set("n", "<leader>X", "<Cmd>lua MiniBufremove.delete()<CR>", { desc = "Delete this buffer" })
-vim.keymap.set("n", "<leader>hk", "<Cmd>Pick hipatterns<CR>", { desc = "Search for matching patterns" })
 vim.keymap.set("n", "<leader>bs", utils.browser_sync, { desc = "Launch Browser-Sync" })
+vim.keymap.set("n", "<leader>u", "<Cmd>UndotreeToggle<CR>")
 
 -- better movement in wrapped text
 vim.keymap.set("n", "j", function()
