@@ -1,6 +1,6 @@
 vim.pack.add({
-  "https://github.com/mellow-theme/mellow.nvim",
+  "https://github.com/webhooked/kanso.nvim"
 })
 
 vim.o.background="dark"
-vim.cmd.colorscheme("mellow")
+vim.cmd.colorscheme("kanso")

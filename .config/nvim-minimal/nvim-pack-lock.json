@@ -17,6 +17,10 @@
       "rev": "9f3c6dd7868bcc116e9c1c1929ce063b978fa519",
       "src": "https://www.github.com/lewis6991/gitsigns.nvim"
     },
+    "kanso.nvim": {
+      "rev": "1afbbb449aa0254823dbe1932e3cbb51886ff9fe",
+      "src": "https://github.com/webhooked/kanso.nvim"
+    },
     "lualine.nvim": {
       "rev": "47f91c416daef12db467145e16bed5bbfe00add8",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
@@ -56,6 +60,10 @@
     "vim-fugitive": {
       "rev": "61b51c09b7c9ce04e821f6cf76ea4f6f903e3cf4",
       "src": "https://www.github.com/tpope/vim-fugitive"
+    },
+    "vim-startuptime": {
+      "rev": "c12649b2458e34ec6dde8f1bdfe830661a613a6b",
+      "src": "https://github.com/dstein64/vim-startuptime"
     }
   }
 }
