@@ -1,11 +1,13 @@
 return { -- finally a beautiful theme
-  { "webhooked/kanso.nvim" },
-  { "mcchrish/zenbones.nvim",        dependencies = "rktjmp/lush.nvim" },
-  { dir = "~/repo/monochrome.nvim/", dev = true },
-  { 'kungfusheep/mfd.nvim',          opts = { bright_comments = true } },
-  { "sainnhe/gruvbox-material" },
+  { "webhooked/kanso.nvim", lazy = true },
+  -- { "mcchrish/zenbones.nvim",        dependencies = "rktjmp/lush.nvim" },
+  -- {
+  --   dir = "~/repo/mfd.nvim/",
+  --   dev = true,
+  --   opts = { bright_comments = true }
+  -- },
   {
-    "mellow-theme/mellow.nvim",
+    "sainnhe/gruvbox-material",
     lazy = false,
     priority = 1000,
     config = function()
@@ -14,5 +16,8 @@ return { -- finally a beautiful theme
       vim.g.gruvbox_material_enable_bold = 1
       vim.cmd.colorscheme("gruvbox-material")
     end,
+  },
+  {
+    "mellow-theme/mellow.nvim",
   },
 }

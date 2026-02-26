@@ -1,12 +1,21 @@
 return {
   {
-    "nvim-telescope/telescope-ui-select.nvim",
-    "nvim-telescope/telescope-project.nvim",
-  },
-  {
     "nvim-telescope/telescope.nvim",
+    cmd = "Telescope",
+    keys = {
+      { "<leader>fr", function() require("telescope.builtin").oldfiles() end, desc = "Recent Files" },
+      {
+        "<leader>tp",
+        function() require("telescope").extensions.project.project {} end,
+        desc = "Projects",
+      },
+    },
     tag = "0.1.5",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope-ui-select.nvim",
+      "nvim-telescope/telescope-project.nvim",
+    },
     config = function()
       require("telescope").setup({
         defaults = {

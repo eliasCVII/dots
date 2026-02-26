@@ -42,7 +42,6 @@ vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc="Code Action" 
 vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc ="Hover documentation" })
 vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float, { desc = "Diagnostic popup" })
 vim.keymap.set("n", "<leader>gD", vim.lsp.buf.definition, opts)
-vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 
 -- source %
 vim.keymap.set("n", "<leader><leader>x", "<Cmd>source%<CR>")
@@ -74,7 +73,7 @@ vim.keymap.set(
 vim.keymap.set("n", "<leader>th", "<Cmd>Pick help<CR>")
 vim.keymap.set("n", "<leader>tg", "<Cmd>Pick grep_live<CR>")
 vim.keymap.set("n", "<leader>bi", "<Cmd>Pick buffers<CR>")
-vim.keymap.set("n", "<leader>hk", "<Cmd>Pick hipatterns<CR>", { desc = "Search for matching patterns" })
+vim.keymap.set("n", "<leader>hk", "<Cmd>Trouble todo<CR>", { desc = "Search for matching patterns" })
 
 -- Tab movement
 vim.keymap.set("n", "<leader>Tn", "<Cmd>tabnew<CR>")

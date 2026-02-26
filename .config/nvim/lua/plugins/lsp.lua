@@ -1,6 +1,20 @@
 return {
   {
+    "neovim/nvim-lspconfig",
+    dependencies = { "saghen/blink.cmp" },
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      vim.lsp.config["*"] = {
+        capabilities = require("blink.cmp").get_lsp_capabilities(),
+      }
+      -- Enable tailwindcss globally
+      vim.lsp.enable("tailwindcss")
+    end,
+  },
+  {
     "mason-org/mason.nvim",
+    cmd = "Mason",
+    event = "VeryLazy",
     opts = {},
   },
   {
