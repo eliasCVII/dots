@@ -2,3 +2,8 @@
 on   = [ "g", "s" ]
 run  = "cd ~/repo/scrimsync"
 desc = "Cd to scrimsync repo"
+
+[[mgr.prepend_keymap]]
+on   = [ "g", "w" ]
+run  = "cd ~/Pictures/wallpapers"
+desc = "Cd to wallpapers"
