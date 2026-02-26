@@ -21,7 +21,7 @@ local phpfmt = require("efmls-configs.formatters.phpcbf")
 
 return {
   filetypes = {
-    "c",
+    -- "c",
     "cpp",
     "css",
     "go",
@@ -34,7 +34,7 @@ return {
   init_options = { documentFormatting = false },
   settings = {
     languages = {
-      c = { clangfmt, cpplint },
+      -- c = { clangfmt, cpplint },
       go = { gofumpt, go_revive },
       cpp = { clangfmt, cpplint },
       css = { prettier_d },

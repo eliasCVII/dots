@@ -28,7 +28,7 @@ return {
       'nvim-neotest/nvim-nio',
 
       -- Installs the debug adapters for you
-      { 'williamboman/mason.nvim', opts = {} },
+      -- { 'williamboman/mason.nvim', opts = {} },
       'jay-babu/mason-nvim-dap.nvim',
     },
     keys = {

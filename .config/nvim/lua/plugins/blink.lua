@@ -29,12 +29,9 @@ return {
       },
       keymap = {
         ["<C-e>"] = { "hide", "fallback" },
-
         ["<C-j>"] = { "select_next", "show" },
         ["<C-k>"] = { "select_prev" },
-
         ["<CR>"] = { "accept", "fallback" },
-
         ["<Tab>"] = {
           function(cmp)
             if cmp.snippet_active() then
@@ -47,9 +44,9 @@ return {
           "fallback",
         },
         ["<S-Tab>"] = { "snippet_backward", "fallback" },
-
-        ["<C-b>"] = { "scroll_documentation_up", "fallback" },
-        ["<C-f>"] = { "scroll_documentation_down", "fallback" },
+        ["<C-space>"] = { "show_documentation" },
+        ["<C-p>"] = { "scroll_documentation_up", "fallback" },
+        ["<C-n>"] = { "scroll_documentation_down", "fallback" },
       },
       appearance = {
         nerd_font_variant = "mono",

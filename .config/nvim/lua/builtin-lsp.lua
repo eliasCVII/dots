@@ -50,18 +50,18 @@ local function lsp_on_attach(ev)
   local bufnr = ev.buf
   local opts = { noremap = true, silent = true, buffer = bufnr }
 
-  if client:supports_method("textDocument/codeAction", bufnr) then
-    vim.keymap.set("n", "<leader>oi", function()
-      vim.lsp.buf.code_action({
-        context = { only = { "source.organizeImports" }, diagnostics = {} },
-        apply = true,
-        bufnr = bufnr,
-      })
-      vim.defer_fn(function()
-        vim.lsp.buf.format({ bufnr = bufnr })
-      end, 50)
-    end, opts)
-  end
+  -- if client:supports_method("textDocument/codeAction", bufnr) then
+  --   vim.keymap.set("n", "<leader>oi", function()
+  --     vim.lsp.buf.code_action({
+  --       context = { only = { "source.organizeImports" }, diagnostics = {} },
+  --       apply = true,
+  --       bufnr = bufnr,
+  --     })
+  --     vim.defer_fn(function()
+  --       vim.lsp.buf.format({ bufnr = bufnr })
+  --     end, 50)
+  --   end, opts)
+  -- end
 end
 
 vim.api.nvim_create_autocmd("LspAttach", { group = augroup("lsp_attach"), callback = lsp_on_attach })
