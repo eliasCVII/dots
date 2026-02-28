@@ -95,6 +95,7 @@ vim.keymap.set("n", "<leader>gub", "<Cmd>Gitsigns stage_buffer<CR>", { desc = "S
 vim.keymap.set("n", "<leader>gc", "<Cmd>Git commit<CR>", { desc = "git commit" })
 vim.keymap.set("n", "<leader>gg", "<Cmd>Git<CR>", { desc = "fugitive" })
 vim.keymap.set("n", "<leader>gd", "<Cmd>Gvdiffsplit<CR>", { desc = "Open diff in vsplit" })
+vim.keymap.set("n", "<leader>gP", "<Cmd>Git push<CR>", { desc = "Push to remote" })
 
 -- Other bullshit
 vim.keymap.set("n", "<leader>X", "<Cmd>lua MiniBufremove.delete()<CR>", { desc = "Delete this buffer" })
