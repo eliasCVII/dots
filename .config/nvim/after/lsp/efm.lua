@@ -29,7 +29,7 @@ return {
     "markdown",
     "python",
     "sh",
-    "php",
+    --"php",
   },
   init_options = { documentFormatting = false },
   settings = {

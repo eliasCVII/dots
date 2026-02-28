@@ -20,7 +20,7 @@ return {
         lualine_a = {
           "mode",
         },
-        lualine_b = { "lsp_status", "diff" },
+        lualine_b = { "diff" },
         lualine_c = {
           {
             'filename',
