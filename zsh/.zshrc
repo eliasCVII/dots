@@ -41,7 +41,7 @@ alias v="nvim"
 alias l="eza --icons"
 alias ll='eza -l --icons'
 alias c="clear"
-alias neo="neofetch"
+alias neo="fastfetch"
 
 function y() {
   local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
