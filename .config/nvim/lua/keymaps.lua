@@ -61,19 +61,11 @@ vim.keymap.set("n", "<leader>tl", function()
   utils.toggle_numbers()
 end)
 
--- Telescope
-vim.keymap.set(
-  "n",
-  "<leader>tp",
-  ":lua require'telescope'.extensions.project.project{}<CR>",
-  { noremap = true, silent = true }
-)
-
 -- Pickers
-vim.keymap.set("n", "<leader>th", "<Cmd>Pick help<CR>")
-vim.keymap.set("n", "<leader>tg", "<Cmd>Pick grep_live<CR>")
-vim.keymap.set("n", "<leader>bi", "<Cmd>Pick buffers<CR>")
-vim.keymap.set("n", "<leader>hk", "<Cmd>Trouble todo<CR>", { desc = "Search for matching patterns" })
+-- vim.keymap.set("n", "<leader>th", "<Cmd>Pick help<CR>")
+-- vim.keymap.set("n", "<leader>tg", "<Cmd>Pick grep_live<CR>")
+-- vim.keymap.set("n", "<leader>bi", "<Cmd>Pick buffers<CR>")
+-- vim.keymap.set("n", "<leader>hk", "<Cmd>Trouble todo<CR>", { desc = "Search for matching patterns" })
 
 -- Tab movement
 vim.keymap.set("n", "<leader>Tn", "<Cmd>tabnew<CR>")
