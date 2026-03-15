@@ -21,3 +21,8 @@ require("builtin-lsp")
 local utils = require("utils")
 utils.wrap()
 utils.tabline()
+
+-- Theme shit
+vim.o.background = "dark"
+vim.cmd.colorscheme("mellow")
+utils.set_transparent()

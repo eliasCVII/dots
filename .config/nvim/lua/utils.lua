@@ -261,4 +261,25 @@ U.find_git_dir = function(dir_path)
   return git_dir
 end
 
+U.set_transparent = function() -- set UI component to transparent
+  local groups = {
+    "Normal",
+    "NormalNC",
+    "EndOfBuffer",
+    "NormalFloat",
+    "FloatBorder",
+    "SignColumn",
+    "StatusLine",
+    "StatusLineNC",
+    "TabLine",
+    "TabLineFill",
+    "TabLineSel",
+    "ColorColumn",
+  }
+  for _, g in ipairs(groups) do
+    vim.api.nvim_set_hl(0, g, { bg = "none" })
+  end
+  vim.api.nvim_set_hl(0, "TabLineFill", { bg = "none", fg = "#767676" })
+end
+
 return U
