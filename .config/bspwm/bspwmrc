@@ -1,30 +1,32 @@
 #! /bin/sh
 
 pgrep -x sxhkd > /dev/null || sxhkd &
-feh --bg-fill ~/ELIAS/wallpapers/A_Herefordshire_Lane.png &
-if type "xrandr"; then
-  for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
-    MONITOR=$m polybar --reload top &
-  done
-else
-  polybar --reload top &
-fi
+xset s off &
+xset -dpms &
+feh --bg-fill ~/ELIAS/wallpapers/1989-Lamborghini-Countach-001-1440.jpg &
+polybar top &
+polybar secondary &
 picom --config ~/.config/picom/picom.conf &
 dunst &
 xsetroot -cursor_name left_ptr &
+gentoo-pipewire-launcher &
 
-bspc monitor -d I II III IV V VI VII VIII IX X
+bspc monitor HDMI-0 -d 1 2 3 4 5
+bspc monitor DP-0 -d 6 7 8 9 10
 
 bspc config border_width         2
-bspc config window_gap          10
+bspc config window_gap           5
 
 bspc config split_ratio          0.50
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 bspc config focus_follows_pointer true
 
-bspc rule -a Gimp desktop='^8' state=floating follow=on
-bspc rule -a Chromium desktop='^2'
-bspc rule -a mplayer2 state=floating
-bspc rule -a Kupfer.py focus=on
-bspc rule -a Screenkey manage=off
+bspc config active_border_color "#dadada"
+bspc config normal_border_color "#020202"
+
+# bspc rule -a Gimp desktop='^8' state=floating follow=on
+# bspc rule -a Chromium desktop='^2'
+# bspc rule -a mplayer2 state=floating
+# bspc rule -a Kupfer.py focus=on
+# bspc rule -a Screenkey manage=off
