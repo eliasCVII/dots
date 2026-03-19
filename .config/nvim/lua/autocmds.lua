@@ -5,17 +5,19 @@ local function augroup(name)
 end
 
 -- Change Pick tool on cwd
--- vim.api.nvim_create_autocmd('BufEnter', {
---   desc = "Set Picker(git|rg) on cwd",
---   group = augroup("file_picker"),
---   callback = function ()
---     if utils.find_git_dir() then
---       vim.keymap.set("n", "<leader>.", ":Pick files tool='git'<CR>", {desc = "Open File Picker(git)"})
---     else
---       vim.keymap.set("n", "<leader>.", ":Pick files tool='rg'<CR>", {desc = "Open File Picker(rg)"})
---     end
---   end
--- })
+vim.api.nvim_create_autocmd('BufEnter', {
+  desc = "Set Picker(git|rg) on cwd",
+  group = augroup("file_picker"),
+  callback = function ()
+    if utils.find_git_dir() then
+      -- vim.keymap.set("n", "<leader>.", ":Pick files tool='git'<CR>", {desc = "Open File Picker(git)"})
+      vim.keymap.set("n", "<leader>.", ":lua Snacks.picker.git_files()<CR>", {desc = "Open File Picker(git)"})
+    else
+      -- vim.keymap.set("n", "<leader>.", ":Pick files tool='rg'<CR>", {desc = "Open File Picker(rg)"})
+      vim.keymap.set("n", "<leader>.", ":lua Snacks.picker.files()<CR>", {desc = "Open File Picker"})
+    end
+  end
+})
 
 vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight when yanking (copying) text",

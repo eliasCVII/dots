@@ -21,15 +21,15 @@ local phpfmt = require("efmls-configs.formatters.phpcbf")
 
 return {
   filetypes = {
-    -- "c",
+    "c",
     "cpp",
-    "css",
-    "go",
     "html",
+    "css",
+    --"php",
+    "go",
     "markdown",
     "python",
     "sh",
-    --"php",
   },
   init_options = { documentFormatting = false },
   settings = {

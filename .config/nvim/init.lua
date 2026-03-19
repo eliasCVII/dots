@@ -24,5 +24,5 @@ utils.tabline()
 
 -- Theme shit
 vim.o.background = "dark"
-vim.cmd.colorscheme("mellow")
-utils.set_transparent()
+vim.cmd.colorscheme("zenwritten")
+-- utils.set_transparent()
